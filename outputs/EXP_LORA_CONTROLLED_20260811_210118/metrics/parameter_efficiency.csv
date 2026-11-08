@@ -1,0 +1,2 @@
+dinov2_total_params,arm_a_trainable_params,arm_b_trainable_params,arm_b_total_params,arm_b_trainable_percentage,parameter_efficiency_ratio
+86000000,527620,822532,87403012,0.9410796964296838,106.26092601868378

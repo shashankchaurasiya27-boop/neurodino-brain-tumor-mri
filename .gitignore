@@ -1,0 +1,72 @@
+# ==============================================================================
+# NeuroDINO® Research Platform - Git Ignore Rules
+# Ensures repository remains strictly under GitHub's 100MB file limit
+# ==============================================================================
+
+# macOS / OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Virtual Environments
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.env
+.venv
+miniconda3/
+
+# Model Checkpoint Binaries (>100MB exceeds GitHub limit)
+# The certified locks (SHA256, parameter counts, configs) remain tracked:
+# outputs/*EXP_LORA_CONTROLLED_20260811_211611/checkpoints/*_model_lock.json
+*.pth
+*.pt
+*.ckpt
+*.bin
+*.h5
+*.onnx
+*.weights
+
+# Vercel & Node artifacts
+.vercel
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local logs
+*.log

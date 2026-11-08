@@ -1,0 +1,5 @@
+{
+  "checkpoint": "controlled_lora_best.pth",
+  "sha256": "59dafadda3f983952ae295d257481ad6b582112869d3fe291fbcb54a5d7dd351",
+  "best_val_f1": 0.9926
+}

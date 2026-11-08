@@ -1,0 +1,6 @@
+--- Performance Analysis ---
+Total Parameters: 20,182,612
+Trainable Parameters: 20,182,612
+Model Size: 77.58 MB
+Average Inference Latency (Batch=1): 10.77 ms
+Frames Per Second (FPS): 92.84 images/sec

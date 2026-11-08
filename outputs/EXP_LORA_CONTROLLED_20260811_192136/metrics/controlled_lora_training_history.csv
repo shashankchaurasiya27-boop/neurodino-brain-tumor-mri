@@ -1,0 +1,2 @@
+epoch,train_loss,train_acc,val_loss,val_acc,val_macro_f1,val_balanced_acc,val_macro_prec,val_macro_rec,epoch_time
+1,1.1612791419029236,0.53125,1.1475236415863037,0.6875,0.6819258639910813,0.6875,0.7708333333333333,0.6875,15.910399913787842

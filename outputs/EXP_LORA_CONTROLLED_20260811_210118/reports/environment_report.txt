@@ -1,0 +1,11 @@
+timestamp: 20260811_210118
+exp_id: EXP_LORA_CONTROLLED_20260811_210118
+python_version: 3.13.11 | packaged by Anaconda, Inc. | (main, Dec 10 2025, 21:21:08) [Clang 20.1.8 ]
+pytorch_version: 2.13.0
+peft_version: 0.20.0
+numpy_version: 2.4.2
+scipy_version: available
+cuda_available: False
+mps_available: True
+device: mps
+os: Darwin 24.5.0

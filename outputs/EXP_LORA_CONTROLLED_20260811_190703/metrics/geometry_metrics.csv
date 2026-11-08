@@ -1,0 +1,3 @@
+arm,intra_class_dist,inter_class_dist,separation_ratio
+Frozen,21.774223,19.443975,0.89298135
+LoRA,21.694248,19.40294,0.8943818

@@ -1,0 +1,18 @@
+{
+  "random_seed": 42,
+  "dataset_verified_images": 6741,
+  "train_val_split_ratio": "85/15",
+  "locked_test_count": 1357,
+  "preprocessing_resolution": 224,
+  "backbone_model": "dinov2_vitb14",
+  "embedding_dimension": 768,
+  "head_architecture": "768->512(BN,ReLU,Drop0.1)->256(BN,ReLU,Drop0.1)->4",
+  "initial_weights_matched": true,
+  "optimizer": "AdamW",
+  "scheduler": "CosineAnnealingLR(T_max=30, eta_min=1e-6)",
+  "patience": 7,
+  "model_selection_metric": "Validation Macro-F1",
+  "frozen_checkpoint_hash": "cfcf0dba172ed9eba23e81fbeb97f4c1dbd4c0a7ba407ed8f19f7c34231069f9",
+  "lora_checkpoint_hash": "a6228f7aa23452d1cd1ec2b9b0363e303ca1962ca8e1a21f9edc51c3db416b0b",
+  "overall_protocol_compliance": "PASS"
+}

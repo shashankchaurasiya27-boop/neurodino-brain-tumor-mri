@@ -1,0 +1,49 @@
+# Canonical Manuscript Results (Single Source of Truth)
+
+### A. Final Dataset & Split Numbers
+* **Source Archive**: 7,200 raw MRI scans across 4 classes.
+* **Audit Quarantine**: 459 duplicate artifacts removed across 371 connected component groups (169 exact duplicates, 148 cross-split leaks, 142 pixel-identical variants).
+* **Final Verified Cohort**: Exactly **6,741 images** (Zero duplicate leakage, 100% hash integrity).
+* **Controlled Split**: Stratified 85% Train (**4,575 images**), 15% Validation (**809 images**), Locked Held-Out Test (**1,357 images**), Seed = 42.
+
+### B. Final Controlled Model Architectures
+* **Backbone**: DINOv2 ViT-B/14 (86.0M total parameters, 768-D representation output).
+* **Arm A (Matched Frozen Control)**: Backbone completely frozen. Trainable parameters: **527,108** (0.61%).
+* **Arm B (Controlled LoRA)**: Backbone QKV attention projections adapted via PEFT LoRA ($r=8, \alpha=16, \text{dropout}=0.1, \text{bias}=\text{none}$). Trainable parameters: **822,020** (0.95%).
+* **Classifier Head**: Bit-identical 3-layer MLP initialized with $\theta_0$: `768 -> 512(BN, ReLU, Drop 0.1) -> 256(BN, ReLU, Drop 0.1) -> 4`.
+
+### C. Primary Predictive Performance (Post-Lock Test Set, N=1,357)
+* **Top-1 Accuracy**:
+  * Frozen Control: **92.11%** ($1,250 / 1,357$)
+  * Controlled LoRA: **95.21%** ($1,292 / 1,357$)
+  * Absolute Improvement: **+3.10%** ($+3.095063\%$)
+* **Top-2 Accuracy**:
+  * Frozen Control: **95.87%**
+  * Controlled LoRA: **96.39%**
+  * Absolute Improvement: **+0.52%**
+* **Macro-F1 Score**:
+  * Frozen Control: **0.9196**
+  * Controlled LoRA: **0.9507**
+  * Absolute Improvement: **+0.0310**
+* **Matthews Correlation Coefficient (MCC)**:
+  * Frozen Control: **0.8987**
+  * Controlled LoRA: **0.9376**
+  * Absolute Improvement: **+0.0390**
+* **Balanced Accuracy**:
+  * Frozen Control: **92.87%**
+  * Controlled LoRA: **95.69%**
+  * Absolute Improvement: **+2.82%**
+
+### D. Paired Statistical Significance
+* **McNemar's Test**: $\chi^2 = 32.3269, p = 1.3030 \times 10^{-8}$ ($47$ errors fixed by LoRA vs $5$ introduced).
+* **10,000 Paired Bootstrap 95% Confidence Intervals**:
+  * Accuracy Delta: **$[+2.14\%, +4.13\%]$** (Strictly $> 0$, exceeds $+0.50\%$ practical effect threshold).
+  * Macro-F1 Delta: **$[+0.0211, +0.0417]$**
+  * MCC Delta: **$[+0.0265, +0.0523]$**
+
+### E. Representation Geometry Evolution
+* **Silhouette Score**: Increased from **0.0490** (Frozen) to **0.1501** (LoRA) ($+0.1011$).
+* **Inter/Intra Class Separation Ratio**: Increased from **0.6647** (Frozen) to **1.0287** (LoRA) ($+0.3641$).
+* **kNN Neighborhood Purity @ k=5 (Refined Protocol)**: Increased from **77.54%** (Frozen) to **93.93%** (LoRA) ($+16.39\%$).
+  * *Methodological Note*: In refined protocol (`knn_comparison.csv`), query self-distance is explicitly excluded ($n = k+1$, dropping query index 0). The earlier pilot figure of 89.37% -> 94.75% included self-neighbors ($k=0$), which artificially compressed the baseline gap.
+* **Histological Boundary Resolution**: Glioma $\leftrightarrow$ Meningioma mutual confusion reduced from 53 errors (Frozen) to 31 errors (LoRA), representing a **41.5% reduction** in borderline confusion.

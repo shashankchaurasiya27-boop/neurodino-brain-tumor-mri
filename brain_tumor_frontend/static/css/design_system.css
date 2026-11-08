@@ -1,0 +1,199 @@
+/* ==========================================================================
+   NEURODINO® DESIGN SYSTEM
+   Figma Template Makeover: Joey® / Djectstudio Clean Grotesk Style
+   Light & Dark Mode Design Tokens (Desktop, Tablet, Mobile)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root, [data-theme="dark"] {
+  /* Brand Primary & Accents from Figma Template */
+  --color-primary: #9B43F3;
+  --color-primary-hover: #842BE0;
+  --color-primary-glow: rgba(155, 67, 243, 0.35);
+
+  /* The 4 Iconic Featured Card Colors from Figma Template */
+  --card-purple: #6E3CF5;      /* Card 1: Electric Purple / Lavender */
+  --card-green: #29AE29;       /* Card 2: Vivid Emerald / Alert Success */
+  --card-blue: #0082FF;        /* Card 3: Vivid Blue Jeans */
+  --card-orange: #ED7615;      /* Card 4: Rich Warm Orange */
+  --color-sussie: #38E1F1;     /* Cyan accent */
+
+  /* Diagnostic Semantic Colors */
+  --color-glioma: #0082FF;
+  --color-meningioma: #ED7615;
+  --color-notumor: #29AE29;
+  --color-pituitary: #6E3CF5;
+
+  /* Alert Colors (from Figma Palette) */
+  --color-success: #29AE29;
+  --color-warning: #FFC62A;
+  --color-error: #EF4444;
+
+  /* Deep Black Monochrome Ramp */
+  --bg-black: #000000;
+  --bg-dark: #090A0F;
+  --bg-surface: #111218;
+  --bg-card: #161722;
+  --bg-card-hover: #1E1F2E;
+
+  --border-subtle: #1F202E;
+  --border-medium: #2B2C3E;
+  --border-light: #3E4057;
+
+  --text-white: #FFFFFF;
+  --text-primary: #F3F4F6;
+  --text-secondary: #9CA3AF;
+  --text-muted: #6B7280;
+
+  /* Typography Stack (Neo-Grotesque Clean Geometric Sans) */
+  --font-family-heading: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-family-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, Monaco, monospace;
+
+  /* Navigation & Controls */
+  --nav-bar-bg: rgba(18, 19, 28, 0.85);
+  --nav-bar-border: #2B2C3E;
+  --nav-btn-active-bg: #FFFFFF;
+  --nav-btn-active-text: #000000;
+  --nav-btn-hover-bg: rgba(255, 255, 255, 0.08);
+  --btn-scroll-bg: #1C1C1E;
+  --btn-scroll-text: #FFFFFF;
+
+  /* Radius & Shadows */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-card: 28px;
+  --radius-full: 9999px;
+
+  --shadow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+  --shadow-glow: 0 0 35px var(--color-primary-glow);
+}
+
+/* Light Theme Tokens (Matching Figma Light Mode Desktop & Mobile) */
+[data-theme="light"] {
+  --color-primary: #9B43F3;
+  --color-primary-hover: #842BE0;
+  --color-primary-glow: rgba(155, 67, 243, 0.25);
+
+  --card-purple: #6E3CF5;
+  --card-green: #29AE29;
+  --card-blue: #0082FF;
+  --card-orange: #ED7615;
+  --color-sussie: #00BBD4;
+
+  --color-glioma: #0082FF;
+  --color-meningioma: #ED7615;
+  --color-notumor: #29AE29;
+  --color-pituitary: #6E3CF5;
+
+  --color-success: #29AE29;
+  --color-warning: #FFC62A;
+  --color-error: #EF4444;
+
+  /* Crisp Off-White & Clean Grayscale Ramp */
+  --bg-black: #F8F9FA;
+  --bg-dark: #F0F2F5;
+  --bg-surface: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F3F4F6;
+
+  --border-subtle: #E5E7EB;
+  --border-medium: #D1D5DB;
+  --border-light: #9CA3AF;
+
+  --text-white: #0A0A0A;
+  --text-primary: #1F2937;
+  --text-secondary: #4B5563;
+  --text-muted: #6B7280;
+
+  /* Light Mode Navbar (Black capsule with white active pill - from Figma) */
+  --nav-bar-bg: #000000;
+  --nav-bar-border: rgba(0, 0, 0, 0.1);
+  --nav-btn-active-bg: #FFFFFF;
+  --nav-btn-active-text: #000000;
+  --nav-btn-hover-bg: rgba(255, 255, 255, 0.12);
+  --btn-scroll-bg: #000000;
+  --btn-scroll-text: #FFFFFF;
+
+  --shadow-card: 0 12px 30px -10px rgba(0, 0, 0, 0.08);
+  --shadow-glow: 0 0 25px rgba(155, 67, 243, 0.2);
+}
+
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-body);
+  background-color: var(--bg-black);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Figma Typography Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  color: var(--text-white);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.hero-display-title {
+  font-size: clamp(52px, 8.5vw, 115px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--text-white);
+  display: flex;
+  flex-direction: column;
+}
+
+.heading-section {
+  font-size: clamp(32px, 4.5vw, 56px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  color: var(--text-white);
+}
+
+.heading-card {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.body-lead {
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.body-regular {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.body-small {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-muted);
+}

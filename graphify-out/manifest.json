@@ -1,0 +1,422 @@
+{
+  "00_data_exploration_and_cleaning/01_initial_analysis/mri_analysis.py": {
+    "mtime": 1785528049.7688086,
+    "seen": 1790868121.208574,
+    "ast_hash": "6751277e64540a6882762554658f8d8e",
+    "semantic_hash": "6751277e64540a6882762554658f8d8e"
+  },
+  "00_data_exploration_and_cleaning/02_duplicate_and_integrity_audit/dataset_integrity_audit.py": {
+    "mtime": 1785573922.9905431,
+    "seen": 1790868121.208577,
+    "ast_hash": "2e02c1b611d69cad9453f7787d8cc2b9",
+    "semantic_hash": "2e02c1b611d69cad9453f7787d8cc2b9"
+  },
+  "00_data_exploration_and_cleaning/02_duplicate_and_integrity_audit/duplicate_verification.py": {
+    "mtime": 1785569607.2767668,
+    "seen": 1790868121.208578,
+    "ast_hash": "e1e7f893809569128ddd79cbf42d0997",
+    "semantic_hash": "e1e7f893809569128ddd79cbf42d0997"
+  },
+  "00_data_exploration_and_cleaning/02_duplicate_and_integrity_audit/per_class_integrity_analysis.py": {
+    "mtime": 1785574938.190631,
+    "seen": 1790868121.208579,
+    "ast_hash": "3d497789ef3ea03fdc4c1b6e95088112",
+    "semantic_hash": "3d497789ef3ea03fdc4c1b6e95088112"
+  },
+  "00_data_exploration_and_cleaning/03_cleaning_and_verification/dataset_cleaner.py": {
+    "mtime": 1785584362.2075758,
+    "seen": 1790868121.208579,
+    "ast_hash": "d42fc5803184fa464e67db5233c5f191",
+    "semantic_hash": "d42fc5803184fa464e67db5233c5f191"
+  },
+  "00_data_exploration_and_cleaning/03_cleaning_and_verification/verification_check.py": {
+    "mtime": 1785584885.9331207,
+    "seen": 1790868121.208579,
+    "ast_hash": "e3d50dc931ed5c341b40e68ac093fe79",
+    "semantic_hash": "e3d50dc931ed5c341b40e68ac093fe79"
+  },
+  "00_data_exploration_and_cleaning/04_scientific_certification/dataset_scientific_certification.py": {
+    "mtime": 1785586777.2975943,
+    "seen": 1790868121.20858,
+    "ast_hash": "ff93f90fc2783bab8fe900da68c5dfb2",
+    "semantic_hash": "ff93f90fc2783bab8fe900da68c5dfb2"
+  },
+  "01_baseline_models/baseline_1_efficientnet/baseline1.py": {
+    "mtime": 1785825692.252349,
+    "seen": 1790868121.20858,
+    "ast_hash": "48b1b1a301730eb39251ae599c319e7d",
+    "semantic_hash": "48b1b1a301730eb39251ae599c319e7d"
+  },
+  "01_baseline_models/baseline_1_efficientnet/baseline1_fixed.py": {
+    "mtime": 1786101996.2666106,
+    "seen": 1790868121.2085812,
+    "ast_hash": "3ce63bdfb021fe4d46bbf5c7d0dbc954",
+    "semantic_hash": "3ce63bdfb021fe4d46bbf5c7d0dbc954"
+  },
+  "01_baseline_models/baseline_1_efficientnet/clinical_mri_pipeline.py": {
+    "mtime": 1785786866.3511102,
+    "seen": 1790868121.2085812,
+    "ast_hash": "f60a58be945ba274f1d929cded2783ea",
+    "semantic_hash": "f60a58be945ba274f1d929cded2783ea"
+  },
+  "01_baseline_models/baseline_1_efficientnet/generate_baseline1_notebook.py": {
+    "mtime": 1785790951.3928685,
+    "seen": 1790868121.2085812,
+    "ast_hash": "9aadb176041c04fb1012cccd62221791",
+    "semantic_hash": "9aadb176041c04fb1012cccd62221791"
+  },
+  "01_baseline_models/baseline_moe/advanced_moe_pipeline.py": {
+    "mtime": 1785822111.9016857,
+    "seen": 1790868121.208582,
+    "ast_hash": "957c3da56dd7524e3fbba5525f1c4efa",
+    "semantic_hash": "957c3da56dd7524e3fbba5525f1c4efa"
+  },
+  "01_baseline_models/baseline_moe/baseline_classification.py": {
+    "mtime": 1785822111.902166,
+    "seen": 1790868121.208582,
+    "ast_hash": "3785ebe1f799e4b3cee0e34df0d2a4a1",
+    "semantic_hash": "3785ebe1f799e4b3cee0e34df0d2a4a1"
+  },
+  "02_notebook_series_A_to_D/Notebook_A_Dataset_Audit/generate_notebook_A.py": {
+    "mtime": 1785834519.6594796,
+    "seen": 1790868121.2085829,
+    "ast_hash": "809e6aeae3f9db60bf676884067bd674",
+    "semantic_hash": "809e6aeae3f9db60bf676884067bd674"
+  },
+  "02_notebook_series_A_to_D/Notebook_B_Representation_Analysis/baseline b2.py": {
+    "mtime": 1785849101.2485704,
+    "seen": 1790868121.2085829,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "02_notebook_series_A_to_D/Notebook_B_Representation_Analysis/baseline2_ b2.py": {
+    "mtime": 1785849401.7677286,
+    "seen": 1790868121.2085829,
+    "ast_hash": "c7ea976479383776a0adce68d56a6205",
+    "semantic_hash": "c7ea976479383776a0adce68d56a6205"
+  },
+  "02_notebook_series_A_to_D/Notebook_B_Representation_Analysis/generate_notebook_B1.py": {
+    "mtime": 1785848906.0380077,
+    "seen": 1790868121.2085838,
+    "ast_hash": "963db0c58744b41e67c27b99b16d45b0",
+    "semantic_hash": "963db0c58744b41e67c27b99b16d45b0"
+  },
+  "02_notebook_series_A_to_D/Notebook_B_Representation_Analysis/generate_notebook_B2.py": {
+    "mtime": 1785848916.5704844,
+    "seen": 1790868121.2085838,
+    "ast_hash": "a068fcd203b7272fef40c14608c38ed5",
+    "semantic_hash": "a068fcd203b7272fef40c14608c38ed5"
+  },
+  "02_notebook_series_A_to_D/Notebook_C_Representation_Benchmark/baseline_c_benchmark.py": {
+    "mtime": 1785861350.0212646,
+    "seen": 1790868121.2085838,
+    "ast_hash": "ac914709752ccafaa1ef7aee37cdae36",
+    "semantic_hash": "ac914709752ccafaa1ef7aee37cdae36"
+  },
+  "02_notebook_series_A_to_D/Notebook_C_Representation_Benchmark/generate_notebook_C.py": {
+    "mtime": 1786092431.1085298,
+    "seen": 1790868121.208585,
+    "ast_hash": "0fc8cd2cec243f15f16653611528fe4f",
+    "semantic_hash": "0fc8cd2cec243f15f16653611528fe4f"
+  },
+  "02_notebook_series_A_to_D/Notebook_D_Evidence_Integration/baseline_d_evidence_engine.py": {
+    "mtime": 1785866284.9416924,
+    "seen": 1790868121.208585,
+    "ast_hash": "61cec2e1330b65d5b8eb21c96ae491dd",
+    "semantic_hash": "61cec2e1330b65d5b8eb21c96ae491dd"
+  },
+  "02_notebook_series_A_to_D/Notebook_D_Evidence_Integration/generate_notebook_D.py": {
+    "mtime": 1785866232.3416278,
+    "seen": 1790868121.208585,
+    "ast_hash": "611de92870bd94228b9754ae383d061d",
+    "semantic_hash": "611de92870bd94228b9754ae383d061d"
+  },
+  "02_notebook_series_A_to_D/report/generate_baseline2_pdf.py": {
+    "mtime": 1785867844.4554858,
+    "seen": 1790868121.208586,
+    "ast_hash": "c60abd9c795154750c795cadc1f4fcbd",
+    "semantic_hash": "c60abd9c795154750c795cadc1f4fcbd"
+  },
+  "02_notebook_series_A_to_D/report/generate_methodology_pdf.py": {
+    "mtime": 1786293033.7650073,
+    "seen": 1790868121.208586,
+    "ast_hash": "9df11864242a6e6966cfbd7e3f9fa1a1",
+    "semantic_hash": "9df11864242a6e6966cfbd7e3f9fa1a1"
+  },
+  "03_notebook_E_dinov2_lora/analysis_and_diagnostics/calc_distances.py": {
+    "mtime": 1786276704.9782922,
+    "seen": 1790868121.208587,
+    "ast_hash": "78e28f85d7de7580364904fcfb51317a",
+    "semantic_hash": "78e28f85d7de7580364904fcfb51317a"
+  },
+  "03_notebook_E_dinov2_lora/analysis_and_diagnostics/calc_silhouette.py": {
+    "mtime": 1786277955.978975,
+    "seen": 1790868121.208587,
+    "ast_hash": "e6522b0fa06705426030b08c725a05b0",
+    "semantic_hash": "e6522b0fa06705426030b08c725a05b0"
+  },
+  "03_notebook_E_dinov2_lora/analysis_and_diagnostics/check_attn_hook.py": {
+    "mtime": 1786281024.2662144,
+    "seen": 1790868121.208587,
+    "ast_hash": "e9f5a6d3517796acbcc023b4f936f13e",
+    "semantic_hash": "e9f5a6d3517796acbcc023b4f936f13e"
+  },
+  "03_notebook_E_dinov2_lora/analysis_and_diagnostics/check_dinov2_attn.py": {
+    "mtime": 1786280949.3280864,
+    "seen": 1790868121.2085881,
+    "ast_hash": "06e71f5f4b3f6333e54c3ce2540b9ace",
+    "semantic_hash": "06e71f5f4b3f6333e54c3ce2540b9ace"
+  },
+  "03_notebook_E_dinov2_lora/analysis_and_diagnostics/check_dinov2_blocks.py": {
+    "mtime": 1786280979.9943852,
+    "seen": 1790868121.2085881,
+    "ast_hash": "0165ece1ab4ff969f335b47d8fae0f08",
+    "semantic_hash": "0165ece1ab4ff969f335b47d8fae0f08"
+  },
+  "03_notebook_E_dinov2_lora/analysis_and_diagnostics/generate_attention_maps.py": {
+    "mtime": 1786281376.6686893,
+    "seen": 1790868121.2085881,
+    "ast_hash": "c7ecde04daac30a93717474fdfe8501c",
+    "semantic_hash": "c7ecde04daac30a93717474fdfe8501c"
+  },
+  "03_notebook_E_dinov2_lora/analysis_and_diagnostics/generate_centroid_umap.py": {
+    "mtime": 1786276893.9711242,
+    "seen": 1790868121.208589,
+    "ast_hash": "b1c77524ce0e2e2fbed7d10b19fa3f4b",
+    "semantic_hash": "b1c77524ce0e2e2fbed7d10b19fa3f4b"
+  },
+  "03_notebook_E_dinov2_lora/analysis_and_diagnostics/generate_lora_diagnostics.py": {
+    "mtime": 1786276309.792533,
+    "seen": 1790868121.208589,
+    "ast_hash": "810553fdb07fcc70c4ce5564d8f58953",
+    "semantic_hash": "810553fdb07fcc70c4ce5564d8f58953"
+  },
+  "03_notebook_E_dinov2_lora/analysis_and_diagnostics/generate_publication_umap.py": {
+    "mtime": 1786277048.4768505,
+    "seen": 1790868121.20859,
+    "ast_hash": "9e10c214eb9d8ba85a5672e6c6fe6894",
+    "semantic_hash": "9e10c214eb9d8ba85a5672e6c6fe6894"
+  },
+  "03_notebook_E_dinov2_lora/analysis_and_diagnostics/print_cm.py": {
+    "mtime": 1786272444.768124,
+    "seen": 1790868121.20859,
+    "ast_hash": "b6c9dd5695ba930e37eeaa6fc51a906f",
+    "semantic_hash": "b6c9dd5695ba930e37eeaa6fc51a906f"
+  },
+  "03_notebook_E_dinov2_lora/scripts/baseline_lora.py": {
+    "mtime": 1786273271.3012733,
+    "seen": 1790868121.20859,
+    "ast_hash": "18954a16a47938ee4c0b892c64481f89",
+    "semantic_hash": "18954a16a47938ee4c0b892c64481f89"
+  },
+  "03_notebook_E_dinov2_lora/scripts/generate_notebook_E.py": {
+    "mtime": 1786271202.0729759,
+    "seen": 1790868121.2085912,
+    "ast_hash": "8ebd77d72af107360c03f89ecb9e18c7",
+    "semantic_hash": "8ebd77d72af107360c03f89ecb9e18c7"
+  },
+  "03_notebook_E_dinov2_lora/scripts/test_dinov2.py": {
+    "mtime": 1786273190.6979656,
+    "seen": 1790868121.2085912,
+    "ast_hash": "2ee9970cc2a056af26da71834749a1c1",
+    "semantic_hash": "2ee9970cc2a056af26da71834749a1c1"
+  },
+  "03_notebook_E_dinov2_lora/scripts/test_peft.py": {
+    "mtime": 1786273228.2932606,
+    "seen": 1790868121.2085912,
+    "ast_hash": "450c31ed0e81e1bd3feadc104f40072f",
+    "semantic_hash": "450c31ed0e81e1bd3feadc104f40072f"
+  },
+  "04_notebook_F/Intervention_A_Base_Adapter/intervention_A.py": {
+    "mtime": 1786294003.8491826,
+    "seen": 1790868121.208592,
+    "ast_hash": "5d671c35daf442b16061660ef19a0995",
+    "semantic_hash": "5d671c35daf442b16061660ef19a0995"
+  },
+  "04_notebook_F/Intervention_B_Augmented_Adapter/intervention_B.py": {
+    "mtime": 1786294018.8125322,
+    "seen": 1790868121.208592,
+    "ast_hash": "e06255f41ba75cce900776cee5189e24",
+    "semantic_hash": "e06255f41ba75cce900776cee5189e24"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_190532/configs/experiment_metadata.json": {
+    "mtime": 1786455332.8765702,
+    "seen": 1790868121.208592,
+    "ast_hash": "f831f33c6d5478251cb2c58f3860ab3e",
+    "semantic_hash": "f831f33c6d5478251cb2c58f3860ab3e"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_190703/configs/experiment_metadata.json": {
+    "mtime": 1786455423.3379667,
+    "seen": 1790868121.208593,
+    "ast_hash": "d1eb9178607298025461338c6577e045",
+    "semantic_hash": "d1eb9178607298025461338c6577e045"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_190703/metrics/statistical_significance.json": {
+    "mtime": 1786455505.7385335,
+    "seen": 1790868121.208593,
+    "ast_hash": "c4c7657af19c0047208ecc4ac8c6b9ba",
+    "semantic_hash": "c4c7657af19c0047208ecc4ac8c6b9ba"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_190735/configs/experiment_metadata.json": {
+    "mtime": 1786455455.2692883,
+    "seen": 1790868121.208595,
+    "ast_hash": "ff1c4c2f36c325790091ecf1585fc77a",
+    "semantic_hash": "ff1c4c2f36c325790091ecf1585fc77a"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_191905/checkpoints/controlled_lora_model_lock.json": {
+    "mtime": 1786456178.269094,
+    "seen": 1790868121.208595,
+    "ast_hash": "a9a6932dab7e05e9e9ce6553ec72c2ae",
+    "semantic_hash": "a9a6932dab7e05e9e9ce6553ec72c2ae"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_191905/checkpoints/frozen_control_model_lock.json": {
+    "mtime": 1786456161.5390918,
+    "seen": 1790868121.208596,
+    "ast_hash": "e3881f19d17bba9989386b3b4b72532f",
+    "semantic_hash": "e3881f19d17bba9989386b3b4b72532f"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_191905/configs/experiment_metadata.json": {
+    "mtime": 1786456145.4372752,
+    "seen": 1790868121.208596,
+    "ast_hash": "511a5a932087eae22e83f47e347fe5d9",
+    "semantic_hash": "511a5a932087eae22e83f47e347fe5d9"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_192003/configs/experiment_metadata.json": {
+    "mtime": 1786456204.0584219,
+    "seen": 1790868121.208596,
+    "ast_hash": "8fdda3029dc19bdf8b3f725e622202e3",
+    "semantic_hash": "8fdda3029dc19bdf8b3f725e622202e3"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_192136/checkpoints/controlled_lora_model_lock.json": {
+    "mtime": 1786456330.1009798,
+    "seen": 1790868121.208597,
+    "ast_hash": "a9a6932dab7e05e9e9ce6553ec72c2ae",
+    "semantic_hash": "a9a6932dab7e05e9e9ce6553ec72c2ae"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_192136/checkpoints/frozen_control_model_lock.json": {
+    "mtime": 1786456312.4186141,
+    "seen": 1790868121.208597,
+    "ast_hash": "e3881f19d17bba9989386b3b4b72532f",
+    "semantic_hash": "e3881f19d17bba9989386b3b4b72532f"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_192136/configs/experiment_metadata.json": {
+    "mtime": 1786456296.787396,
+    "seen": 1790868121.208597,
+    "ast_hash": "fd9a7997826ce3326de04e3d06bda355",
+    "semantic_hash": "fd9a7997826ce3326de04e3d06bda355"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_192136/metrics/statistical_significance.json": {
+    "mtime": 1786456359.8961318,
+    "seen": 1790868121.208598,
+    "ast_hash": "827dc3435a4037e05c6eabd67e7ff684",
+    "semantic_hash": "827dc3435a4037e05c6eabd67e7ff684"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_192136/reports/protocol_compliance.json": {
+    "mtime": 1786456359.8968847,
+    "seen": 1790868121.208598,
+    "ast_hash": "bf0a168b46f4807560deb52d30437547",
+    "semantic_hash": "bf0a168b46f4807560deb52d30437547"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_192240/configs/experiment_metadata.json": {
+    "mtime": 1786456360.352305,
+    "seen": 1790868121.208598,
+    "ast_hash": "7547a8139d5698c837abf2a78fe08a70",
+    "semantic_hash": "7547a8139d5698c837abf2a78fe08a70"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_193034/configs/experiment_metadata.json": {
+    "mtime": 1786456834.9165092,
+    "seen": 1790868121.208599,
+    "ast_hash": "ce63e4fea36eeec0c1e9e8c49bf3917d",
+    "semantic_hash": "ce63e4fea36eeec0c1e9e8c49bf3917d"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_193743/configs/experiment_metadata.json": {
+    "mtime": 1786457263.1086376,
+    "seen": 1790868121.208599,
+    "ast_hash": "64c352b5470c775d1d1ec3be12554eae",
+    "semantic_hash": "64c352b5470c775d1d1ec3be12554eae"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_194920/configs/experiment_metadata.json": {
+    "mtime": 1786457960.581999,
+    "seen": 1790868121.208599,
+    "ast_hash": "e64543614c127e6762833db725730298",
+    "semantic_hash": "e64543614c127e6762833db725730298"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_195239/checkpoints/frozen_control_model_lock.json": {
+    "mtime": 1786458510.696929,
+    "seen": 1790868121.2086,
+    "ast_hash": "388e205f047492845c7fc2471eebbce0",
+    "semantic_hash": "388e205f047492845c7fc2471eebbce0"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_195239/configs/experiment_metadata.json": {
+    "mtime": 1786458159.9182744,
+    "seen": 1790868121.2086,
+    "ast_hash": "5ac92178566b2494bcc1eed9cf8cca0a",
+    "semantic_hash": "5ac92178566b2494bcc1eed9cf8cca0a"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_210118/checkpoints/frozen_control_model_lock.json": {
+    "mtime": 1786462594.001523,
+    "seen": 1790868121.2086,
+    "ast_hash": "388e205f047492845c7fc2471eebbce0",
+    "semantic_hash": "388e205f047492845c7fc2471eebbce0"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_210118/configs/experiment_metadata.json": {
+    "mtime": 1786462278.9719846,
+    "seen": 1790868121.208601,
+    "ast_hash": "216c836f659e0107fb620832a9debf17",
+    "semantic_hash": "216c836f659e0107fb620832a9debf17"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_211611/checkpoints/controlled_lora_model_lock.json": {
+    "mtime": 1786532991.1326468,
+    "seen": 1790868121.208601,
+    "ast_hash": "09c37d86fc9f29723969e8778272978f",
+    "semantic_hash": "09c37d86fc9f29723969e8778272978f"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_211611/checkpoints/frozen_control_model_lock.json": {
+    "mtime": 1786463431.04199,
+    "seen": 1790868121.208601,
+    "ast_hash": "388e205f047492845c7fc2471eebbce0",
+    "semantic_hash": "388e205f047492845c7fc2471eebbce0"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_211611/configs/experiment_metadata.json": {
+    "mtime": 1786463171.8799825,
+    "seen": 1790868121.2086022,
+    "ast_hash": "9ae83bc1862581b9eb4b12ffc129c36c",
+    "semantic_hash": "9ae83bc1862581b9eb4b12ffc129c36c"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_211611/metrics/statistical_significance.json": {
+    "mtime": 1786535415.9985256,
+    "seen": 1790868121.2086048,
+    "ast_hash": "60ef4b37860533b91b34081a50a75640",
+    "semantic_hash": "60ef4b37860533b91b34081a50a75640"
+  },
+  "outputs/EXP_LORA_CONTROLLED_20260811_211611/reports/protocol_compliance.json": {
+    "mtime": 1786535415.9991434,
+    "seen": 1790868121.208606,
+    "ast_hash": "440e1b9d6a82bec518cc780a28a9d6be",
+    "semantic_hash": "440e1b9d6a82bec518cc780a28a9d6be"
+  },
+  "run_graphify.sh": {
+    "mtime": 1790860492.018223,
+    "seen": 1790868121.208606,
+    "ast_hash": "aff23c5560cae8ac5233db9807c1117f",
+    "semantic_hash": "aff23c5560cae8ac5233db9807c1117f"
+  },
+  "scripts/generate_controlled_lora_notebook.py": {
+    "mtime": 1789491847.10128,
+    "seen": 1790868121.208606,
+    "ast_hash": "12dd7ef62fda2b93614df50a08d07524",
+    "semantic_hash": "12dd7ef62fda2b93614df50a08d07524"
+  },
+  "scripts/resume_controlled_lora_experiment.py": {
+    "mtime": 1786534337.0480871,
+    "seen": 1790868121.208607,
+    "ast_hash": "334aae9cfbf28945d07b19049d24d885",
+    "semantic_hash": "334aae9cfbf28945d07b19049d24d885"
+  },
+  "scripts/run_controlled_lora_experiment.py": {
+    "mtime": 1787046851.645758,
+    "seen": 1790868121.208607,
+    "ast_hash": "efdeb68532f30c5d6772cb6db9d19e80",
+    "semantic_hash": "efdeb68532f30c5d6772cb6db9d19e80"
+  }
+}

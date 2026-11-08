@@ -1,0 +1,9 @@
+split,class,count
+Training,glioma,1400
+Training,meningioma,1384
+Training,notumor,1242
+Training,pituitary,1358
+Testing,glioma,379
+Testing,meningioma,296
+Testing,notumor,282
+Testing,pituitary,400

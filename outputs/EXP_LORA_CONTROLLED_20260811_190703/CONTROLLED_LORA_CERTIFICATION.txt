@@ -1,0 +1,23 @@
+==================================================
+CONTROLLED LORA EXPERIMENT CERTIFICATION
+==================================================
+EXP_ID: EXP_LORA_CONTROLLED_20260811_190703
+Timestamp: 20260811_190703
+Dataset: 6741 total images (5384 Train/Val, 1357 Locked Test)
+
+Frozen DINOv2 Test Accuracy: 50.00% (Macro-F1: 0.3774)
+LoRA DINOv2 Test Accuracy:   71.88% (Macro-F1: 0.6979)
+Accuracy Delta:             +21.88%
+Macro-F1 Delta:             +0.3205
+
+McNemar p-value:            2.3342e-02
+95% Paired Bootstrap CI:    [9.38%, 34.38%]
+
+Evaluation Tiers:
+  1. Numerical Improvement:           YES
+  2. Statistically Supported:         YES
+  3. Practical Effect (>= 0.50%):     YES (Project-Defined Threshold)
+
+Protocol Compliance:        PASS
+Scientific Verdict:         CASE A: Strong evidence that LoRA provides useful representation adaptation.
+==================================================

@@ -1,0 +1,13 @@
+class,model,precision,recall,f1_score,support,source,status
+glioma,Frozen DINOv2 (Arm A),0.9863481228668942,0.762532981530343,0.8601190476190477,379,outputs/EXP_LORA_CONTROLLED_20260811_211611/metrics/frozen_control_per_class_metrics.csv,[RAW_VERIFIED]
+glioma,Controlled LoRA (Arm B),0.996875,0.841688654353562,0.9127324749642346,379,outputs/EXP_LORA_CONTROLLED_20260811_211611/metrics/controlled_lora_per_class_metrics.csv,[RAW_VERIFIED]
+glioma,Delta (LoRA - Frozen),0.010526877133105739,0.079155672823219,0.052613427345186925,379,Recomputed Delta,[DERIVED]
+meningioma,Frozen DINOv2 (Arm A),0.8011049723756906,0.9797297297297297,0.8814589665653495,296,outputs/EXP_LORA_CONTROLLED_20260811_211611/metrics/frozen_control_per_class_metrics.csv,[RAW_VERIFIED]
+meningioma,Controlled LoRA (Arm B),0.8963414634146342,0.9932432432432432,0.9423076923076923,296,outputs/EXP_LORA_CONTROLLED_20260811_211611/metrics/controlled_lora_per_class_metrics.csv,[RAW_VERIFIED]
+meningioma,Delta (LoRA - Frozen),0.0952364910389436,0.013513513513513487,0.06084872574234279,296,Recomputed Delta,[DERIVED]
+notumor,Frozen DINOv2 (Arm A),0.9245901639344263,1.0,0.9608177172061328,282,outputs/EXP_LORA_CONTROLLED_20260811_211611/metrics/frozen_control_per_class_metrics.csv,[RAW_VERIFIED]
+notumor,Controlled LoRA (Arm B),0.9185667752442996,1.0,0.9575551782682513,282,outputs/EXP_LORA_CONTROLLED_20260811_211611/metrics/controlled_lora_per_class_metrics.csv,[RAW_VERIFIED]
+notumor,Delta (LoRA - Frozen),-0.006023388690126641,0.0,-0.0032625389378815317,282,Recomputed Delta,[DERIVED]
+pituitary,Frozen DINOv2 (Arm A),0.9798488664987406,0.9725,0.9761606022584692,400,outputs/EXP_LORA_CONTROLLED_20260811_211611/metrics/frozen_control_per_class_metrics.csv,[RAW_VERIFIED]
+pituitary,Controlled LoRA (Arm B),0.9875621890547264,0.9925,0.9900249376558603,400,outputs/EXP_LORA_CONTROLLED_20260811_211611/metrics/controlled_lora_per_class_metrics.csv,[RAW_VERIFIED]
+pituitary,Delta (LoRA - Frozen),0.00771332255598578,0.020000000000000018,0.01386433539739107,400,Recomputed Delta,[DERIVED]

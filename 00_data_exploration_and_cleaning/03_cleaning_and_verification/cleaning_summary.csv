@@ -1,0 +1,372 @@
+Group ID,Representative Image,Moved Images,Number Removed,Reason
+Group_0001,dataset_archive2/archive/Training/notumor/Tr-no_1205.jpg,dataset_archive2/archive/Training/notumor/Tr-no_639.jpg,1,Pixel Identical
+Group_0002,dataset_archive2/archive/Training/notumor/Tr-no_112.jpg,dataset_archive2/archive/Training/notumor/Tr-no_494.jpg | dataset_archive2/archive/Training/notumor/Tr-no_308.jpg | dataset_archive2/archive/Training/notumor/Tr-no_1178.jpg | dataset_archive2/archive/Training/notumor/Tr-no_1265.jpg,4,Exact Duplicate
+Group_0003,dataset_archive2/archive/Training/notumor/Tr-no_1051.jpg,dataset_archive2/archive/Training/notumor/Tr-no_1158.jpg | dataset_archive2/archive/Training/notumor/Tr-no_330.jpg,2,Exact Duplicate
+Group_0004,dataset_archive2/archive/Training/meningioma/Tr-me_960.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_149.jpg,1,Pixel Identical
+Group_0005,dataset_archive2/archive/Training/notumor/Tr-no_1203.jpg,dataset_archive2/archive/Training/notumor/Tr-no_154.jpg | dataset_archive2/archive/Training/notumor/Tr-no_725.jpg,2,Exact Duplicate
+Group_0006,dataset_archive2/archive/Training/notumor/Tr-no_1295.jpg,dataset_archive2/archive/Training/notumor/Tr-no_275.jpg,1,Pixel Identical
+Group_0007,dataset_archive2/archive/Training/meningioma/Tr-aug-me_92.jpg,dataset_archive2/archive/Training/meningioma/Tr-me_268.jpg,1,Exact Duplicate
+Group_0008,dataset_archive2/archive/Training/notumor/Tr-no_194.jpg,dataset_archive2/archive/Training/notumor/Tr-no_219.jpg,1,Exact Duplicate
+Group_0009,dataset_archive2/archive/Training/notumor/Tr-no_1232.jpg,dataset_archive2/archive/Testing/notumor/Te-no_131.jpg | dataset_archive2/archive/Training/notumor/Tr-no_145.jpg | dataset_archive2/archive/Training/notumor/Tr-no_1195.jpg,3,Critical Leakage
+Group_0010,dataset_archive2/archive/Training/notumor/Tr-no_1196.jpg,dataset_archive2/archive/Testing/notumor/Te-no_378.jpg | dataset_archive2/archive/Testing/notumor/Te-no_98.jpg,2,Critical Leakage
+Group_0011,dataset_archive2/archive/Training/notumor/Tr-no_1274.jpg,dataset_archive2/archive/Training/notumor/Tr-no_911.jpg,1,Pixel Identical
+Group_0012,dataset_archive2/archive/Training/pituitary/Tr-pi_221.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_883.jpg | dataset_archive2/archive/Training/pituitary/Tr-pi_430.jpg,2,Exact Duplicate
+Group_0013,dataset_archive2/archive/Training/notumor/Tr-no_1085.jpg,dataset_archive2/archive/Training/notumor/Tr-no_692.jpg | dataset_archive2/archive/Training/notumor/Tr-no_98.jpg | dataset_archive2/archive/Training/notumor/Tr-no_767.jpg,3,Exact Duplicate
+Group_0014,dataset_archive2/archive/Training/meningioma/Tr-me_167.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_276.jpg,1,Pixel Identical
+Group_0015,dataset_archive2/archive/Training/pituitary/Tr-pi_1399.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_195.jpg,1,Exact Duplicate
+Group_0016,dataset_archive2/archive/Training/meningioma/Tr-me_432.jpg,dataset_archive2/archive/Training/meningioma/Tr-me_561.jpg | dataset_archive2/archive/Testing/meningioma/Te-me_179.jpg | dataset_archive2/archive/Testing/meningioma/Te-me_198.jpg,3,Pixel Identical
+Group_0017,dataset_archive2/archive/Training/pituitary/Tr-pi_1071.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_991.jpg | dataset_archive2/archive/Training/pituitary/Tr-pi_1207.jpg | dataset_archive2/archive/Training/pituitary/Tr-pi_1023.jpg,3,Exact Duplicate
+Group_0018,dataset_archive2/archive/Training/glioma/Tr-gl_420.jpg,dataset_archive2/archive/Testing/glioma/Te-gl_233.jpg,1,Pixel Identical
+Group_0019,dataset_archive2/archive/Training/notumor/Tr-no_1063.jpg,dataset_archive2/archive/Training/notumor/Tr-no_864.jpg,1,Exact Duplicate
+Group_0020,dataset_archive2/archive/Training/notumor/Tr-no_1288.jpg,dataset_archive2/archive/Training/notumor/Tr-no_863.jpg | dataset_archive2/archive/Training/notumor/Tr-no_831.jpg,2,Exact Duplicate
+Group_0021,dataset_archive2/archive/Training/notumor/Tr-no_586.jpg,dataset_archive2/archive/Testing/notumor/Te-no_358.jpg,1,Critical Leakage
+Group_0022,dataset_archive2/archive/Training/meningioma/Tr-aug-me_94.jpg,dataset_archive2/archive/Training/meningioma/Tr-me_824.jpg,1,Exact Duplicate
+Group_0023,dataset_archive2/archive/Training/meningioma/Tr-me_339.jpg,dataset_archive2/archive/Training/meningioma/Tr-me_534.jpg | dataset_archive2/archive/Training/meningioma/Tr-me_86.jpg | dataset_archive2/archive/Testing/meningioma/Te-me_235.jpg | dataset_archive2/archive/Testing/meningioma/Te-me_116.jpg,4,Pixel Identical
+Group_0024,dataset_archive2/archive/Training/meningioma/Tr-me_846.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_117.jpg,1,Pixel Identical
+Group_0025,dataset_archive2/archive/Training/meningioma/Tr-me_1083.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_5.jpg,1,Pixel Identical
+Group_0026,dataset_archive2/archive/Training/notumor/Tr-no_835.jpg,dataset_archive2/archive/Testing/notumor/Te-no_349.jpg,1,Critical Leakage
+Group_0027,dataset_archive2/archive/Training/meningioma/Tr-me_880.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_243.jpg,1,Pixel Identical
+Group_0028,dataset_archive2/archive/Training/notumor/Tr-no_1367.jpg,dataset_archive2/archive/Training/notumor/Tr-no_1350.jpg | dataset_archive2/archive/Testing/notumor/Te-no_288.jpg,2,Critical Leakage
+Group_0029,dataset_archive2/archive/Training/meningioma/Tr-me_543.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_252.jpg | dataset_archive2/archive/Training/meningioma/Tr-me_726.jpg,2,Pixel Identical
+Group_0030,dataset_archive2/archive/Training/pituitary/Tr-pi_1187.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_384.jpg | dataset_archive2/archive/Training/pituitary/Tr-pi_863.jpg,2,Exact Duplicate
+Group_0031,dataset_archive2/archive/Training/notumor/Tr-no_290.jpg,dataset_archive2/archive/Testing/notumor/Te-no_204.jpg,1,Critical Leakage
+Group_0032,dataset_archive2/archive/Training/notumor/Tr-no_1029.jpg,dataset_archive2/archive/Testing/notumor/Te-no_276.jpg,1,Critical Leakage
+Group_0033,dataset_archive2/archive/Testing/glioma/Te-gl_32.jpg,dataset_archive2/archive/Testing/glioma/Te-gl_389.jpg,1,Exact Duplicate
+Group_0034,dataset_archive2/archive/Training/meningioma/Tr-me_1286.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_4.jpg,1,Pixel Identical
+Group_0035,dataset_archive2/archive/Training/pituitary/Tr-pi_1098.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_1380.jpg | dataset_archive2/archive/Training/pituitary/Tr-pi_1155.jpg,2,Pixel Identical
+Group_0036,dataset_archive2/archive/Training/meningioma/Tr-me_239.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_167.jpg,1,Pixel Identical
+Group_0037,dataset_archive2/archive/Training/meningioma/Tr-me_479.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_278.jpg,1,Pixel Identical
+Group_0038,dataset_archive2/archive/Training/notumor/Tr-no_878.jpg,dataset_archive2/archive/Testing/notumor/Te-no_14.jpg,1,Critical Leakage
+Group_0039,dataset_archive2/archive/Training/notumor/Tr-no_224.jpg,dataset_archive2/archive/Training/notumor/Tr-no_232.jpg | dataset_archive2/archive/Training/notumor/Tr-no_29.jpg,2,Exact Duplicate
+Group_0040,dataset_archive2/archive/Training/notumor/Tr-no_109.jpg,dataset_archive2/archive/Training/notumor/Tr-no_1183.jpg | dataset_archive2/archive/Training/notumor/Tr-no_371.jpg | dataset_archive2/archive/Training/notumor/Tr-no_693.jpg | dataset_archive2/archive/Training/notumor/Tr-no_1062.jpg | dataset_archive2/archive/Training/notumor/Tr-no_5.jpg,5,Pixel Identical
+Group_0041,dataset_archive2/archive/Training/notumor/Tr-no_933.jpg,dataset_archive2/archive/Training/notumor/Tr-no_969.jpg,1,Exact Duplicate
+Group_0042,dataset_archive2/archive/Training/meningioma/Tr-me_1282.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_125.jpg,1,Critical Leakage
+Group_0043,dataset_archive2/archive/Training/notumor/Tr-no_1330.jpg,dataset_archive2/archive/Testing/notumor/Te-no_31.jpg | dataset_archive2/archive/Training/notumor/Tr-no_825.jpg,2,Critical Leakage
+Group_0044,dataset_archive2/archive/Training/notumor/Tr-no_460.jpg,dataset_archive2/archive/Testing/notumor/Te-no_364.jpg,1,Critical Leakage
+Group_0045,dataset_archive2/archive/Training/notumor/Tr-no_571.jpg,dataset_archive2/archive/Training/notumor/Tr-no_544.jpg | dataset_archive2/archive/Testing/notumor/Te-no_385.jpg,2,Critical Leakage
+Group_0046,dataset_archive2/archive/Testing/glioma/Te-gl_171.jpg,dataset_archive2/archive/Testing/glioma/Te-gl_228.jpg,1,Exact Duplicate
+Group_0047,dataset_archive2/archive/Training/meningioma/Tr-me_897.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_279.jpg,1,Pixel Identical
+Group_0048,dataset_archive2/archive/Training/notumor/Tr-no_1145.jpg,dataset_archive2/archive/Training/notumor/Tr-no_1234.jpg | dataset_archive2/archive/Training/notumor/Tr-no_430.jpg,2,Exact Duplicate
+Group_0049,dataset_archive2/archive/Training/notumor/Tr-no_1393.jpg,dataset_archive2/archive/Training/notumor/Tr-no_642.jpg,1,Exact Duplicate
+Group_0050,dataset_archive2/archive/Training/meningioma/Tr-me_845.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_126.jpg,1,Pixel Identical
+Group_0051,dataset_archive2/archive/Training/pituitary/Tr-pi_246.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_698.jpg | dataset_archive2/archive/Training/pituitary/Tr-pi_969.jpg,2,Exact Duplicate
+Group_0052,dataset_archive2/archive/Training/pituitary/Tr-pi_405.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_928.jpg | dataset_archive2/archive/Training/pituitary/Tr-pi_634.jpg | dataset_archive2/archive/Training/pituitary/Tr-pi_206.jpg,3,Exact Duplicate
+Group_0053,dataset_archive2/archive/Training/notumor/Tr-no_1116.jpg,dataset_archive2/archive/Testing/notumor/Te-no_240.jpg,1,Critical Leakage
+Group_0054,dataset_archive2/archive/Training/pituitary/Tr-pi_805.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_878.jpg,1,Exact Duplicate
+Group_0055,dataset_archive2/archive/Training/notumor/Tr-no_848.jpg,dataset_archive2/archive/Testing/notumor/Te-no_362.jpg,1,Critical Leakage
+Group_0056,dataset_archive2/archive/Training/notumor/Tr-no_495.jpg,dataset_archive2/archive/Testing/notumor/Te-no_152.jpg,1,Critical Leakage
+Group_0057,dataset_archive2/archive/Training/meningioma/Tr-me_740.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_81.jpg,1,Pixel Identical
+Group_0058,dataset_archive2/archive/Training/meningioma/Tr-me_1091.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_95.jpg,1,Pixel Identical
+Group_0059,dataset_archive2/archive/Training/notumor/Tr-no_1083.jpg,dataset_archive2/archive/Training/notumor/Tr-no_217.jpg,1,Exact Duplicate
+Group_0060,dataset_archive2/archive/Training/notumor/Tr-no_715.jpg,dataset_archive2/archive/Training/notumor/Tr-no_1091.jpg | dataset_archive2/archive/Testing/notumor/Te-no_344.jpg | dataset_archive2/archive/Training/notumor/Tr-no_1039.jpg | dataset_archive2/archive/Training/notumor/Tr-no_600.jpg | dataset_archive2/archive/Training/notumor/Tr-no_1385.jpg,5,Critical Leakage
+Group_0061,dataset_archive2/archive/Testing/glioma/Te-gl_212.jpg,dataset_archive2/archive/Testing/glioma/Te-gl_272.jpg | dataset_archive2/archive/Testing/glioma/Te-gl_338.jpg,2,Exact Duplicate
+Group_0062,dataset_archive2/archive/Training/pituitary/Tr-pi_1122.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_1196.jpg | dataset_archive2/archive/Training/pituitary/Tr-pi_943.jpg,2,Exact Duplicate
+Group_0063,dataset_archive2/archive/Training/notumor/Tr-no_1128.jpg,dataset_archive2/archive/Testing/notumor/Te-no_229.jpg,1,Critical Leakage
+Group_0064,dataset_archive2/archive/Training/meningioma/Tr-me_737.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_175.jpg,1,Pixel Identical
+Group_0065,dataset_archive2/archive/Training/notumor/Tr-no_356.jpg,dataset_archive2/archive/Training/notumor/Tr-no_463.jpg,1,Exact Duplicate
+Group_0066,dataset_archive2/archive/Training/notumor/Tr-no_750.jpg,dataset_archive2/archive/Training/notumor/Tr-no_843.jpg,1,Exact Duplicate
+Group_0067,dataset_archive2/archive/Training/notumor/Tr-no_540.jpg,dataset_archive2/archive/Training/notumor/Tr-no_753.jpg,1,Exact Duplicate
+Group_0068,dataset_archive2/archive/Training/notumor/Tr-no_1396.jpg,dataset_archive2/archive/Testing/notumor/Te-no_387.jpg | dataset_archive2/archive/Testing/notumor/Te-no_176.jpg,2,Critical Leakage
+Group_0069,dataset_archive2/archive/Training/meningioma/Tr-me_486.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_8.jpg,1,Pixel Identical
+Group_0070,dataset_archive2/archive/Training/notumor/Tr-no_761.jpg,dataset_archive2/archive/Testing/notumor/Te-no_236.jpg,1,Critical Leakage
+Group_0071,dataset_archive2/archive/Training/notumor/Tr-no_14.jpg,dataset_archive2/archive/Training/notumor/Tr-no_48.jpg,1,Exact Duplicate
+Group_0072,dataset_archive2/archive/Training/notumor/Tr-no_421.jpg,dataset_archive2/archive/Training/notumor/Tr-no_582.jpg,1,Exact Duplicate
+Group_0073,dataset_archive2/archive/Training/notumor/Tr-no_272.jpg,dataset_archive2/archive/Testing/notumor/Te-no_88.jpg | dataset_archive2/archive/Training/notumor/Tr-no_797.jpg,2,Critical Leakage
+Group_0074,dataset_archive2/archive/Training/notumor/Tr-no_1021.jpg,dataset_archive2/archive/Training/notumor/Tr-no_503.jpg,1,Exact Duplicate
+Group_0075,dataset_archive2/archive/Training/pituitary/Tr-pi_311.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_320.jpg,1,Exact Duplicate
+Group_0076,dataset_archive2/archive/Training/notumor/Tr-no_1337.jpg,dataset_archive2/archive/Testing/notumor/Te-no_156.jpg,1,Critical Leakage
+Group_0077,dataset_archive2/archive/Training/pituitary/Tr-pi_356.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_77.jpg | dataset_archive2/archive/Training/pituitary/Tr-pi_759.jpg,2,Exact Duplicate
+Group_0078,dataset_archive2/archive/Training/notumor/Tr-no_1304.jpg,dataset_archive2/archive/Testing/notumor/Te-no_322.jpg,1,Critical Leakage
+Group_0079,dataset_archive2/archive/Training/notumor/Tr-no_1281.jpg,dataset_archive2/archive/Training/notumor/Tr-no_550.jpg | dataset_archive2/archive/Testing/notumor/Te-no_332.jpg,2,Critical Leakage
+Group_0080,dataset_archive2/archive/Training/meningioma/Tr-me_109.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_30.jpg,1,Pixel Identical
+Group_0081,dataset_archive2/archive/Training/notumor/Tr-no_1140.jpg,dataset_archive2/archive/Training/notumor/Tr-no_749.jpg | dataset_archive2/archive/Training/notumor/Tr-no_931.jpg,2,Exact Duplicate
+Group_0082,dataset_archive2/archive/Training/pituitary/Tr-pi_1154.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_1339.jpg | dataset_archive2/archive/Training/pituitary/Tr-pi_1211.jpg | dataset_archive2/archive/Training/pituitary/Tr-pi_160.jpg,3,Exact Duplicate
+Group_0083,dataset_archive2/archive/Training/notumor/Tr-no_577.jpg,dataset_archive2/archive/Training/notumor/Tr-no_764.jpg,1,Exact Duplicate
+Group_0084,dataset_archive2/archive/Training/notumor/Tr-no_447.jpg,dataset_archive2/archive/Training/notumor/Tr-no_720.jpg | dataset_archive2/archive/Training/notumor/Tr-no_839.jpg,2,Exact Duplicate
+Group_0085,dataset_archive2/archive/Training/notumor/Tr-no_56.jpg,dataset_archive2/archive/Training/notumor/Tr-no_73.jpg,1,Exact Duplicate
+Group_0086,dataset_archive2/archive/Training/meningioma/Tr-me_1194.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_158.jpg,1,Pixel Identical
+Group_0087,dataset_archive2/archive/Training/notumor/Tr-no_775.jpg,dataset_archive2/archive/Testing/notumor/Te-no_350.jpg | dataset_archive2/archive/Testing/notumor/Te-no_289.jpg,2,Critical Leakage
+Group_0088,dataset_archive2/archive/Training/notumor/Tr-no_970.jpg,dataset_archive2/archive/Testing/notumor/Te-no_159.jpg,1,Pixel Identical
+Group_0089,dataset_archive2/archive/Training/notumor/Tr-no_423.jpg,dataset_archive2/archive/Training/notumor/Tr-no_63.jpg,1,Exact Duplicate
+Group_0090,dataset_archive2/archive/Training/notumor/Tr-no_1165.jpg,dataset_archive2/archive/Testing/notumor/Te-no_47.jpg,1,Critical Leakage
+Group_0091,dataset_archive2/archive/Training/notumor/Tr-no_930.jpg,dataset_archive2/archive/Training/notumor/Tr-no_698.jpg,1,Pixel Identical
+Group_0092,dataset_archive2/archive/Training/notumor/Tr-no_429.jpg,dataset_archive2/archive/Testing/notumor/Te-no_212.jpg,1,Critical Leakage
+Group_0093,dataset_archive2/archive/Training/notumor/Tr-no_271.jpg,dataset_archive2/archive/Testing/notumor/Te-no_261.jpg,1,Critical Leakage
+Group_0094,dataset_archive2/archive/Training/meningioma/Tr-me_1122.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_159.jpg,1,Pixel Identical
+Group_0095,dataset_archive2/archive/Training/meningioma/Tr-me_453.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_171.jpg,1,Pixel Identical
+Group_0096,dataset_archive2/archive/Training/meningioma/Tr-me_1163.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_274.jpg,1,Pixel Identical
+Group_0097,dataset_archive2/archive/Training/pituitary/Tr-pi_1133.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_1320.jpg,1,Pixel Identical
+Group_0098,dataset_archive2/archive/Training/pituitary/Tr-pi_120.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_763.jpg,1,Exact Duplicate
+Group_0099,dataset_archive2/archive/Training/notumor/Tr-no_1126.jpg,dataset_archive2/archive/Training/notumor/Tr-no_694.jpg | dataset_archive2/archive/Testing/notumor/Te-no_222.jpg | dataset_archive2/archive/Training/notumor/Tr-no_564.jpg,3,Critical Leakage
+Group_0100,dataset_archive2/archive/Training/meningioma/Tr-me_238.jpg,dataset_archive2/archive/Training/meningioma/Tr-me_1044.jpg | dataset_archive2/archive/Testing/meningioma/Te-me_230.jpg | dataset_archive2/archive/Testing/meningioma/Te-me_157.jpg,3,Critical Leakage
+Group_0101,dataset_archive2/archive/Training/notumor/Tr-no_291.jpg,dataset_archive2/archive/Testing/notumor/Te-no_81.jpg | dataset_archive2/archive/Training/notumor/Tr-no_39.jpg,2,Critical Leakage
+Group_0102,dataset_archive2/archive/Training/notumor/Tr-no_675.jpg,dataset_archive2/archive/Testing/notumor/Te-no_163.jpg | dataset_archive2/archive/Training/notumor/Tr-no_1086.jpg | dataset_archive2/archive/Testing/notumor/Te-no_372.jpg,3,Critical Leakage
+Group_0103,dataset_archive2/archive/Training/notumor/Tr-no_981.jpg,dataset_archive2/archive/Training/notumor/Tr-no_1022.jpg | dataset_archive2/archive/Testing/notumor/Te-no_174.jpg,2,Critical Leakage
+Group_0104,dataset_archive2/archive/Training/notumor/Tr-no_939.jpg,dataset_archive2/archive/Testing/notumor/Te-no_109.jpg,1,Critical Leakage
+Group_0105,dataset_archive2/archive/Training/meningioma/Tr-aug-me_91.jpg,dataset_archive2/archive/Training/meningioma/Tr-me_245.jpg,1,Exact Duplicate
+Group_0106,dataset_archive2/archive/Training/notumor/Tr-no_1341.jpg,dataset_archive2/archive/Training/notumor/Tr-no_352.jpg | dataset_archive2/archive/Testing/notumor/Te-no_162.jpg,2,Critical Leakage
+Group_0107,dataset_archive2/archive/Training/notumor/Tr-no_1301.jpg,dataset_archive2/archive/Testing/notumor/Te-no_321.jpg | dataset_archive2/archive/Training/notumor/Tr-no_851.jpg,2,Critical Leakage
+Group_0108,dataset_archive2/archive/Training/meningioma/Tr-me_678.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_62.jpg,1,Pixel Identical
+Group_0109,dataset_archive2/archive/Training/meningioma/Tr-me_99.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_26.jpg,1,Pixel Identical
+Group_0110,dataset_archive2/archive/Training/pituitary/Tr-pi_17.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_306.jpg,1,Exact Duplicate
+Group_0111,dataset_archive2/archive/Training/meningioma/Tr-me_464.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_214.jpg | dataset_archive2/archive/Testing/meningioma/Te-me_262.jpg | dataset_archive2/archive/Training/meningioma/Tr-me_639.jpg,3,Critical Leakage
+Group_0112,dataset_archive2/archive/Training/meningioma/Tr-me_1110.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_42.jpg,1,Pixel Identical
+Group_0113,dataset_archive2/archive/Training/notumor/Tr-no_377.jpg,dataset_archive2/archive/Testing/notumor/Te-no_93.jpg,1,Critical Leakage
+Group_0114,dataset_archive2/archive/Training/notumor/Tr-no_1167.jpg,dataset_archive2/archive/Testing/notumor/Te-no_173.jpg | dataset_archive2/archive/Testing/notumor/Te-no_142.jpg,2,Critical Leakage
+Group_0115,dataset_archive2/archive/Training/notumor/Tr-no_1267.jpg,dataset_archive2/archive/Training/notumor/Tr-no_380.jpg | dataset_archive2/archive/Training/notumor/Tr-no_387.jpg,2,Exact Duplicate
+Group_0116,dataset_archive2/archive/Training/meningioma/Tr-me_1057.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_270.jpg,1,Pixel Identical
+Group_0117,dataset_archive2/archive/Training/notumor/Tr-no_611.jpg,dataset_archive2/archive/Training/notumor/Tr-no_322.jpg | dataset_archive2/archive/Testing/notumor/Te-no_271.jpg,2,Critical Leakage
+Group_0118,dataset_archive2/archive/Training/pituitary/Tr-pi_396.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_476.jpg,1,Exact Duplicate
+Group_0119,dataset_archive2/archive/Training/notumor/Tr-no_315.jpg,dataset_archive2/archive/Training/notumor/Tr-no_8.jpg | dataset_archive2/archive/Training/notumor/Tr-no_935.jpg,2,Exact Duplicate
+Group_0120,dataset_archive2/archive/Training/meningioma/Tr-me_597.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_290.jpg,1,Pixel Identical
+Group_0121,dataset_archive2/archive/Training/meningioma/Tr-me_715.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_9.jpg,1,Pixel Identical
+Group_0122,dataset_archive2/archive/Training/notumor/Tr-no_1319.jpg,dataset_archive2/archive/Testing/notumor/Te-no_92.jpg,1,Pixel Identical
+Group_0123,dataset_archive2/archive/Testing/glioma/Te-gl_85.jpg,dataset_archive2/archive/Testing/glioma/Te-gl_253.jpg,1,Pixel Identical
+Group_0124,dataset_archive2/archive/Training/notumor/Tr-no_1015.jpg,dataset_archive2/archive/Training/notumor/Tr-no_1339.jpg,1,Exact Duplicate
+Group_0125,dataset_archive2/archive/Training/notumor/Tr-no_293.jpg,dataset_archive2/archive/Training/notumor/Tr-no_60.jpg | dataset_archive2/archive/Testing/notumor/Te-no_304.jpg,2,Critical Leakage
+Group_0126,dataset_archive2/archive/Training/notumor/Tr-no_1154.jpg,dataset_archive2/archive/Training/notumor/Tr-no_854.jpg | dataset_archive2/archive/Training/notumor/Tr-no_1235.jpg | dataset_archive2/archive/Training/notumor/Tr-no_1360.jpg,3,Exact Duplicate
+Group_0127,dataset_archive2/archive/Training/notumor/Tr-no_1268.jpg,dataset_archive2/archive/Testing/notumor/Te-no_237.jpg,1,Critical Leakage
+Group_0128,dataset_archive2/archive/Training/notumor/Tr-no_1204.jpg,dataset_archive2/archive/Testing/notumor/Te-no_148.jpg,1,Critical Leakage
+Group_0129,dataset_archive2/archive/Training/meningioma/Tr-me_957.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_156.jpg,1,Pixel Identical
+Group_0130,dataset_archive2/archive/Training/notumor/Tr-no_368.jpg,dataset_archive2/archive/Testing/notumor/Te-no_2.jpg,1,Critical Leakage
+Group_0131,dataset_archive2/archive/Testing/glioma/Te-gl_140.jpg,dataset_archive2/archive/Testing/glioma/Te-gl_238.jpg,1,Exact Duplicate
+Group_0132,dataset_archive2/archive/Training/notumor/Tr-no_168.jpg,dataset_archive2/archive/Training/notumor/Tr-no_230.jpg | dataset_archive2/archive/Training/notumor/Tr-no_738.jpg,2,Exact Duplicate
+Group_0133,dataset_archive2/archive/Training/meningioma/Tr-me_1146.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_241.jpg,1,Pixel Identical
+Group_0134,dataset_archive2/archive/Training/notumor/Tr-no_1379.jpg,dataset_archive2/archive/Training/notumor/Tr-no_810.jpg,1,Exact Duplicate
+Group_0135,dataset_archive2/archive/Training/notumor/Tr-no_88.jpg,dataset_archive2/archive/Testing/notumor/Te-no_253.jpg,1,Critical Leakage
+Group_0136,dataset_archive2/archive/Training/notumor/Tr-no_1389.jpg,dataset_archive2/archive/Testing/notumor/Te-no_312.jpg,1,Critical Leakage
+Group_0137,dataset_archive2/archive/Training/notumor/Tr-no_1291.jpg,dataset_archive2/archive/Training/notumor/Tr-no_490.jpg,1,Exact Duplicate
+Group_0138,dataset_archive2/archive/Training/notumor/Tr-no_747.jpg,dataset_archive2/archive/Training/notumor/Tr-no_3.jpg,1,Pixel Identical
+Group_0139,dataset_archive2/archive/Training/notumor/Tr-no_64.jpg,dataset_archive2/archive/Testing/notumor/Te-no_34.jpg,1,Critical Leakage
+Group_0140,dataset_archive2/archive/Training/notumor/Tr-no_24.jpg,dataset_archive2/archive/Training/notumor/Tr-no_469.jpg | dataset_archive2/archive/Testing/notumor/Te-no_85.jpg | dataset_archive2/archive/Training/notumor/Tr-no_772.jpg,3,Critical Leakage
+Group_0141,dataset_archive2/archive/Testing/glioma/Te-gl_177.jpg,dataset_archive2/archive/Testing/glioma/Te-gl_36.jpg,1,Exact Duplicate
+Group_0142,dataset_archive2/archive/Training/notumor/Tr-no_811.jpg,dataset_archive2/archive/Testing/notumor/Te-no_114.jpg,1,Critical Leakage
+Group_0143,dataset_archive2/archive/Training/notumor/Tr-no_813.jpg,dataset_archive2/archive/Training/notumor/Tr-no_946.jpg,1,Pixel Identical
+Group_0144,dataset_archive2/archive/Training/meningioma/Tr-me_776.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_253.jpg,1,Pixel Identical
+Group_0145,dataset_archive2/archive/Training/meningioma/Tr-me_50.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_277.jpg,1,Pixel Identical
+Group_0146,dataset_archive2/archive/Training/meningioma/Tr-me_158.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_231.jpg,1,Pixel Identical
+Group_0147,dataset_archive2/archive/Training/notumor/Tr-no_1326.jpg,dataset_archive2/archive/Training/notumor/Tr-no_411.jpg,1,Exact Duplicate
+Group_0148,dataset_archive2/archive/Training/notumor/Tr-no_690.jpg,dataset_archive2/archive/Testing/notumor/Te-no_338.jpg,1,Critical Leakage
+Group_0149,dataset_archive2/archive/Training/notumor/Tr-no_1109.jpg,dataset_archive2/archive/Training/notumor/Tr-no_1380.jpg,1,Exact Duplicate
+Group_0150,dataset_archive2/archive/Training/meningioma/Tr-me_1289.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_285.jpg,1,Pixel Identical
+Group_0151,dataset_archive2/archive/Training/glioma/Tr-gl_361.jpg,dataset_archive2/archive/Testing/glioma/Te-gl_364.jpg | dataset_archive2/archive/Testing/glioma/Te-gl_299.jpg,2,Pixel Identical
+Group_0152,dataset_archive2/archive/Training/meningioma/Tr-me_1121.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_86.jpg,1,Pixel Identical
+Group_0153,dataset_archive2/archive/Training/notumor/Tr-no_1061.jpg,dataset_archive2/archive/Training/notumor/Tr-no_1134.jpg,1,Exact Duplicate
+Group_0154,dataset_archive2/archive/Training/notumor/Tr-no_1395.jpg,dataset_archive2/archive/Training/notumor/Tr-no_17.jpg,1,Exact Duplicate
+Group_0155,dataset_archive2/archive/Training/notumor/Tr-no_903.jpg,dataset_archive2/archive/Testing/notumor/Te-no_136.jpg,1,Critical Leakage
+Group_0156,dataset_archive2/archive/Training/notumor/Tr-no_1381.jpg,dataset_archive2/archive/Testing/notumor/Te-no_248.jpg,1,Critical Leakage
+Group_0157,dataset_archive2/archive/Training/notumor/Tr-no_1169.jpg,dataset_archive2/archive/Training/notumor/Tr-no_594.jpg,1,Pixel Identical
+Group_0158,dataset_archive2/archive/Training/notumor/Tr-no_499.jpg,dataset_archive2/archive/Training/notumor/Tr-no_734.jpg,1,Exact Duplicate
+Group_0159,dataset_archive2/archive/Training/meningioma/Tr-me_946.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_94.jpg,1,Pixel Identical
+Group_0160,dataset_archive2/archive/Training/notumor/Tr-no_821.jpg,dataset_archive2/archive/Training/notumor/Tr-no_341.jpg | dataset_archive2/archive/Training/notumor/Tr-no_1302.jpg | dataset_archive2/archive/Testing/notumor/Te-no_86.jpg,3,Critical Leakage
+Group_0161,dataset_archive2/archive/Training/notumor/Tr-no_1397.jpg,dataset_archive2/archive/Training/notumor/Tr-no_660.jpg,1,Exact Duplicate
+Group_0162,dataset_archive2/archive/Training/notumor/Tr-no_1338.jpg,dataset_archive2/archive/Training/notumor/Tr-no_628.jpg | dataset_archive2/archive/Testing/notumor/Te-no_161.jpg,2,Critical Leakage
+Group_0163,dataset_archive2/archive/Training/pituitary/Tr-pi_464.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_75.jpg,1,Exact Duplicate
+Group_0164,dataset_archive2/archive/Training/meningioma/Tr-me_753.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_206.jpg,1,Pixel Identical
+Group_0165,dataset_archive2/archive/Training/notumor/Tr-no_68.jpg,dataset_archive2/archive/Testing/notumor/Te-no_107.jpg,1,Critical Leakage
+Group_0166,dataset_archive2/archive/Training/meningioma/Tr-aug-me_98.jpg,dataset_archive2/archive/Training/meningioma/Tr-me_1274.jpg,1,Exact Duplicate
+Group_0167,dataset_archive2/archive/Training/notumor/Tr-no_205.jpg,dataset_archive2/archive/Testing/notumor/Te-no_333.jpg,1,Critical Leakage
+Group_0168,dataset_archive2/archive/Training/notumor/Tr-no_1336.jpg,dataset_archive2/archive/Training/notumor/Tr-no_165.jpg,1,Exact Duplicate
+Group_0169,dataset_archive2/archive/Training/meningioma/Tr-me_905.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_83.jpg,1,Pixel Identical
+Group_0170,dataset_archive2/archive/Training/meningioma/Tr-me_131.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_93.jpg,1,Pixel Identical
+Group_0171,dataset_archive2/archive/Training/notumor/Tr-no_1374.jpg,dataset_archive2/archive/Training/notumor/Tr-no_840.jpg,1,Exact Duplicate
+Group_0172,dataset_archive2/archive/Training/pituitary/Tr-pi_286.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_397.jpg,1,Exact Duplicate
+Group_0173,dataset_archive2/archive/Training/pituitary/Tr-pi_285.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_962.jpg,1,Exact Duplicate
+Group_0174,dataset_archive2/archive/Training/notumor/Tr-no_267.jpg,dataset_archive2/archive/Testing/notumor/Te-no_260.jpg,1,Critical Leakage
+Group_0175,dataset_archive2/archive/Training/meningioma/Tr-me_980.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_288.jpg,1,Pixel Identical
+Group_0176,dataset_archive2/archive/Training/meningioma/Tr-me_666.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_137.jpg,1,Pixel Identical
+Group_0177,dataset_archive2/archive/Training/notumor/Tr-no_1105.jpg,dataset_archive2/archive/Training/notumor/Tr-no_569.jpg,1,Exact Duplicate
+Group_0178,dataset_archive2/archive/Training/meningioma/Tr-me_468.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_50.jpg,1,Pixel Identical
+Group_0179,dataset_archive2/archive/Training/notumor/Tr-no_435.jpg,dataset_archive2/archive/Training/notumor/Tr-no_755.jpg,1,Exact Duplicate
+Group_0180,dataset_archive2/archive/Training/meningioma/Tr-me_3.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_195.jpg,1,Pixel Identical
+Group_0181,dataset_archive2/archive/Training/notumor/Tr-no_1144.jpg,dataset_archive2/archive/Testing/notumor/Te-no_59.jpg,1,Critical Leakage
+Group_0182,dataset_archive2/archive/Training/notumor/Tr-no_1290.jpg,dataset_archive2/archive/Training/notumor/Tr-no_281.jpg,1,Exact Duplicate
+Group_0183,dataset_archive2/archive/Training/meningioma/Tr-me_1249.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_266.jpg,1,Pixel Identical
+Group_0184,dataset_archive2/archive/Training/notumor/Tr-no_1070.jpg,dataset_archive2/archive/Training/notumor/Tr-no_412.jpg,1,Exact Duplicate
+Group_0185,dataset_archive2/archive/Training/meningioma/Tr-me_1225.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_39.jpg,1,Pixel Identical
+Group_0186,dataset_archive2/archive/Training/notumor/Tr-no_1390.jpg,dataset_archive2/archive/Training/notumor/Tr-no_565.jpg,1,Exact Duplicate
+Group_0187,dataset_archive2/archive/Training/notumor/Tr-no_1084.jpg,dataset_archive2/archive/Testing/notumor/Te-no_336.jpg,1,Critical Leakage
+Group_0188,dataset_archive2/archive/Training/notumor/Tr-no_808.jpg,dataset_archive2/archive/Testing/notumor/Te-no_43.jpg,1,Critical Leakage
+Group_0189,dataset_archive2/archive/Training/notumor/Tr-no_1250.jpg,dataset_archive2/archive/Testing/notumor/Te-no_330.jpg,1,Critical Leakage
+Group_0190,dataset_archive2/archive/Training/notumor/Tr-no_1378.jpg,dataset_archive2/archive/Training/notumor/Tr-no_534.jpg,1,Pixel Identical
+Group_0191,dataset_archive2/archive/Training/meningioma/Tr-me_489.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_213.jpg,1,Pixel Identical
+Group_0192,dataset_archive2/archive/Training/notumor/Tr-no_1079.jpg,dataset_archive2/archive/Training/notumor/Tr-no_129.jpg | dataset_archive2/archive/Training/notumor/Tr-no_62.jpg,2,Exact Duplicate
+Group_0193,dataset_archive2/archive/Training/notumor/Tr-no_1187.jpg,dataset_archive2/archive/Training/notumor/Tr-no_420.jpg,1,Exact Duplicate
+Group_0194,dataset_archive2/archive/Training/notumor/Tr-no_134.jpg,dataset_archive2/archive/Training/notumor/Tr-no_255.jpg,1,Exact Duplicate
+Group_0195,dataset_archive2/archive/Testing/glioma/Te-gl_166.jpg,dataset_archive2/archive/Testing/glioma/Te-gl_278.jpg,1,Exact Duplicate
+Group_0196,dataset_archive2/archive/Training/notumor/Tr-no_324.jpg,dataset_archive2/archive/Testing/notumor/Te-no_267.jpg,1,Critical Leakage
+Group_0197,dataset_archive2/archive/Training/notumor/Tr-no_99.jpg,dataset_archive2/archive/Testing/notumor/Te-no_241.jpg,1,Critical Leakage
+Group_0198,dataset_archive2/archive/Training/meningioma/Tr-me_145.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_296.jpg,1,Pixel Identical
+Group_0199,dataset_archive2/archive/Training/meningioma/Tr-me_714.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_61.jpg,1,Pixel Identical
+Group_0200,dataset_archive2/archive/Training/notumor/Tr-no_1146.jpg,dataset_archive2/archive/Testing/notumor/Te-no_371.jpg,1,Critical Leakage
+Group_0201,dataset_archive2/archive/Training/notumor/Tr-no_937.jpg,dataset_archive2/archive/Testing/notumor/Te-no_381.jpg,1,Critical Leakage
+Group_0202,dataset_archive2/archive/Training/meningioma/Tr-me_330.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_216.jpg,1,Pixel Identical
+Group_0203,dataset_archive2/archive/Training/meningioma/Tr-me_688.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_229.jpg,1,Pixel Identical
+Group_0204,dataset_archive2/archive/Training/meningioma/Tr-me_331.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_18.jpg,1,Pixel Identical
+Group_0205,dataset_archive2/archive/Training/notumor/Tr-no_974.jpg,dataset_archive2/archive/Testing/notumor/Te-no_301.jpg | dataset_archive2/archive/Testing/notumor/Te-no_308.jpg,2,Critical Leakage
+Group_0206,dataset_archive2/archive/Training/notumor/Tr-no_561.jpg,dataset_archive2/archive/Testing/notumor/Te-no_197.jpg | dataset_archive2/archive/Testing/notumor/Te-no_353.jpg,2,Critical Leakage
+Group_0207,dataset_archive2/archive/Training/notumor/Tr-no_40.jpg,dataset_archive2/archive/Training/notumor/Tr-no_581.jpg,1,Exact Duplicate
+Group_0208,dataset_archive2/archive/Training/notumor/Tr-no_1316.jpg,dataset_archive2/archive/Testing/notumor/Te-no_295.jpg | dataset_archive2/archive/Training/notumor/Tr-no_984.jpg | dataset_archive2/archive/Training/notumor/Tr-no_475.jpg,3,Critical Leakage
+Group_0209,dataset_archive2/archive/Training/meningioma/Tr-aug-me_90.jpg,dataset_archive2/archive/Training/meningioma/Tr-me_1242.jpg,1,Exact Duplicate
+Group_0210,dataset_archive2/archive/Training/notumor/Tr-no_1244.jpg,dataset_archive2/archive/Training/notumor/Tr-no_781.jpg | dataset_archive2/archive/Training/notumor/Tr-no_1392.jpg,2,Exact Duplicate
+Group_0211,dataset_archive2/archive/Training/notumor/Tr-no_1315.jpg,dataset_archive2/archive/Training/notumor/Tr-no_270.jpg | dataset_archive2/archive/Testing/notumor/Te-no_125.jpg,2,Critical Leakage
+Group_0212,dataset_archive2/archive/Training/meningioma/Tr-me_404.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_101.jpg,1,Pixel Identical
+Group_0213,dataset_archive2/archive/Training/notumor/Tr-no_1004.jpg,dataset_archive2/archive/Testing/notumor/Te-no_194.jpg,1,Pixel Identical
+Group_0214,dataset_archive2/archive/Training/meningioma/Tr-me_865.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_111.jpg,1,Pixel Identical
+Group_0215,dataset_archive2/archive/Training/notumor/Tr-no_1346.jpg,dataset_archive2/archive/Training/notumor/Tr-no_889.jpg,1,Exact Duplicate
+Group_0216,dataset_archive2/archive/Training/notumor/Tr-no_1398.jpg,dataset_archive2/archive/Training/notumor/Tr-no_516.jpg,1,Exact Duplicate
+Group_0217,dataset_archive2/archive/Training/notumor/Tr-no_1245.jpg,dataset_archive2/archive/Training/notumor/Tr-no_133.jpg,1,Exact Duplicate
+Group_0218,dataset_archive2/archive/Training/meningioma/Tr-me_465.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_202.jpg,1,Pixel Identical
+Group_0219,dataset_archive2/archive/Training/notumor/Tr-no_655.jpg,dataset_archive2/archive/Testing/notumor/Te-no_245.jpg,1,Critical Leakage
+Group_0220,dataset_archive2/archive/Training/notumor/Tr-no_1077.jpg,dataset_archive2/archive/Training/notumor/Tr-no_1400.jpg,1,Exact Duplicate
+Group_0221,dataset_archive2/archive/Training/notumor/Tr-no_1276.jpg,dataset_archive2/archive/Testing/notumor/Te-no_102.jpg,1,Critical Leakage
+Group_0222,dataset_archive2/archive/Training/notumor/Tr-no_349.jpg,dataset_archive2/archive/Training/notumor/Tr-no_779.jpg,1,Exact Duplicate
+Group_0223,dataset_archive2/archive/Training/notumor/Tr-no_280.jpg,dataset_archive2/archive/Training/notumor/Tr-no_448.jpg,1,Exact Duplicate
+Group_0224,dataset_archive2/archive/Training/notumor/Tr-no_1333.jpg,dataset_archive2/archive/Training/notumor/Tr-no_273.jpg,1,Exact Duplicate
+Group_0225,dataset_archive2/archive/Training/meningioma/Tr-me_1262.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_207.jpg,1,Pixel Identical
+Group_0226,dataset_archive2/archive/Training/notumor/Tr-no_1334.jpg,dataset_archive2/archive/Training/notumor/Tr-no_235.jpg,1,Exact Duplicate
+Group_0227,dataset_archive2/archive/Training/glioma/Tr-gl_1271.jpg,dataset_archive2/archive/Testing/glioma/Te-gl_169.jpg,1,Pixel Identical
+Group_0228,dataset_archive2/archive/Training/meningioma/Tr-me_1290.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_37.jpg,1,Pixel Identical
+Group_0229,dataset_archive2/archive/Testing/glioma/Te-gl_216.jpg,dataset_archive2/archive/Testing/glioma/Te-gl_225.jpg,1,Pixel Identical
+Group_0230,dataset_archive2/archive/Training/notumor/Tr-no_1108.jpg,dataset_archive2/archive/Testing/notumor/Te-no_145.jpg,1,Critical Leakage
+Group_0231,dataset_archive2/archive/Training/notumor/Tr-no_1179.jpg,dataset_archive2/archive/Training/notumor/Tr-no_1320.jpg,1,Exact Duplicate
+Group_0232,dataset_archive2/archive/Training/meningioma/Tr-me_799.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_293.jpg,1,Pixel Identical
+Group_0233,dataset_archive2/archive/Training/notumor/Tr-no_845.jpg,dataset_archive2/archive/Testing/notumor/Te-no_325.jpg,1,Critical Leakage
+Group_0234,dataset_archive2/archive/Training/notumor/Tr-no_649.jpg,dataset_archive2/archive/Training/notumor/Tr-no_817.jpg,1,Exact Duplicate
+Group_0235,dataset_archive2/archive/Training/meningioma/Tr-me_758.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_162.jpg,1,Pixel Identical
+Group_0236,dataset_archive2/archive/Training/notumor/Tr-no_23.jpg,dataset_archive2/archive/Testing/notumor/Te-no_4.jpg,1,Critical Leakage
+Group_0237,dataset_archive2/archive/Training/meningioma/Tr-me_458.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_96.jpg,1,Pixel Identical
+Group_0238,dataset_archive2/archive/Training/meningioma/Tr-aug-me_95.jpg,dataset_archive2/archive/Training/meningioma/Tr-me_1295.jpg,1,Exact Duplicate
+Group_0239,dataset_archive2/archive/Training/notumor/Tr-no_486.jpg,dataset_archive2/archive/Training/notumor/Tr-no_920.jpg,1,Exact Duplicate
+Group_0240,dataset_archive2/archive/Training/notumor/Tr-no_1052.jpg,dataset_archive2/archive/Testing/notumor/Te-no_211.jpg,1,Critical Leakage
+Group_0241,dataset_archive2/archive/Training/notumor/Tr-no_1138.jpg,dataset_archive2/archive/Testing/notumor/Te-no_334.jpg,1,Critical Leakage
+Group_0242,dataset_archive2/archive/Training/notumor/Tr-no_304.jpg,dataset_archive2/archive/Training/notumor/Tr-no_916.jpg,1,Exact Duplicate
+Group_0243,dataset_archive2/archive/Training/notumor/Tr-no_1375.jpg,dataset_archive2/archive/Testing/notumor/Te-no_383.jpg | dataset_archive2/archive/Training/notumor/Tr-no_514.jpg,2,Critical Leakage
+Group_0244,dataset_archive2/archive/Training/notumor/Tr-no_80.jpg,dataset_archive2/archive/Testing/notumor/Te-no_48.jpg | dataset_archive2/archive/Training/notumor/Tr-no_122.jpg,2,Critical Leakage
+Group_0245,dataset_archive2/archive/Training/notumor/Tr-no_1220.jpg,dataset_archive2/archive/Testing/notumor/Te-no_61.jpg,1,Critical Leakage
+Group_0246,dataset_archive2/archive/Testing/glioma/Te-gl_144.jpg,dataset_archive2/archive/Testing/glioma/Te-gl_59.jpg,1,Exact Duplicate
+Group_0247,dataset_archive2/archive/Training/notumor/Tr-no_362.jpg,dataset_archive2/archive/Testing/notumor/Te-no_365.jpg,1,Pixel Identical
+Group_0248,dataset_archive2/archive/Training/notumor/Tr-no_455.jpg,dataset_archive2/archive/Training/notumor/Tr-no_866.jpg,1,Exact Duplicate
+Group_0249,dataset_archive2/archive/Training/pituitary/Tr-pi_1323.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_984.jpg,1,Exact Duplicate
+Group_0250,dataset_archive2/archive/Training/pituitary/Tr-pi_1209.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_1352.jpg,1,Exact Duplicate
+Group_0251,dataset_archive2/archive/Training/meningioma/Tr-me_583.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_82.jpg,1,Pixel Identical
+Group_0252,dataset_archive2/archive/Training/notumor/Tr-no_1240.jpg,dataset_archive2/archive/Training/notumor/Tr-no_990.jpg,1,Exact Duplicate
+Group_0253,dataset_archive2/archive/Training/notumor/Tr-no_108.jpg,dataset_archive2/archive/Testing/notumor/Te-no_394.jpg,1,Critical Leakage
+Group_0254,dataset_archive2/archive/Training/notumor/Tr-no_1017.jpg,dataset_archive2/archive/Testing/notumor/Te-no_83.jpg,1,Critical Leakage
+Group_0255,dataset_archive2/archive/Training/notumor/Tr-no_386.jpg,dataset_archive2/archive/Testing/notumor/Te-no_134.jpg,1,Critical Leakage
+Group_0256,dataset_archive2/archive/Training/pituitary/Tr-pi_1309.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_261.jpg,1,Exact Duplicate
+Group_0257,dataset_archive2/archive/Training/notumor/Tr-no_539.jpg,dataset_archive2/archive/Training/notumor/Tr-no_543.jpg,1,Pixel Identical
+Group_0258,dataset_archive2/archive/Training/notumor/Tr-no_638.jpg,dataset_archive2/archive/Training/notumor/Tr-no_93.jpg,1,Pixel Identical
+Group_0259,dataset_archive2/archive/Training/notumor/Tr-no_388.jpg,dataset_archive2/archive/Training/notumor/Tr-no_636.jpg,1,Exact Duplicate
+Group_0260,dataset_archive2/archive/Training/notumor/Tr-no_1399.jpg,dataset_archive2/archive/Testing/notumor/Te-no_199.jpg,1,Critical Leakage
+Group_0261,dataset_archive2/archive/Training/notumor/Tr-no_1296.jpg,dataset_archive2/archive/Testing/notumor/Te-no_298.jpg,1,Critical Leakage
+Group_0262,dataset_archive2/archive/Training/meningioma/Tr-me_52.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_187.jpg,1,Pixel Identical
+Group_0263,dataset_archive2/archive/Training/notumor/Tr-no_846.jpg,dataset_archive2/archive/Training/notumor/Tr-no_292.jpg,1,Pixel Identical
+Group_0264,dataset_archive2/archive/Testing/meningioma/Te-me_182.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_45.jpg,1,Pixel Identical
+Group_0265,dataset_archive2/archive/Training/notumor/Tr-no_606.jpg,dataset_archive2/archive/Training/notumor/Tr-no_1261.jpg,1,Pixel Identical
+Group_0266,dataset_archive2/archive/Training/notumor/Tr-no_247.jpg,dataset_archive2/archive/Testing/notumor/Te-no_150.jpg,1,Pixel Identical
+Group_0267,dataset_archive2/archive/Training/notumor/Tr-no_1096.jpg,dataset_archive2/archive/Testing/notumor/Te-no_77.jpg,1,Pixel Identical
+Group_0268,dataset_archive2/archive/Training/pituitary/Tr-pi_542.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_857.jpg,1,Exact Duplicate
+Group_0269,dataset_archive2/archive/Training/notumor/Tr-no_832.jpg,dataset_archive2/archive/Testing/notumor/Te-no_121.jpg,1,Pixel Identical
+Group_0270,dataset_archive2/archive/Training/notumor/Tr-no_1356.jpg,dataset_archive2/archive/Testing/notumor/Te-no_185.jpg | dataset_archive2/archive/Testing/notumor/Te-no_195.jpg,2,Critical Leakage
+Group_0271,dataset_archive2/archive/Training/meningioma/Tr-me_154.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_52.jpg,1,Pixel Identical
+Group_0272,dataset_archive2/archive/Training/meningioma/Tr-me_557.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_138.jpg,1,Pixel Identical
+Group_0273,dataset_archive2/archive/Training/notumor/Tr-no_508.jpg,dataset_archive2/archive/Training/notumor/Tr-no_1008.jpg | dataset_archive2/archive/Testing/notumor/Te-no_339.jpg,2,Critical Leakage
+Group_0274,dataset_archive2/archive/Testing/glioma/Te-gl_143.jpg,dataset_archive2/archive/Testing/glioma/Te-gl_72.jpg,1,Exact Duplicate
+Group_0275,dataset_archive2/archive/Training/notumor/Tr-no_1253.jpg,dataset_archive2/archive/Training/notumor/Tr-no_1194.jpg,1,Pixel Identical
+Group_0276,dataset_archive2/archive/Training/notumor/Tr-no_137.jpg,dataset_archive2/archive/Testing/notumor/Te-no_187.jpg,1,Critical Leakage
+Group_0277,dataset_archive2/archive/Training/meningioma/Tr-me_616.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_180.jpg,1,Pixel Identical
+Group_0278,dataset_archive2/archive/Training/notumor/Tr-no_1190.jpg,dataset_archive2/archive/Training/notumor/Tr-no_44.jpg,1,Exact Duplicate
+Group_0279,dataset_archive2/archive/Training/notumor/Tr-no_1136.jpg,dataset_archive2/archive/Testing/notumor/Te-no_342.jpg,1,Critical Leakage
+Group_0280,dataset_archive2/archive/Training/notumor/Tr-no_1208.jpg,dataset_archive2/archive/Training/notumor/Tr-no_410.jpg,1,Exact Duplicate
+Group_0281,dataset_archive2/archive/Training/meningioma/Tr-me_920.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_219.jpg,1,Pixel Identical
+Group_0282,dataset_archive2/archive/Training/notumor/Tr-no_480.jpg,dataset_archive2/archive/Testing/notumor/Te-no_110.jpg,1,Critical Leakage
+Group_0283,dataset_archive2/archive/Training/notumor/Tr-no_500.jpg,dataset_archive2/archive/Testing/notumor/Te-no_216.jpg,1,Critical Leakage
+Group_0284,dataset_archive2/archive/Training/meningioma/Tr-me_706.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_121.jpg,1,Pixel Identical
+Group_0285,dataset_archive2/archive/Training/notumor/Tr-no_830.jpg,dataset_archive2/archive/Testing/notumor/Te-no_51.jpg,1,Critical Leakage
+Group_0286,dataset_archive2/archive/Training/notumor/Tr-no_116.jpg,dataset_archive2/archive/Training/notumor/Tr-no_121.jpg,1,Exact Duplicate
+Group_0287,dataset_archive2/archive/Testing/meningioma/Te-me_295.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_70.jpg,1,Pixel Identical
+Group_0288,dataset_archive2/archive/Testing/glioma/Te-gl_170.jpg,dataset_archive2/archive/Testing/glioma/Te-gl_178.jpg,1,Exact Duplicate
+Group_0289,dataset_archive2/archive/Training/meningioma/Tr-me_1112.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_165.jpg,1,Pixel Identical
+Group_0290,dataset_archive2/archive/Training/notumor/Tr-no_1309.jpg,dataset_archive2/archive/Training/notumor/Tr-no_699.jpg,1,Exact Duplicate
+Group_0291,dataset_archive2/archive/Testing/glioma/Te-gl_270.jpg,dataset_archive2/archive/Testing/glioma/Te-gl_29.jpg,1,Exact Duplicate
+Group_0292,dataset_archive2/archive/Training/meningioma/Tr-me_771.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_19.jpg,1,Pixel Identical
+Group_0293,dataset_archive2/archive/Training/meningioma/Tr-me_205.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_232.jpg,1,Pixel Identical
+Group_0294,dataset_archive2/archive/Testing/glioma/Te-gl_204.jpg,dataset_archive2/archive/Testing/glioma/Te-gl_259.jpg,1,Exact Duplicate
+Group_0295,dataset_archive2/archive/Training/notumor/Tr-no_1046.jpg,dataset_archive2/archive/Training/notumor/Tr-no_454.jpg,1,Exact Duplicate
+Group_0296,dataset_archive2/archive/Training/meningioma/Tr-me_954.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_280.jpg,1,Pixel Identical
+Group_0297,dataset_archive2/archive/Training/notumor/Tr-no_968.jpg,dataset_archive2/archive/Testing/notumor/Te-no_293.jpg,1,Critical Leakage
+Group_0298,dataset_archive2/archive/Training/meningioma/Tr-me_1094.jpg,dataset_archive2/archive/Training/meningioma/Tr-me_219.jpg,1,Exact Duplicate
+Group_0299,dataset_archive2/archive/Training/meningioma/Tr-me_373.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_20.jpg,1,Pixel Identical
+Group_0300,dataset_archive2/archive/Training/meningioma/Tr-me_421.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_208.jpg,1,Pixel Identical
+Group_0301,dataset_archive2/archive/Training/meningioma/Tr-me_760.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_234.jpg,1,Pixel Identical
+Group_0302,dataset_archive2/archive/Training/notumor/Tr-no_721.jpg,dataset_archive2/archive/Training/notumor/Tr-no_81.jpg,1,Exact Duplicate
+Group_0303,dataset_archive2/archive/Training/notumor/Tr-no_58.jpg,dataset_archive2/archive/Training/notumor/Tr-no_906.jpg,1,Exact Duplicate
+Group_0304,dataset_archive2/archive/Training/meningioma/Tr-me_965.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_223.jpg,1,Pixel Identical
+Group_0305,dataset_archive2/archive/Training/notumor/Tr-no_1289.jpg,dataset_archive2/archive/Training/notumor/Tr-no_156.jpg,1,Exact Duplicate
+Group_0306,dataset_archive2/archive/Training/notumor/Tr-no_207.jpg,dataset_archive2/archive/Testing/notumor/Te-no_116.jpg,1,Critical Leakage
+Group_0307,dataset_archive2/archive/Training/pituitary/Tr-pi_193.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_812.jpg,1,Exact Duplicate
+Group_0308,dataset_archive2/archive/Training/meningioma/Tr-aug-me_89.jpg,dataset_archive2/archive/Training/meningioma/Tr-me_889.jpg,1,Exact Duplicate
+Group_0309,dataset_archive2/archive/Training/meningioma/Tr-me_200.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_54.jpg,1,Pixel Identical
+Group_0310,dataset_archive2/archive/Training/notumor/Tr-no_870.jpg,dataset_archive2/archive/Testing/notumor/Te-no_231.jpg,1,Critical Leakage
+Group_0311,dataset_archive2/archive/Training/meningioma/Tr-me_553.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_259.jpg,1,Pixel Identical
+Group_0312,dataset_archive2/archive/Training/meningioma/Tr-me_36.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_1.jpg,1,Pixel Identical
+Group_0313,dataset_archive2/archive/Testing/glioma/Te-gl_162.jpg,dataset_archive2/archive/Testing/glioma/Te-gl_359.jpg,1,Pixel Identical
+Group_0314,dataset_archive2/archive/Training/notumor/Tr-no_1049.jpg,dataset_archive2/archive/Testing/notumor/Te-no_138.jpg,1,Critical Leakage
+Group_0315,dataset_archive2/archive/Training/notumor/Tr-no_958.jpg,dataset_archive2/archive/Testing/notumor/Te-no_221.jpg,1,Critical Leakage
+Group_0316,dataset_archive2/archive/Training/notumor/Tr-no_138.jpg,dataset_archive2/archive/Training/notumor/Tr-no_1383.jpg,1,Exact Duplicate
+Group_0317,dataset_archive2/archive/Training/meningioma/Tr-me_1069.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_2.jpg,1,Pixel Identical
+Group_0318,dataset_archive2/archive/Training/meningioma/Tr-me_472.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_190.jpg,1,Pixel Identical
+Group_0319,dataset_archive2/archive/Training/meningioma/Tr-me_126.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_265.jpg,1,Pixel Identical
+Group_0320,dataset_archive2/archive/Training/pituitary/Tr-pi_1252.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_528.jpg | dataset_archive2/archive/Training/pituitary/Tr-pi_461.jpg,2,Exact Duplicate
+Group_0321,dataset_archive2/archive/Training/notumor/Tr-no_1016.jpg,dataset_archive2/archive/Training/notumor/Tr-no_819.jpg,1,Exact Duplicate
+Group_0322,dataset_archive2/archive/Training/glioma/Tr-gl_1057.jpg,dataset_archive2/archive/Testing/glioma/Te-gl_311.jpg,1,Pixel Identical
+Group_0323,dataset_archive2/archive/Training/meningioma/Tr-me_1168.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_71.jpg,1,Pixel Identical
+Group_0324,dataset_archive2/archive/Training/notumor/Tr-no_929.jpg,dataset_archive2/archive/Training/notumor/Tr-no_117.jpg | dataset_archive2/archive/Testing/notumor/Te-no_228.jpg,2,Critical Leakage
+Group_0325,dataset_archive2/archive/Training/notumor/Tr-no_16.jpg,dataset_archive2/archive/Testing/notumor/Te-no_360.jpg,1,Critical Leakage
+Group_0326,dataset_archive2/archive/Training/meningioma/Tr-me_877.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_109.jpg,1,Pixel Identical
+Group_0327,dataset_archive2/archive/Training/notumor/Tr-no_1000.jpg,dataset_archive2/archive/Training/notumor/Tr-no_105.jpg,1,Exact Duplicate
+Group_0328,dataset_archive2/archive/Training/meningioma/Tr-me_424.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_49.jpg,1,Pixel Identical
+Group_0329,dataset_archive2/archive/Training/meningioma/Tr-me_684.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_29.jpg,1,Pixel Identical
+Group_0330,dataset_archive2/archive/Training/meningioma/Tr-me_661.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_205.jpg,1,Pixel Identical
+Group_0331,dataset_archive2/archive/Training/notumor/Tr-no_444.jpg,dataset_archive2/archive/Testing/notumor/Te-no_346.jpg,1,Critical Leakage
+Group_0332,dataset_archive2/archive/Training/notumor/Tr-no_433.jpg,dataset_archive2/archive/Training/notumor/Tr-no_492.jpg,1,Exact Duplicate
+Group_0333,dataset_archive2/archive/Training/notumor/Tr-no_115.jpg,dataset_archive2/archive/Training/notumor/Tr-no_1188.jpg,1,Exact Duplicate
+Group_0334,dataset_archive2/archive/Training/notumor/Tr-no_1314.jpg,dataset_archive2/archive/Testing/notumor/Te-no_316.jpg,1,Critical Leakage
+Group_0335,dataset_archive2/archive/Training/notumor/Tr-no_1023.jpg,dataset_archive2/archive/Training/notumor/Tr-no_400.jpg,1,Exact Duplicate
+Group_0336,dataset_archive2/archive/Training/meningioma/Tr-me_530.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_105.jpg,1,Pixel Identical
+Group_0337,dataset_archive2/archive/Training/notumor/Tr-no_760.jpg,dataset_archive2/archive/Testing/notumor/Te-no_315.jpg,1,Pixel Identical
+Group_0338,dataset_archive2/archive/Testing/glioma/Te-gl_129.jpg,dataset_archive2/archive/Testing/glioma/Te-gl_303.jpg,1,Exact Duplicate
+Group_0339,dataset_archive2/archive/Training/meningioma/Tr-me_450.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_251.jpg,1,Pixel Identical
+Group_0340,dataset_archive2/archive/Training/notumor/Tr-no_563.jpg,dataset_archive2/archive/Testing/notumor/Te-no_356.jpg,1,Critical Leakage
+Group_0341,dataset_archive2/archive/Training/notumor/Tr-no_1368.jpg,dataset_archive2/archive/Testing/notumor/Te-no_69.jpg,1,Critical Leakage
+Group_0342,dataset_archive2/archive/Training/meningioma/Tr-me_437.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_197.jpg,1,Pixel Identical
+Group_0343,dataset_archive2/archive/Training/notumor/Tr-no_250.jpg,dataset_archive2/archive/Training/notumor/Tr-no_472.jpg,1,Exact Duplicate
+Group_0344,dataset_archive2/archive/Training/notumor/Tr-no_1095.jpg,dataset_archive2/archive/Training/notumor/Tr-no_69.jpg,1,Exact Duplicate
+Group_0345,dataset_archive2/archive/Training/meningioma/Tr-me_1166.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_31.jpg,1,Pixel Identical
+Group_0346,dataset_archive2/archive/Training/notumor/Tr-no_524.jpg,dataset_archive2/archive/Training/notumor/Tr-no_617.jpg,1,Exact Duplicate
+Group_0347,dataset_archive2/archive/Training/notumor/Tr-no_673.jpg,dataset_archive2/archive/Training/notumor/Tr-no_995.jpg,1,Exact Duplicate
+Group_0348,dataset_archive2/archive/Training/pituitary/Tr-pi_1181.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_668.jpg,1,Exact Duplicate
+Group_0349,dataset_archive2/archive/Training/meningioma/Tr-me_1198.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_66.jpg,1,Pixel Identical
+Group_0350,dataset_archive2/archive/Training/notumor/Tr-no_677.jpg,dataset_archive2/archive/Training/notumor/Tr-no_1180.jpg,1,Pixel Identical
+Group_0351,dataset_archive2/archive/Training/notumor/Tr-no_473.jpg,dataset_archive2/archive/Training/notumor/Tr-no_778.jpg,1,Exact Duplicate
+Group_0352,dataset_archive2/archive/Training/meningioma/Tr-me_497.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_228.jpg,1,Pixel Identical
+Group_0353,dataset_archive2/archive/Training/meningioma/Tr-me_19.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_184.jpg,1,Pixel Identical
+Group_0354,dataset_archive2/archive/Training/meningioma/Tr-aug-me_97.jpg,dataset_archive2/archive/Training/meningioma/Tr-me_532.jpg,1,Exact Duplicate
+Group_0355,dataset_archive2/archive/Training/pituitary/Tr-pi_163.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_504.jpg,1,Exact Duplicate
+Group_0356,dataset_archive2/archive/Training/notumor/Tr-no_43.jpg,dataset_archive2/archive/Training/notumor/Tr-no_963.jpg,1,Exact Duplicate
+Group_0357,dataset_archive2/archive/Training/pituitary/Tr-pi_132.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_564.jpg,1,Exact Duplicate
+Group_0358,dataset_archive2/archive/Training/meningioma/Tr-me_717.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_75.jpg,1,Pixel Identical
+Group_0359,dataset_archive2/archive/Training/notumor/Tr-no_294.jpg,dataset_archive2/archive/Testing/notumor/Te-no_259.jpg,1,Critical Leakage
+Group_0360,dataset_archive2/archive/Training/notumor/Tr-no_880.jpg,dataset_archive2/archive/Training/notumor/Tr-no_918.jpg,1,Exact Duplicate
+Group_0361,dataset_archive2/archive/Training/meningioma/Tr-me_962.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_113.jpg,1,Pixel Identical
+Group_0362,dataset_archive2/archive/Training/notumor/Tr-no_493.jpg,dataset_archive2/archive/Training/notumor/Tr-no_664.jpg,1,Exact Duplicate
+Group_0363,dataset_archive2/archive/Training/pituitary/Tr-pi_410.jpg,dataset_archive2/archive/Training/pituitary/Tr-pi_515.jpg,1,Exact Duplicate
+Group_0364,dataset_archive2/archive/Training/notumor/Tr-no_987.jpg,dataset_archive2/archive/Testing/notumor/Te-no_78.jpg,1,Critical Leakage
+Group_0365,dataset_archive2/archive/Training/notumor/Tr-no_147.jpg,dataset_archive2/archive/Testing/notumor/Te-no_167.jpg,1,Pixel Identical
+Group_0366,dataset_archive2/archive/Training/notumor/Tr-no_588.jpg,dataset_archive2/archive/Training/notumor/Tr-no_989.jpg,1,Exact Duplicate
+Group_0367,dataset_archive2/archive/Training/notumor/Tr-no_595.jpg,dataset_archive2/archive/Testing/notumor/Te-no_392.jpg,1,Critical Leakage
+Group_0368,dataset_archive2/archive/Training/notumor/Tr-no_766.jpg,dataset_archive2/archive/Training/notumor/Tr-no_967.jpg,1,Exact Duplicate
+Group_0369,dataset_archive2/archive/Training/meningioma/Tr-me_1101.jpg,dataset_archive2/archive/Training/meningioma/Tr-me_836.jpg,1,Exact Duplicate
+Group_0370,dataset_archive2/archive/Training/notumor/Tr-no_518.jpg,dataset_archive2/archive/Training/notumor/Tr-no_92.jpg,1,Exact Duplicate
+Group_0371,dataset_archive2/archive/Training/meningioma/Tr-me_110.jpg,dataset_archive2/archive/Testing/meningioma/Te-me_174.jpg,1,Pixel Identical

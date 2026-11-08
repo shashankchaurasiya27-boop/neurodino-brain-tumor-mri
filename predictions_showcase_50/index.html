@@ -1,0 +1,2465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brain Tumor MRI Diagnostic Showcase | DINOv2 + LoRA (50 Images)</title>
+  <style>
+    :root {
+      --bg: #090D16;
+      --card-bg: #111827;
+      --card-border: #1F2937;
+      --text: #F3F4F6;
+      --text-muted: #9CA3AF;
+      --accent: #38BDF8;
+      --green: #10B981;
+      --red: #EF4444;
+      --amber: #F59E0B;
+      --purple: #8B5CF6;
+      --pink: #EC4899;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 30px 20px;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    header {
+      background: #111827;
+      border: 1px solid #1F2937;
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 25px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+    }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .stat-badge-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .stat-box {
+      background: #1F2937;
+      border: 1px solid #374151;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .stat-val {
+      font-size: 20px;
+      font-weight: 800;
+      color: #38BDF8;
+    }
+    .stat-lbl {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      align-items: center;
+    }
+    .btn-filter {
+      background: #1F2937;
+      color: var(--text);
+      border: 1px solid #374151;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .btn-filter:hover, .btn-filter.active {
+      background: #0284C7;
+      color: white;
+      border-color: #38BDF8;
+    }
+    .search-box {
+      margin-left: auto;
+      padding: 8px 14px;
+      border-radius: 6px;
+      background: #1F2937;
+      border: 1px solid #374151;
+      color: white;
+      font-size: 13px;
+      min-width: 220px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: #38BDF8;
+    }
+    .card-img-wrap {
+      position: relative;
+      cursor: pointer;
+      background: #000;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .card-img-wrap img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+    .zoom-badge {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0,0,0,0.75);
+      color: #38BDF8;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      backdrop-filter: blur(4px);
+    }
+    .card-content {
+      padding: 16px;
+    }
+    .badges {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .badge-tumor { background: rgba(239, 68, 68, 0.2); color: #F87171; border: 1px solid rgba(239, 68, 68, 0.4); }
+    .badge-notumor { background: rgba(16, 185, 129, 0.2); color: #34D399; border: 1px solid rgba(16, 185, 129, 0.4); }
+    .badge-match { background: rgba(56, 189, 248, 0.15); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 2px;
+    }
+    .card-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .conf-box {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      background: #1F2937;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+    .conf-label { color: var(--text-muted); }
+    .conf-val { color: #FCD34D; font-weight: 700; }
+    .prob-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 45px;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .bar-bg {
+      background: #1F2937;
+      height: 7px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 4px;
+    }
+    .bar-num {
+      text-align: right;
+      color: #D1D5DB;
+      font-family: monospace;
+    }
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .modal-content {
+      max-width: 95%;
+      max-height: 90vh;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(56, 189, 248, 0.3);
+    }
+    .modal-content img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 85vh;
+      object-fit: contain;
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 32px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-top">
+        <div>
+          <div class="subtitle">Clinical Diagnostic Verification Suite</div>
+          <h1>Brain Tumor MRI Prediction Showcase (50 Scans)</h1>
+          <p style="color: #9CA3AF; font-size: 14px; margin-top: 4px;">
+            DINOv2 ViT-B/14 + QKV-LoRA Model Adaptation • Locked Test Cohort Evaluation
+          </p>
+        </div>
+        <div class="stat-badge-group">
+          <div class="stat-box">
+            <div class="stat-val">50 / 50</div>
+            <div class="stat-lbl">Sample Scans</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val">100.0%</div>
+            <div class="stat-lbl">Showcase Acc</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val">95.21%</div>
+            <div class="stat-lbl">Locked Test Acc</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val">+3.10%</div>
+            <div class="stat-lbl">LoRA Delta vs Frozen</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="controls">
+        <button class="btn-filter active" onclick="filterClass('all')">All Classes (50)</button>
+        <button class="btn-filter" onclick="filterClass('glioma')">Glioma (13)</button>
+        <button class="btn-filter" onclick="filterClass('meningioma')">Meningioma (13)</button>
+        <button class="btn-filter" onclick="filterClass('pituitary')">Pituitary (12)</button>
+        <button class="btn-filter" onclick="filterClass('notumor')">No Tumor (12)</button>
+        <button class="btn-filter" onclick="filterTumor('tumor')">Tumor Only (38)</button>
+        <button class="btn-filter" onclick="filterTumor('notumor')">Healthy Control (12)</button>
+        <input type="text" id="searchInput" class="search-box" placeholder="Search file or class..." onkeyup="searchCards()" />
+      </div>
+    </header>
+
+    <div class="grid" id="cardsGrid">
+      
+        <div class="card" data-class="glioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/glioma/SCAN_01_Te-gl_163.jpg', 'SCAN_01 - Te-gl_163.jpg')">
+            <img src="annotated_cards/glioma/SCAN_01_Te-gl_163.jpg" alt="Te-gl_163.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Glioma</h3>
+            <p class="card-sub">SCAN_01 • Te-gl_163.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="glioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/glioma/SCAN_02_Te-gl_357.jpg', 'SCAN_02 - Te-gl_357.jpg')">
+            <img src="annotated_cards/glioma/SCAN_02_Te-gl_357.jpg" alt="Te-gl_357.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Glioma</h3>
+            <p class="card-sub">SCAN_02 • Te-gl_357.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="glioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/glioma/SCAN_03_Te-gl_292.jpg', 'SCAN_03 - Te-gl_292.jpg')">
+            <img src="annotated_cards/glioma/SCAN_03_Te-gl_292.jpg" alt="Te-gl_292.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Glioma</h3>
+            <p class="card-sub">SCAN_03 • Te-gl_292.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="glioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/glioma/SCAN_04_Te-gl_41.jpg', 'SCAN_04 - Te-gl_41.jpg')">
+            <img src="annotated_cards/glioma/SCAN_04_Te-gl_41.jpg" alt="Te-gl_41.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Glioma</h3>
+            <p class="card-sub">SCAN_04 • Te-gl_41.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="glioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/glioma/SCAN_05_Te-gl_197.jpg', 'SCAN_05 - Te-gl_197.jpg')">
+            <img src="annotated_cards/glioma/SCAN_05_Te-gl_197.jpg" alt="Te-gl_197.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Glioma</h3>
+            <p class="card-sub">SCAN_05 • Te-gl_197.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="glioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/glioma/SCAN_06_Te-gl_60.jpg', 'SCAN_06 - Te-gl_60.jpg')">
+            <img src="annotated_cards/glioma/SCAN_06_Te-gl_60.jpg" alt="Te-gl_60.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Glioma</h3>
+            <p class="card-sub">SCAN_06 • Te-gl_60.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="glioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/glioma/SCAN_07_Te-gl_367.jpg', 'SCAN_07 - Te-gl_367.jpg')">
+            <img src="annotated_cards/glioma/SCAN_07_Te-gl_367.jpg" alt="Te-gl_367.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Glioma</h3>
+            <p class="card-sub">SCAN_07 • Te-gl_367.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="glioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/glioma/SCAN_08_Te-gl_92.jpg', 'SCAN_08 - Te-gl_92.jpg')">
+            <img src="annotated_cards/glioma/SCAN_08_Te-gl_92.jpg" alt="Te-gl_92.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Glioma</h3>
+            <p class="card-sub">SCAN_08 • Te-gl_92.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="glioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/glioma/SCAN_09_Te-gl_239.jpg', 'SCAN_09 - Te-gl_239.jpg')">
+            <img src="annotated_cards/glioma/SCAN_09_Te-gl_239.jpg" alt="Te-gl_239.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Glioma</h3>
+            <p class="card-sub">SCAN_09 • Te-gl_239.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="glioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/glioma/SCAN_10_Te-gl_220.jpg', 'SCAN_10 - Te-gl_220.jpg')">
+            <img src="annotated_cards/glioma/SCAN_10_Te-gl_220.jpg" alt="Te-gl_220.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Glioma</h3>
+            <p class="card-sub">SCAN_10 • Te-gl_220.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="glioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/glioma/SCAN_11_Te-gl_254.jpg', 'SCAN_11 - Te-gl_254.jpg')">
+            <img src="annotated_cards/glioma/SCAN_11_Te-gl_254.jpg" alt="Te-gl_254.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Glioma</h3>
+            <p class="card-sub">SCAN_11 • Te-gl_254.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="glioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/glioma/SCAN_12_Te-gl_40.jpg', 'SCAN_12 - Te-gl_40.jpg')">
+            <img src="annotated_cards/glioma/SCAN_12_Te-gl_40.jpg" alt="Te-gl_40.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Glioma</h3>
+            <p class="card-sub">SCAN_12 • Te-gl_40.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="glioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/glioma/SCAN_13_Te-gl_99.jpg', 'SCAN_13 - Te-gl_99.jpg')">
+            <img src="annotated_cards/glioma/SCAN_13_Te-gl_99.jpg" alt="Te-gl_99.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Glioma</h3>
+            <p class="card-sub">SCAN_13 • Te-gl_99.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="meningioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/meningioma/SCAN_14_Te-aug-me_22.jpg', 'SCAN_14 - Te-aug-me_22.jpg')">
+            <img src="annotated_cards/meningioma/SCAN_14_Te-aug-me_22.jpg" alt="Te-aug-me_22.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Meningioma</h3>
+            <p class="card-sub">SCAN_14 • Te-aug-me_22.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="meningioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/meningioma/SCAN_15_Te-aug-me_20.jpg', 'SCAN_15 - Te-aug-me_20.jpg')">
+            <img src="annotated_cards/meningioma/SCAN_15_Te-aug-me_20.jpg" alt="Te-aug-me_20.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Meningioma</h3>
+            <p class="card-sub">SCAN_15 • Te-aug-me_20.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="meningioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/meningioma/SCAN_16_Te-me_191.jpg', 'SCAN_16 - Te-me_191.jpg')">
+            <img src="annotated_cards/meningioma/SCAN_16_Te-me_191.jpg" alt="Te-me_191.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Meningioma</h3>
+            <p class="card-sub">SCAN_16 • Te-me_191.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="meningioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/meningioma/SCAN_17_Te-aug-me_85.jpg', 'SCAN_17 - Te-aug-me_85.jpg')">
+            <img src="annotated_cards/meningioma/SCAN_17_Te-aug-me_85.jpg" alt="Te-aug-me_85.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Meningioma</h3>
+            <p class="card-sub">SCAN_17 • Te-aug-me_85.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="meningioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/meningioma/SCAN_18_Te-aug-me_44.jpg', 'SCAN_18 - Te-aug-me_44.jpg')">
+            <img src="annotated_cards/meningioma/SCAN_18_Te-aug-me_44.jpg" alt="Te-aug-me_44.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Meningioma</h3>
+            <p class="card-sub">SCAN_18 • Te-aug-me_44.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="meningioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/meningioma/SCAN_19_Te-me_68.jpg', 'SCAN_19 - Te-me_68.jpg')">
+            <img src="annotated_cards/meningioma/SCAN_19_Te-me_68.jpg" alt="Te-me_68.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Meningioma</h3>
+            <p class="card-sub">SCAN_19 • Te-me_68.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="meningioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/meningioma/SCAN_20_Te-me_210.jpg', 'SCAN_20 - Te-me_210.jpg')">
+            <img src="annotated_cards/meningioma/SCAN_20_Te-me_210.jpg" alt="Te-me_210.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Meningioma</h3>
+            <p class="card-sub">SCAN_20 • Te-me_210.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="meningioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/meningioma/SCAN_21_Te-aug-me_70.jpg', 'SCAN_21 - Te-aug-me_70.jpg')">
+            <img src="annotated_cards/meningioma/SCAN_21_Te-aug-me_70.jpg" alt="Te-aug-me_70.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Meningioma</h3>
+            <p class="card-sub">SCAN_21 • Te-aug-me_70.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="meningioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/meningioma/SCAN_22_Te-me_222.jpg', 'SCAN_22 - Te-me_222.jpg')">
+            <img src="annotated_cards/meningioma/SCAN_22_Te-me_222.jpg" alt="Te-me_222.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Meningioma</h3>
+            <p class="card-sub">SCAN_22 • Te-me_222.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="meningioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/meningioma/SCAN_23_Te-me_199.jpg', 'SCAN_23 - Te-me_199.jpg')">
+            <img src="annotated_cards/meningioma/SCAN_23_Te-me_199.jpg" alt="Te-me_199.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Meningioma</h3>
+            <p class="card-sub">SCAN_23 • Te-me_199.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="meningioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/meningioma/SCAN_24_Te-me_15.jpg', 'SCAN_24 - Te-me_15.jpg')">
+            <img src="annotated_cards/meningioma/SCAN_24_Te-me_15.jpg" alt="Te-me_15.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Meningioma</h3>
+            <p class="card-sub">SCAN_24 • Te-me_15.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="meningioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/meningioma/SCAN_25_Te-me_131.jpg', 'SCAN_25 - Te-me_131.jpg')">
+            <img src="annotated_cards/meningioma/SCAN_25_Te-me_131.jpg" alt="Te-me_131.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Meningioma</h3>
+            <p class="card-sub">SCAN_25 • Te-me_131.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="meningioma" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/meningioma/SCAN_26_Te-me_211.jpg', 'SCAN_26 - Te-me_211.jpg')">
+            <img src="annotated_cards/meningioma/SCAN_26_Te-me_211.jpg" alt="Te-me_211.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Meningioma</h3>
+            <p class="card-sub">SCAN_26 • Te-me_211.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="notumor" data-tumor="notumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/notumor/SCAN_27_Te-no_239.jpg', 'SCAN_27 - Te-no_239.jpg')">
+            <img src="annotated_cards/notumor/SCAN_27_Te-no_239.jpg" alt="Te-no_239.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-notumor">HEALTHY BRAIN (NO TUMOR)</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">No Tumor (Healthy)</h3>
+            <p class="card-sub">SCAN_27 • Te-no_239.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#10B981;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="notumor" data-tumor="notumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/notumor/SCAN_28_Te-no_335.jpg', 'SCAN_28 - Te-no_335.jpg')">
+            <img src="annotated_cards/notumor/SCAN_28_Te-no_335.jpg" alt="Te-no_335.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-notumor">HEALTHY BRAIN (NO TUMOR)</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">No Tumor (Healthy)</h3>
+            <p class="card-sub">SCAN_28 • Te-no_335.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#10B981;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="notumor" data-tumor="notumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/notumor/SCAN_29_Te-no_281.jpg', 'SCAN_29 - Te-no_281.jpg')">
+            <img src="annotated_cards/notumor/SCAN_29_Te-no_281.jpg" alt="Te-no_281.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-notumor">HEALTHY BRAIN (NO TUMOR)</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">No Tumor (Healthy)</h3>
+            <p class="card-sub">SCAN_29 • Te-no_281.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#10B981;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="notumor" data-tumor="notumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/notumor/SCAN_30_Te-no_193.jpg', 'SCAN_30 - Te-no_193.jpg')">
+            <img src="annotated_cards/notumor/SCAN_30_Te-no_193.jpg" alt="Te-no_193.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-notumor">HEALTHY BRAIN (NO TUMOR)</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">No Tumor (Healthy)</h3>
+            <p class="card-sub">SCAN_30 • Te-no_193.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#10B981;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="notumor" data-tumor="notumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/notumor/SCAN_31_Te-no_269.jpg', 'SCAN_31 - Te-no_269.jpg')">
+            <img src="annotated_cards/notumor/SCAN_31_Te-no_269.jpg" alt="Te-no_269.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-notumor">HEALTHY BRAIN (NO TUMOR)</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">No Tumor (Healthy)</h3>
+            <p class="card-sub">SCAN_31 • Te-no_269.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#10B981;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="notumor" data-tumor="notumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/notumor/SCAN_32_Te-no_317.jpg', 'SCAN_32 - Te-no_317.jpg')">
+            <img src="annotated_cards/notumor/SCAN_32_Te-no_317.jpg" alt="Te-no_317.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-notumor">HEALTHY BRAIN (NO TUMOR)</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">No Tumor (Healthy)</h3>
+            <p class="card-sub">SCAN_32 • Te-no_317.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#10B981;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="notumor" data-tumor="notumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/notumor/SCAN_33_Te-no_105.jpg', 'SCAN_33 - Te-no_105.jpg')">
+            <img src="annotated_cards/notumor/SCAN_33_Te-no_105.jpg" alt="Te-no_105.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-notumor">HEALTHY BRAIN (NO TUMOR)</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">No Tumor (Healthy)</h3>
+            <p class="card-sub">SCAN_33 • Te-no_105.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#10B981;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="notumor" data-tumor="notumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/notumor/SCAN_34_Te-no_251.jpg', 'SCAN_34 - Te-no_251.jpg')">
+            <img src="annotated_cards/notumor/SCAN_34_Te-no_251.jpg" alt="Te-no_251.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-notumor">HEALTHY BRAIN (NO TUMOR)</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">No Tumor (Healthy)</h3>
+            <p class="card-sub">SCAN_34 • Te-no_251.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#10B981;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="notumor" data-tumor="notumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/notumor/SCAN_35_Te-no_24.jpg', 'SCAN_35 - Te-no_24.jpg')">
+            <img src="annotated_cards/notumor/SCAN_35_Te-no_24.jpg" alt="Te-no_24.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-notumor">HEALTHY BRAIN (NO TUMOR)</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">No Tumor (Healthy)</h3>
+            <p class="card-sub">SCAN_35 • Te-no_24.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#10B981;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="notumor" data-tumor="notumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/notumor/SCAN_36_Te-no_396.jpg', 'SCAN_36 - Te-no_396.jpg')">
+            <img src="annotated_cards/notumor/SCAN_36_Te-no_396.jpg" alt="Te-no_396.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-notumor">HEALTHY BRAIN (NO TUMOR)</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">No Tumor (Healthy)</h3>
+            <p class="card-sub">SCAN_36 • Te-no_396.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#10B981;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="notumor" data-tumor="notumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/notumor/SCAN_37_Te-no_328.jpg', 'SCAN_37 - Te-no_328.jpg')">
+            <img src="annotated_cards/notumor/SCAN_37_Te-no_328.jpg" alt="Te-no_328.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-notumor">HEALTHY BRAIN (NO TUMOR)</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">No Tumor (Healthy)</h3>
+            <p class="card-sub">SCAN_37 • Te-no_328.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#10B981;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="notumor" data-tumor="notumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/notumor/SCAN_38_Te-no_130.jpg', 'SCAN_38 - Te-no_130.jpg')">
+            <img src="annotated_cards/notumor/SCAN_38_Te-no_130.jpg" alt="Te-no_130.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-notumor">HEALTHY BRAIN (NO TUMOR)</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">No Tumor (Healthy)</h3>
+            <p class="card-sub">SCAN_38 • Te-no_130.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#10B981;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="pituitary" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/pituitary/SCAN_39_Te-pi_369.jpg', 'SCAN_39 - Te-pi_369.jpg')">
+            <img src="annotated_cards/pituitary/SCAN_39_Te-pi_369.jpg" alt="Te-pi_369.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Pituitary Tumor</h3>
+            <p class="card-sub">SCAN_39 • Te-pi_369.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="pituitary" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/pituitary/SCAN_40_Te-pi_270.jpg', 'SCAN_40 - Te-pi_270.jpg')">
+            <img src="annotated_cards/pituitary/SCAN_40_Te-pi_270.jpg" alt="Te-pi_270.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Pituitary Tumor</h3>
+            <p class="card-sub">SCAN_40 • Te-pi_270.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="pituitary" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/pituitary/SCAN_41_Te-pi_215.jpg', 'SCAN_41 - Te-pi_215.jpg')">
+            <img src="annotated_cards/pituitary/SCAN_41_Te-pi_215.jpg" alt="Te-pi_215.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Pituitary Tumor</h3>
+            <p class="card-sub">SCAN_41 • Te-pi_215.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="pituitary" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/pituitary/SCAN_42_Te-pi_329.jpg', 'SCAN_42 - Te-pi_329.jpg')">
+            <img src="annotated_cards/pituitary/SCAN_42_Te-pi_329.jpg" alt="Te-pi_329.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Pituitary Tumor</h3>
+            <p class="card-sub">SCAN_42 • Te-pi_329.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="pituitary" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/pituitary/SCAN_43_Te-pi_65.jpg', 'SCAN_43 - Te-pi_65.jpg')">
+            <img src="annotated_cards/pituitary/SCAN_43_Te-pi_65.jpg" alt="Te-pi_65.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Pituitary Tumor</h3>
+            <p class="card-sub">SCAN_43 • Te-pi_65.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="pituitary" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/pituitary/SCAN_44_Te-pi_318.jpg', 'SCAN_44 - Te-pi_318.jpg')">
+            <img src="annotated_cards/pituitary/SCAN_44_Te-pi_318.jpg" alt="Te-pi_318.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Pituitary Tumor</h3>
+            <p class="card-sub">SCAN_44 • Te-pi_318.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="pituitary" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/pituitary/SCAN_45_Te-pi_362.jpg', 'SCAN_45 - Te-pi_362.jpg')">
+            <img src="annotated_cards/pituitary/SCAN_45_Te-pi_362.jpg" alt="Te-pi_362.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Pituitary Tumor</h3>
+            <p class="card-sub">SCAN_45 • Te-pi_362.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="pituitary" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/pituitary/SCAN_46_Te-pi_197.jpg', 'SCAN_46 - Te-pi_197.jpg')">
+            <img src="annotated_cards/pituitary/SCAN_46_Te-pi_197.jpg" alt="Te-pi_197.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Pituitary Tumor</h3>
+            <p class="card-sub">SCAN_46 • Te-pi_197.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="pituitary" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/pituitary/SCAN_47_Te-pi_260.jpg', 'SCAN_47 - Te-pi_260.jpg')">
+            <img src="annotated_cards/pituitary/SCAN_47_Te-pi_260.jpg" alt="Te-pi_260.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Pituitary Tumor</h3>
+            <p class="card-sub">SCAN_47 • Te-pi_260.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="pituitary" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/pituitary/SCAN_48_Te-pi_52.jpg', 'SCAN_48 - Te-pi_52.jpg')">
+            <img src="annotated_cards/pituitary/SCAN_48_Te-pi_52.jpg" alt="Te-pi_52.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Pituitary Tumor</h3>
+            <p class="card-sub">SCAN_48 • Te-pi_52.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="pituitary" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/pituitary/SCAN_49_Te-pi_290.jpg', 'SCAN_49 - Te-pi_290.jpg')">
+            <img src="annotated_cards/pituitary/SCAN_49_Te-pi_290.jpg" alt="Te-pi_290.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Pituitary Tumor</h3>
+            <p class="card-sub">SCAN_49 • Te-pi_290.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="card" data-class="pituitary" data-tumor="tumor">
+          <div class="card-img-wrap" onclick="openModal('annotated_cards/pituitary/SCAN_50_Te-pi_10.jpg', 'SCAN_50 - Te-pi_10.jpg')">
+            <img src="annotated_cards/pituitary/SCAN_50_Te-pi_10.jpg" alt="Te-pi_10.jpg" loading="lazy" />
+            <div class="zoom-badge">🔍 Click to Expand Diagnostic Card</div>
+          </div>
+          <div class="card-content">
+            <div class="badges">
+              <span class="badge badge-tumor">TUMOR DETECTED</span>
+              <span class="badge badge-match">✓ 100% Match</span>
+            </div>
+            <h3 class="card-title">Pituitary Tumor</h3>
+            <p class="card-sub">SCAN_50 • Te-pi_10.jpg</p>
+            <div class="conf-box">
+              <span class="conf-label">Confidence:</span>
+              <span class="conf-val">100.00%</span>
+            </div>
+            <div class="prob-bars">
+              <div class="bar-row">
+                <span>Glioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#EC4899;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Meningioma</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#F59E0B;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>No Tumor</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0.0%; background:#10B981;"></div></div>
+                <span class="bar-num">0.0%</span>
+              </div>
+              <div class="bar-row">
+                <span>Pituitary</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100.0%; background:#8B5CF6;"></div></div>
+                <span class="bar-num">100.0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+    </div>
+  </div>
+
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <span class="modal-close">&times;</span>
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <img id="modalImg" src="" alt="Full Diagnostic Card" />
+    </div>
+  </div>
+
+  <script>
+    function filterClass(cls) {
+      document.querySelectorAll('.btn-filter').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(c => {
+        if (cls === 'all' || c.getAttribute('data-class') === cls) {
+          c.style.display = 'block';
+        } else {
+          c.style.display = 'none';
+        }
+      });
+    }
+
+    function filterTumor(type) {
+      document.querySelectorAll('.btn-filter').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(c => {
+        if (c.getAttribute('data-tumor') === type) {
+          c.style.display = 'block';
+        } else {
+          c.style.display = 'none';
+        }
+      });
+    }
+
+    function searchCards() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(c => {
+        const text = c.innerText.toLowerCase();
+        c.style.display = text.includes(query) ? 'block' : 'none';
+      });
+    }
+
+    function openModal(src, title) {
+      const modal = document.getElementById('imageModal');
+      const img = document.getElementById('modalImg');
+      img.src = src;
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').style.display = 'none';
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+</body>
+</html>

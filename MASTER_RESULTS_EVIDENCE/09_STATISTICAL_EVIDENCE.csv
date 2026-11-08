@@ -1,0 +1,5 @@
+test_name,statistic_value,p_value,degrees_of_freedom,contingency_table,recomputed_matches_reported,source_file,status
+McNemar Test of Paired Proportions,32.3269,1.3030e-08,1,"Both Correct: 1245, Frozen Wrong->LoRA Correct: 47, Frozen Correct->LoRA Wrong: 5, Both Wrong: 60",True,outputs/EXP_LORA_CONTROLLED_20260811_211611/metrics/statistical_significance.json,[DERIVED]
+"10,000 Paired Bootstrap (Accuracy Delta %)",Mean: 3.10%,N/A,N/A,"95% CI: [2.14%, 4.13%]",True,outputs/EXP_LORA_CONTROLLED_20260811_211611/metrics/statistical_significance.json,[DERIVED]
+"10,000 Paired Bootstrap (Macro-F1 Delta)",Mean: 0.0311,N/A,N/A,"95% CI: [0.0211, 0.0417]",True,outputs/EXP_LORA_CONTROLLED_20260811_211611/metrics/statistical_significance.json,[DERIVED]
+"10,000 Paired Bootstrap (MCC Delta)",Mean: 0.0390,N/A,N/A,"95% CI: [0.0265, 0.0523]",True,outputs/EXP_LORA_CONTROLLED_20260811_211611/metrics/statistical_significance.json,[DERIVED]

@@ -1,0 +1,28 @@
+{
+  "mcnemar_contingency": {
+    "both_correct": 1245,
+    "frozen_wrong_lora_correct": 47,
+    "frozen_correct_lora_wrong": 5,
+    "both_wrong": 60
+  },
+  "mcnemar_statistic": 32.32692307692308,
+  "mcnemar_p_value": 1.3029544616583646e-08,
+  "acc_delta_mean": 3.097302873986737,
+  "acc_delta_95ci": [
+    2.1370670596904895,
+    4.1267501842299215
+  ],
+  "macro_f1_delta_mean": 0.031073809848958085,
+  "macro_f1_delta_95ci": [
+    0.02114329681643082,
+    0.041669175190342106
+  ],
+  "balanced_acc_delta_95ci": [
+    0.01918110355378925,
+    0.03784813616892086
+  ],
+  "mcc_delta_95ci": [
+    0.02647806173475009,
+    0.05228103963971986
+  ]
+}

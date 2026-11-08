@@ -1,0 +1,8 @@
+figure_path,figure_filename,method,dimensions,dataset_split,sample_count,class_labels,publication_candidate,status
+00_data_exploration_and_cleaning/01_initial_analysis/visuals/phase7_umap.png,phase7_umap.png,UMAP,2,Dataset Subset,Varies,"glioma, meningioma, notumor, pituitary",True,[RAW_VERIFIED]
+01_baseline_models/baseline_moe/visuals/moe_pca_visualization.png,moe_pca_visualization.png,PCA,2,Dataset Subset,Varies,"glioma, meningioma, notumor, pituitary",False,[RAW_VERIFIED]
+03_notebook_E_dinov2_lora/outputs/EXP_LORA/figures/lora_umap.png,lora_umap.png,UMAP,2,Dataset Subset,Varies,"glioma, meningioma, notumor, pituitary",False,[RAW_VERIFIED]
+outputs/EXP_LORA_CONTROLLED_20260811_191905/figures/pca_2d_projection.png,pca_2d_projection.png,PCA,2,"Locked Test (1,357)",1357,"glioma, meningioma, notumor, pituitary",False,[RAW_VERIFIED]
+outputs/EXP_LORA_CONTROLLED_20260811_192136/figures/pca_2d_projection.png,pca_2d_projection.png,PCA,2,"Locked Test (1,357)",1357,"glioma, meningioma, notumor, pituitary",False,[RAW_VERIFIED]
+outputs/EXP_LORA_CONTROLLED_20260811_211611/figures/pca_2d_projection.png,pca_2d_projection.png,PCA,2,"Locked Test (1,357)",1357,"glioma, meningioma, notumor, pituitary",True,[RAW_VERIFIED]
+outputs/EXP_LORA_CONTROLLED_20260811_211611/figures/umap_2d_projection.png,umap_2d_projection.png,UMAP,2,"Locked Test (1,357)",1357,"glioma, meningioma, notumor, pituitary",True,[RAW_VERIFIED]

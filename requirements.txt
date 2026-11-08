@@ -1,0 +1,30 @@
+# ==============================================================================
+# NeuroDINO® Research Project & Web Application - Master Requirements
+# ==============================================================================
+
+# Core Deep Learning & Parameter-Efficient Fine-Tuning
+torch>=2.0.0
+torchvision>=0.15.0
+peft>=0.4.0
+
+# Scientific Computing & Representation Analysis
+numpy>=1.24.0
+scipy>=1.10.0
+pandas>=1.5.0
+scikit-learn>=1.2.0
+umap-learn>=0.5.3
+imagehash>=4.3.1
+pillow>=9.0.0
+
+# Visualization & Reporting
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Web Application & Inference API (FastAPI)
+fastapi>=0.110.0
+uvicorn>=0.28.0
+python-multipart>=0.0.9
+
+# Interactive Notebooks
+jupyter>=1.0.0
+ipywidgets>=8.0.0

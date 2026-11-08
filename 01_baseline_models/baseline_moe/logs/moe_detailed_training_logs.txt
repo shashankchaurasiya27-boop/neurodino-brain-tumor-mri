@@ -1,0 +1,54 @@
+Initializing Advanced Mixture-of-Experts (MoE) Pipeline...
+Loading and applying CLAHE to MRI scans...
+Using device: mps
+Loading pre-trained ViT_B_16...
+Extracting Deep Features (ViT Embeddings) for Training Set...
+Extracted Train Features: (4307, 768) in 84.7s
+Extracting Features for Validation Set...
+Extracting Features for Testing Set...
+
+Running K-Means (K=3) to automatically discover anatomical orientations...
+Cluster sizes: Counter({np.int32(2): 2301, np.int32(1): 1482, np.int32(0): 524})
+
+Training 3 Expert PyTorch Linear Classifiers (One per cluster)...
+
+--- Training Expert 0 (Samples: 524) ---
+Epoch [1/50], Loss: 1.4470
+Epoch [10/50], Loss: 0.3418
+Epoch [20/50], Loss: 0.1405
+Epoch [30/50], Loss: 0.0741
+Epoch [40/50], Loss: 0.0499
+Epoch [50/50], Loss: 0.0383
+
+--- Training Expert 1 (Samples: 1482) ---
+Epoch [1/50], Loss: 1.5457
+Epoch [10/50], Loss: 0.3565
+Epoch [20/50], Loss: 0.1398
+Epoch [30/50], Loss: 0.0889
+Epoch [40/50], Loss: 0.0600
+Epoch [50/50], Loss: 0.0460
+
+--- Training Expert 2 (Samples: 2301) ---
+Epoch [1/50], Loss: 1.4451
+Epoch [10/50], Loss: 0.4035
+Epoch [20/50], Loss: 0.2635
+Epoch [30/50], Loss: 0.1935
+Epoch [40/50], Loss: 0.1587
+Epoch [50/50], Loss: 0.1373
+
+Performing MoE Inference (Routing to Experts)...
+Validation Accuracy (MoE): 92.39%
+
+--- Final Test Set Evaluation (MoE) ---
+              precision    recall  f1-score   support
+
+      glioma       0.97      0.74      0.84       379
+  meningioma       0.76      0.91      0.83       296
+     notumor       0.93      1.00      0.96       282
+   pituitary       0.95      0.97      0.96       400
+
+    accuracy                           0.90      1357
+   macro avg       0.90      0.91      0.90      1357
+weighted avg       0.91      0.90      0.90      1357
+
+Saved all possible MoE evaluation graphs!

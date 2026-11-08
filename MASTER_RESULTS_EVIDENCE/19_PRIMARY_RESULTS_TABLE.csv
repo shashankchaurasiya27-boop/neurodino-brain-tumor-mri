@@ -1,0 +1,8 @@
+Metric,Frozen DINOv2 (Arm A),QKV-LoRA (Arm B),Absolute Difference,Relative Gain,Source,Status
+Top-1 Accuracy (%),92.11% (92.114959%),95.21% (95.210022%),+3.10%,+3.36%,predictions/controlled_lora_predictions.csv,[RAW_VERIFIED]
+Top-2 Accuracy (%),95.87% (95.873250%),96.39% (96.389094%),+0.52%,+0.54%,predictions/controlled_lora_predictions.csv,[DERIVED]
+Macro-F1 Score,0.9196 (0.919639),0.9507 (0.950655),+0.0310,+3.37%,predictions/controlled_lora_predictions.csv,[RAW_VERIFIED]
+Balanced Accuracy (%),92.87% (92.869068%),95.69% (95.685797%),+2.82%,+3.03%,predictions/controlled_lora_predictions.csv,[DERIVED]
+Matthews Correlation (MCC),0.8987 (0.898671),0.9376 (0.937635),+0.0390,+4.34%,predictions/controlled_lora_predictions.csv,[DERIVED]
+Silhouette Score,0.0490 (0.049016),0.1501 (0.150103),+0.1011,+206.23%,features/lora_test_features.npy,[DERIVED]
+Separation Ratio,0.6647 (0.664669),1.0287 (1.028738),+0.3641,+54.77%,features/lora_test_features.npy,[DERIVED]

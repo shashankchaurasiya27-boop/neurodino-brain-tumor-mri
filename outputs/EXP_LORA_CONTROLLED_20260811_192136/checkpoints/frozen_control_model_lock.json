@@ -1,0 +1,5 @@
+{
+  "checkpoint": "frozen_control_best.pth",
+  "sha256": "cfcf0dba172ed9eba23e81fbeb97f4c1dbd4c0a7ba407ed8f19f7c34231069f9",
+  "best_val_f1": 0.6915934065934066
+}

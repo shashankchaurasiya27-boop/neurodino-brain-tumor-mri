@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeuroDINO® | Biomedical& Foundation AI Platform</title>
+
+  <!-- Design System CSS -->
+  <link rel="stylesheet" href="/static/css/design_system.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20width=%22100%22%20height=%22100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%239B43F3%22/><text y=%2260%22 font-size=%2240%22 font-family=%22sans-serif%22 font-weight=%22bold%22 text-anchor=%22middle%22 fill=%22white%22>N</text></svg>">
+</head>
+
+<body>
+
+  <!-- ==========================================================================
+       SITE HEADER: BRAND LOGO & FLOATING PILL NAVBAR (Desktop & Mobile)
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="site-wrapper brand-row">
+      <a href="#overview" class="brand-logo">
+        <span>HSK</span><sup>®</sup>
+        <span class="brand-sub">/ NeuroDINO</span>
+      </a>
+
+      <div class="header-actions">
+        <!-- Theme Mode Toggle (Figma Light / Dark) -->
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Light and Dark Mode"
+          title="Toggle Theme (Figma Light / Dark)">
+          <span id="theme-icon">☀️</span>
+          <span id="theme-label" class="theme-text">Light Mode</span>
+        </button>
+
+        <!-- Mobile Hamburger Toggle (Visible <= 900px) -->
+        <button id="mobile-toggle" class="mobile-nav-toggle" aria-label="Toggle navigation">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Desktop Floating Pill Navbar (from Figma Template) -->
+    <nav class="nav-pill-bar">
+      <a href="#overview" class="nav-pill-btn active">Home</a>
+      <a href="#projects" class="nav-pill-btn">
+        <span class="nav-pill-badge">04</span> Categories
+      </a>
+      <a href="#genesis" class="nav-pill-btn">Genesis Story</a>
+      <a href="#studio" class="nav-pill-btn">Live Studio</a>
+      <a href="#latent" class="nav-pill-btn">Latent & PCA</a>
+      <a href="#showcase" class="nav-pill-btn">
+        <span class="nav-pill-badge">50</span> Showcase
+      </a>
+      <a href="#history" class="nav-pill-btn">
+        History <span id="history-counter" class="nav-pill-badge" style="background: var(--card-blue);">0</span>
+      </a>
+      <a href="#faq" class="nav-pill-btn">FAQ</a>
+    </nav>
+  </header>
+
+  <!-- Mobile Slide-in Drawer -->
+  <div id="mobile-drawer" class="mobile-drawer">
+    <div class="drawer-header">
+      <a href="#overview" class="brand-logo" style="font-size: 22px;">
+        <span>Joey</span><sup>®</sup>
+        <span class="brand-sub">/ NeuroDINO</span>
+      </a>
+      <button id="drawer-close" class="drawer-close" aria-label="Close menu">✕</button>
+    </div>
+    <div class="drawer-links">
+      <a href="#overview" class="drawer-link">Home</a>
+      <a href="#projects" class="drawer-link">Diagnostic Categories</a>
+      <a href="#genesis" class="drawer-link">Genesis Story</a>
+      <a href="#studio" class="drawer-link">Live Studio</a>
+      <a href="#latent" class="drawer-link">Latent & PCA</a>
+      <a href="#showcase" class="drawer-link">50 Showcase Scans</a>
+      <a href="#history" class="drawer-link">Session History</a>
+      <a href="#faq" class="drawer-link">Architecture FAQ</a>
+      <a href="#contact" class="drawer-link" style="color: var(--color-primary);">Contact Research Lab →</a>
+    </div>
+    <div class="drawer-footer">
+      <button id="drawer-theme-toggle" class="theme-toggle-btn" style="width: 100%; justify-content: center;">
+        <span id="drawer-theme-icon">☀️</span>
+        <span id="drawer-theme-label">Switch to Light Mode</span>
+      </button>
+    </div>
+  </div>
+
+  <main class="site-wrapper">
+
+    <!-- ==========================================================================
+         HERO SECTION (Joey® Typography & Editorial Layout)
+         ========================================================================== -->
+    <section id="overview" class="hero-container">
+      <div class="hero-top-row">
+        <h1 class="hero-display-title">
+          <span>Biomedical&</span>
+          <span>Foundation AI</span>
+        </h1>
+
+        <a href="#projects" class="btn-scroll-down">
+          SCROLL DOWN ↓
+        </a>
+      </div>
+
+      <!-- Editorial 2-Column Split below Hero Title -->
+      <div class="hero-split-row">
+        <div class="hero-editorial-left">
+          <strong>Let's Talk</strong>
+          <span>dino-vitb14-lora@research.org</span>
+        </div>
+
+        <div class="hero-editorial-right">
+          <p>
+            Hello, I'm the NeuroDINO research system, a parameter-efficient vision platform adapting Meta DINOv2
+            self-supervised representations for four-class brain tumor MRI diagnosis. Holding all non-LoRA experimental
+            factors strictly constant delivers <strong>+3.10% accuracy gain</strong> and resolves <strong>41.5% of
+              Glioma-Meningioma boundary errors</strong> with zero data leakage.
+          </p>
+        </div>
+      </div>
+
+      <!-- Hardware Telemetry Bar -->
+      <div class="telemetry-row">
+        <div class="pulse-dot"></div>
+        <span>Model: <strong>DINOv2 ViT-B/14 + QKV-LoRA (r=8, α=16)</strong></span>
+        <span>•</span>
+        <span>Compute: <strong>Apple Silicon MPS Acceleration</strong></span>
+        <span>•</span>
+        <span>Warm Latency: <strong>~27.9 ms / scan</strong></span>
+        <span>•</span>
+        <span>Lock Hash: <strong style="color: var(--color-success);">59dafadda3f9... (SHA256 Certified)</strong></span>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FEATURED 4 PROJECTS GRID (The Iconic 2x2 Figma Cards)
+         ========================================================================== -->
+    <section id="projects">
+      <div class="projects-header">
+        <div>
+          <h2 class="heading-section">Diagnostic Categories</h2>
+          <p class="projects-intro">
+            As a certified deep learning foundation architecture, our model resolves the 4 primary brain tumor
+            neuro-pathologies with distinct representation geometry.
+          </p>
+        </div>
+        <a href="#showcase" class="link-more">Browse 50 Showcase Scans →</a>
+      </div>
+
+      <div class="featured-cards-grid">
+        <!-- Card 1: Electric Purple (Pituitary Adenoma) -->
+        <div class="featured-card card-purple" onclick="location.href='#studio'">
+          <div class="card-top-badge">Sellar Endocrine Tumor</div>
+
+          <div class="card-device-mockup">
+            <img class="card-device-img" src="/showcase-assets/raw_mri_images/pituitary/Te-pi_10.jpg"
+              alt="Pituitary Scan" />
+            <div class="card-device-meta">
+              <span style="font-size: 13px; font-weight: 700;">Pituitary Adenoma</span>
+              <span
+                style="font-size: 12px; font-family: var(--font-family-mono); background: rgba(255,255,255,0.25); padding: 2px 8px; border-radius: 9999px;">100.0%
+                CONF</span>
+            </div>
+          </div>
+
+          <div class="card-bottom-info">
+            <h3 class="card-bottom-title">Pituitary Adenoma</h3>
+            <span class="card-bottom-subtitle">Sellar / Neuroendocrine Neoplasm • 99.0% Val F1</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Emerald Green (Healthy Normal Brain) -->
+        <div class="featured-card card-green" onclick="location.href='#studio'">
+          <div class="card-top-badge">Normal Neuroanatomy</div>
+
+          <div class="card-device-mockup">
+            <img class="card-device-img" src="/showcase-assets/raw_mri_images/notumor/Te-no_396.jpg"
+              alt="Healthy Brain Scan" />
+            <div class="card-device-meta">
+              <span style="font-size: 13px; font-weight: 700;">Healthy Brain</span>
+              <span
+                style="font-size: 12px; font-family: var(--font-family-mono); background: rgba(255,255,255,0.25); padding: 2px 8px; border-radius: 9999px;">99.7%
+                CONF</span>
+            </div>
+          </div>
+
+          <div class="card-bottom-info">
+            <h3 class="card-bottom-title">Healthy Normal Brain</h3>
+            <span class="card-bottom-subtitle">Normal Control • 0.0% Neoplastic Lesion • 99.65% Recall</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Blue Jeans (Glioma Tumor) -->
+        <div class="featured-card card-blue" onclick="location.href='#studio'">
+          <div class="card-top-badge">Primary Intra-Axial Infiltration</div>
+
+          <div class="card-device-mockup">
+            <img class="card-device-img" src="/showcase-assets/raw_mri_images/glioma/Te-gl_163.jpg" alt="Glioma Scan" />
+            <div class="card-device-meta">
+              <span style="font-size: 13px; font-weight: 700;">Glioma Tumor</span>
+              <span
+                style="font-size: 12px; font-family: var(--font-family-mono); background: rgba(255,255,255,0.25); padding: 2px 8px; border-radius: 9999px;">100.0%
+                CONF</span>
+            </div>
+          </div>
+
+          <div class="card-bottom-info">
+            <h3 class="card-bottom-title">Glioma Tumor</h3>
+            <span class="card-bottom-subtitle">Primary Malignant Infiltration • +5.26% F1 Delta</span>
+          </div>
+        </div>
+
+        <!-- Card 4: Vibrant Orange (Meningioma Tumor) -->
+        <div class="featured-card card-orange" onclick="location.href='#studio'">
+          <div class="card-top-badge">Extra-Axial Dural Mass</div>
+
+          <div class="card-device-mockup">
+            <img class="card-device-img" src="/showcase-assets/raw_mri_images/meningioma/Te-me_191.jpg"
+              alt="Meningioma Scan" />
+            <div class="card-device-meta">
+              <span style="font-size: 13px; font-weight: 700;">Meningioma Tumor</span>
+              <span
+                style="font-size: 12px; font-family: var(--font-family-mono); background: rgba(255,255,255,0.25); padding: 2px 8px; border-radius: 9999px;">99.9%
+                CONF</span>
+            </div>
+          </div>
+
+          <div class="card-bottom-info">
+            <h3 class="card-bottom-title">Meningioma Tumor</h3>
+            <span class="card-bottom-subtitle">Dural-Based Extra-Axial • 41.5% Overlap Cut</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Expertise 4-Column Grid from Figma Template -->
+      <div style="margin-top: 80px;">
+        <h2 class="heading-section">Research Innovations</h2>
+        <div class="expertise-grid">
+          <div class="expertise-col">
+            <strong>• Data Integrity Audit</strong>
+            <p>
+              Exhaustive perceptual hashing and SSIM deduplication purged 459 duplicate/leakage scans across 371
+              connected component graphs, locking the 1,357-image test set.
+            </p>
+          </div>
+          <div class="expertise-col">
+            <strong>• Foundation Representation</strong>
+            <p>
+              Explored zero-shot Meta DINOv2 ViT-B/14 features across 7 classical downstream classifiers, discovering an
+              empirical representation ceiling of 92.11%.
+            </p>
+          </div>
+          <div class="expertise-col">
+            <strong>• Controlled QKV-LoRA</strong>
+            <p>
+              Injected low-rank adapters into self-attention projections with bit-identical initial head weights (θ0).
+              Trains only 822,020 parameters (0.95% of backbone).
+            </p>
+          </div>
+          <div class="expertise-col">
+            <strong>• Statistical Rigor</strong>
+            <p>
+              McNemar's paired test (χ² = 32.33, p = 1.303 × 10⁻⁸) and 10,000 paired bootstrap 95% CI [+2.14%, +4.13%]
+              confirm irrefutable representation gain.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FULL-WIDTH INFINITE RUNNING MARQUEE (from Figma Template)
+         ========================================================================== -->
+    <div class="marquee-ribbon">
+      <div class="marquee-content">
+        <span class="marquee-text">PARAMETER-EFFICIENT REPRESENTATION ADAPTATION FOR NEURO-ONCOLOGY •</span>
+        <span class="marquee-text">95.21% TEST ACCURACY •</span>
+        <span class="marquee-text">ZERO DATA LEAKAGE •</span>
+        <span class="marquee-text">41.5% BOUNDARY OVERLAP REDUCTION •</span>
+        <span class="marquee-text">MCNEMAR P = 1.303 × 10⁻⁸ •</span>
+      </div>
+      <div class="marquee-content" aria-hidden="true">
+        <span class="marquee-text">PARAMETER-EFFICIENT REPRESENTATION ADAPTATION FOR NEURO-ONCOLOGY •</span>
+        <span class="marquee-text">95.21% TEST ACCURACY •</span>
+        <span class="marquee-text">ZERO DATA LEAKAGE •</span>
+        <span class="marquee-text">41.5% BOUNDARY OVERLAP REDUCTION •</span>
+        <span class="marquee-text">MCNEMAR P = 1.303 × 10⁻⁸ •</span>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         RESEARCH GENESIS STORYTELLING TAB (How We Started with Motion)
+         ========================================================================== -->
+    <section id="genesis">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <span class="story-badge" style="display: inline-block; margin-bottom: 12px;">Research Genesis &
+          Methodology</span>
+        <h2 class="heading-section">How We Started: The Scientific Journey</h2>
+        <p class="body-lead" style="max-width: 750px; margin: 12px auto 0;">
+          Tracking the evolution from 7,200 raw multi-center scans, through perceptual hash deduplication,
+          supervised baseline plateaus, and self-supervised feature discovery to the parameter-efficient LoRA
+          breakthrough.
+        </p>
+      </div>
+
+      <div class="story-timeline" id="story-timeline-container">
+        <!-- Dynamically populated via /api/story-milestones -->
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         INTERACTIVE INFERENCE STUDIO & RADIOLOGIST VIEWER
+         ========================================================================== -->
+    <section id="studio">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <span class="story-badge" style="display: inline-block; margin-bottom: 12px;">Diagnostic Studio</span>
+        <h2 class="heading-section">Dual-Model Live Inference Engine</h2>
+        <p class="body-lead" style="max-width: 680px; margin: 12px auto 0;">
+          Upload any patient MRI scan or select a verified test case to run simultaneous forward passes through both
+          the <strong>Adapted QKV-LoRA</strong> and <strong>Frozen Baseline</strong> architectures.
+        </p>
+      </div>
+
+      <div class="studio-grid">
+        <!-- Input Dropzone & Darkroom Controls -->
+        <div class="studio-panel">
+          <h3 class="heading-card" style="margin-bottom: 18px; color: #FFF;">1. Provide MRI Image</h3>
+
+          <div id="dropzone" class="dropzone">
+            <div style="font-size: 36px; margin-bottom: 12px;">📁</div>
+            <strong style="display: block; font-size: 16px; color: #FFF; margin-bottom: 6px;">
+              Drag & Drop MRI Scan Here
+            </strong>
+            <span class="body-small" style="color: var(--text-secondary);">
+              Supports JPEG, PNG, TIFF, WebP (224×224 normalized)
+            </span>
+            <input type="file" id="file-input" accept="image/jpeg,image/png,image/tiff,image/webp"
+              style="display: none;" />
+          </div>
+
+          <!-- Preview Area with Interactive Loupe -->
+          <div id="preview-container" class="preview-container">
+            <button id="preview-close" class="preview-close" title="Remove image">×</button>
+            <div id="loupe-wrapper" class="loupe-wrapper">
+              <div id="loupe-lens" class="loupe-lens"></div>
+              <img id="preview-image" class="preview-image" src="" alt="Scan Preview" />
+            </div>
+
+            <!-- Radiologist Darkroom Sliders -->
+            <div class="darkroom-toolbar">
+              <div class="darkroom-slider-row">
+                <span>Window Level (Brightness):</span>
+                <input type="range" id="slider-brightness" class="darkroom-slider" min="50" max="200" value="100" />
+                <span id="val-brightness" style="font-family: var(--font-family-mono); width: 45px;">100%</span>
+              </div>
+              <div class="darkroom-slider-row">
+                <span>Window Width (Contrast):</span>
+                <input type="range" id="slider-contrast" class="darkroom-slider" min="50" max="250" value="100" />
+                <span id="val-contrast" style="font-family: var(--font-family-mono); width: 45px;">100%</span>
+              </div>
+              <div class="darkroom-toggles">
+                <button id="btn-invert" class="darkroom-btn">Invert Grayscale</button>
+                <button id="btn-reset-darkroom" class="darkroom-btn">Reset Filters</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preset Scans -->
+          <div style="margin-top: 20px;">
+            <span class="body-small"
+              style="font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted);">
+              Or Quick Test with Showcase Scans:
+            </span>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;">
+              <button class="preset-btn" data-sample="SCAN_01">Glioma (SCAN_01)</button>
+              <button class="preset-btn" data-sample="SCAN_14">Meningioma (SCAN_14)</button>
+              <button class="preset-btn" data-sample="SCAN_27">Healthy (SCAN_27)</button>
+              <button class="preset-btn" data-sample="SCAN_39">Pituitary (SCAN_39)</button>
+            </div>
+          </div>
+
+          <!-- Action Button -->
+          <button id="btn-analyze" class="btn-footer-pill"
+            style="width: 100%; margin-top: 24px; border-radius: var(--radius-full);" disabled>
+            <span id="analyze-spinner"
+              style="display: none; width: 14px; height: 14px; border: 2px solid #FFF; border-top-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite;"></span>
+            <span id="analyze-btn-text">Run Diagnostic Inference →</span>
+          </button>
+        </div>
+
+        <!-- Live Results Comparison Panel -->
+        <div class="studio-panel">
+          <h3 class="heading-card" style="margin-bottom: 18px; color: #FFF;">2. Comparative Diagnostic Output</h3>
+
+          <div id="results-container" style="display: none;">
+            <div class="comparison-columns">
+              <!-- Arm B: LoRA Model (Adapted) -->
+              <div class="model-column highlight-lora">
+                <div class="model-header">
+                  <span class="model-title">QKV-LoRA Adapted</span>
+                  <span class="model-badge badge-lora">Arm B (0.95% Params)</span>
+                </div>
+
+                <div class="prediction-hero-box">
+                  <div id="lora-pathology" class="pathology-tag tag-tumor">[TUMOR DETECTED]</div>
+                  <div id="lora-class" class="prediction-class-name">--</div>
+                  <div id="lora-confidence" class="prediction-conf-val">Confidence: --%</div>
+                </div>
+
+                <div
+                  style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px; display: flex; justify-content: space-between;">
+                  <span>Latency: <strong id="lora-latency" style="color: #FFF;">-- ms</strong></span>
+                  <span>Weights: <strong style="color: var(--color-primary);">r=8, α=16</strong></span>
+                </div>
+
+                <div id="lora-prob-bars" class="prob-list"></div>
+              </div>
+
+              <!-- Arm A: Frozen Baseline -->
+              <div class="model-column">
+                <div class="model-header">
+                  <span class="model-title">Frozen DINOv2</span>
+                  <span class="model-badge badge-frozen">Arm A (Baseline)</span>
+                </div>
+
+                <div class="prediction-hero-box">
+                  <div id="frozen-pathology" class="pathology-tag tag-tumor">[TUMOR DETECTED]</div>
+                  <div id="frozen-class" class="prediction-class-name">--</div>
+                  <div id="frozen-confidence" class="prediction-conf-val">Confidence: --%</div>
+                </div>
+
+                <div
+                  style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px; display: flex; justify-content: space-between;">
+                  <span>Latency: <strong id="frozen-latency" style="color: #FFF;">-- ms</strong></span>
+                  <span>Weights: <strong style="color: var(--card-blue);">Frozen ViT</strong></span>
+                </div>
+
+                <div id="frozen-prob-bars" class="prob-list"></div>
+              </div>
+            </div>
+
+            <!-- LoRA Rescued Callout -->
+            <div id="rescued-alert" class="rescued-callout" style="display: none;"></div>
+          </div>
+
+          <!-- Empty State -->
+          <div id="empty-state" style="text-align: center; padding: 60px 20px; color: var(--text-muted);">
+            <div style="font-size: 40px; margin-bottom: 12px; opacity: 0.5;">🔬</div>
+            <strong style="color: #FFF; font-size: 16px; display: block; margin-bottom: 6px;">
+              Awaiting MRI Scan Input
+            </strong>
+            <p class="body-small">
+              Select one of the preset showcase scans on the left or drag in a new MRI scan to trigger real-time
+              inference.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         LATENT GEOMETRY & PCA/UMAP RESULTS TAB
+         ========================================================================== -->
+    <section id="latent">
+      <div style="text-align: center; margin-bottom: 36px;">
+        <span class="story-badge" style="display: inline-block; margin-bottom: 12px;">Representation Manifold</span>
+        <h2 class="heading-section">Latent Representation Geometry & PCA/UMAP</h2>
+        <p class="body-lead" style="max-width: 720px; margin: 12px auto 0;">
+          Explore the dimensional compression, cluster separation ratios, and PCA/UMAP projections
+          evaluated strictly on the 1,357-image locked test set.
+        </p>
+      </div>
+
+      <!-- Projection Switcher Buttons -->
+      <div class="results-tabs-wrapper">
+        <button class="results-tab-btn active" data-view="pca">Figure 2A: 2D PCA</button>
+        <button class="results-tab-btn" data-view="umap">Figure 2B: 2D UMAP</button>
+        <button class="results-tab-btn" data-view="confusion">Figure 1: Confusion Matrices</button>
+        <button class="results-tab-btn" data-view="ceiling">Figure 3: Representation Ceiling</button>
+      </div>
+
+      <div class="projection-display-card">
+        <div class="projection-img-wrapper">
+          <img id="projection-img" class="projection-img"
+            src="/evidence-assets/verified_figures/fig2_pca_2d_projection.png" alt="Projection" />
+        </div>
+        <h3 id="projection-title" class="heading-card" style="color: #FFF; margin-bottom: 8px;">
+          Figure 2A: 2D Principal Component Analysis (PCA)
+        </h3>
+        <p id="projection-desc" class="body-regular" style="color: var(--text-secondary);">
+          Linear projection of high-dimensional ViT CLS embeddings capturing global representation variance across 1,357
+          test scans. DINOv2 with QKV-LoRA establishes distinct linear separation between all 4 classes.
+        </p>
+      </div>
+
+      <!-- Certified Representation Geometry Master Table -->
+      <h3 class="heading-card" style="margin-bottom: 16px;">Certified Representation Geometry Metrics</h3>
+      <div class="table-container">
+        <table class="geom-table">
+          <thead>
+            <tr>
+              <th>Evaluation Metric</th>
+              <th>Frozen Control (Arm A)</th>
+              <th>Controlled LoRA (Arm B)</th>
+              <th>Delta Gain (LoRA vs Frozen)</th>
+            </tr>
+          </thead>
+          <tbody id="geom-table-body">
+            <!-- Dynamically populated from /api/representation-metrics -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SHOWCASE 50 GALLERY
+         ========================================================================== -->
+    <section id="showcase">
+      <div class="projects-header">
+        <div>
+          <h2 class="heading-section">50-Image Diagnostic Showcase</h2>
+          <p class="projects-intro">
+            Curated across all 4 diagnostic classes from the zero-leakage locked test cohort. Click any scan to run live
+            inference immediately.
+          </p>
+        </div>
+      </div>
+
+      <!-- Filter Pills -->
+      <div class="filter-tabs">
+        <button class="filter-pill active" data-filter="all">All 50 Scans</button>
+        <button class="filter-pill" data-filter="glioma">Glioma (13)</button>
+        <button class="filter-pill" data-filter="meningioma">Meningioma (13)</button>
+        <button class="filter-pill" data-filter="pituitary">Pituitary (12)</button>
+        <button class="filter-pill" data-filter="notumor">Healthy Brain (12)</button>
+      </div>
+
+      <div id="showcase-grid" class="showcase-grid"></div>
+    </section>
+
+    <!-- ==========================================================================
+         SESSION HISTORY & PATIENT CASE LOG TAB
+         ========================================================================== -->
+    <section id="history">
+      <div class="history-header-actions">
+        <div>
+          <h2 class="heading-section">Patient Scan History Log</h2>
+          <p class="body-regular">Track and export all scans analyzed during this session with live model comparison.
+          </p>
+        </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <button id="btn-export-csv" class="darkroom-btn" style="padding: 10px 20px; font-weight: 700;">Export Session
+            CSV</button>
+          <button id="btn-print-report" class="darkroom-btn"
+            style="padding: 10px 20px; font-weight: 700; background: #FFF; color: #000;">Print Clinical Summary</button>
+          <button id="btn-clear-history" class="darkroom-btn"
+            style="padding: 10px 20px; font-weight: 700; color: var(--color-error);">Clear History</button>
+        </div>
+      </div>
+
+      <div class="history-card">
+        <div class="table-container">
+          <table class="history-table">
+            <thead>
+              <tr>
+                <th>Scan</th>
+                <th>Time</th>
+                <th>Sample ID</th>
+                <th>LoRA Diagnosis</th>
+                <th>Baseline Diagnosis</th>
+                <th>Status</th>
+                <th>Latency</th>
+              </tr>
+            </thead>
+            <tbody id="history-table-body">
+              <!-- Dynamically populated from localStorage -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         TESTIMONIALS / SCIENTIFIC CERTIFICATION (from Figma Template)
+         ========================================================================== -->
+    <section class="testimonials-section">
+      <span class="story-badge" style="display: inline-block; margin-bottom: 20px;">Scientific Verification</span>
+      <blockquote class="testimonial-quote">
+        “Holding all non-LoRA experimental factors strictly constant with bit-identical initial head weights (θ0),
+        QKV-LoRA adaptation broke the 92.11% frozen representation ceiling, delivering a statistically verified 95.21%
+        test accuracy and cutting Glioma-Meningioma boundary confusion by 41.5%.”
+      </blockquote>
+      <div class="testimonial-author">
+        <strong>Master Audit Certification</strong>
+        <span>EXP_LORA_CONTROLLED_20260811_211611 • McNemar Paired Test p = 1.303 × 10⁻⁸</span>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ACCORDIONS FAQ (Matching user Image 0 & Component sheet)
+         ========================================================================== -->
+    <section id="faq">
+      <div style="text-align: center; margin-bottom: 20px;">
+        <span class="story-badge" style="display: inline-block; margin-bottom: 12px;">Research Architecture</span>
+        <h2 class="heading-section">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="accordion-list">
+        <!-- Accordion 1 -->
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span class="accordion-title">How does QKV-LoRA adapt DINOv2 without full fine-tuning?</span>
+            <div class="accordion-icon">+</div>
+          </div>
+          <div class="accordion-content">
+            Low-Rank Adaptation (LoRA) freezes the pre-trained 86M parameter DINOv2 ViT-B/14 weights and injects
+            trainable rank decomposition matrices into the query, key, and value ($Q, K, V$) projections of each
+            multi-head self-attention block ($r=8, \alpha=16$). This allows the model to learn task-specific medical MRI
+            features by updating only <strong>822,020 parameters (0.95%)</strong>, completely preserving the generalized
+            spatial priors while adapting representation geometry.
+          </div>
+        </div>
+
+        <!-- Accordion 2 -->
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span class="accordion-title">How was data leakage and duplicate scans audited?</span>
+            <div class="accordion-icon">+</div>
+          </div>
+          <div class="accordion-content">
+            Prior to model lock, an exhaustive multi-phase deduplication audit evaluated all 7,200 raw scans using
+            perceptual hashing (pHash, dHash, aHash) and structural similarity (SSIM > 0.95). A total of <strong>459
+              duplicate/near-duplicate images</strong> across 371 connected component groups were identified and
+            quarantined. The final cleaned dataset of 6,741 images was partitioned into 4,575 train, 809 validation, and
+            a strictly isolated 1,357-image test cohort evaluated only once post-certification.
+          </div>
+        </div>
+
+        <!-- Accordion 3 -->
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span class="accordion-title">Why does LoRA significantly reduce Glioma-Meningioma diagnostic
+              overlap?</span>
+            <div class="accordion-icon">+</div>
+          </div>
+          <div class="accordion-content">
+            In frozen foundation backbones, Gliomas and Meningiomas frequently share overlapping intensity profiles and
+            edema patterns. By adapting the self-attention projections, LoRA learns to attend specifically to dural tail
+            attachments (characteristic of extra-axial meningiomas) and infiltrating margin transitions (characteristic
+            of intra-axial gliomas), reducing mutual cross-class errors from 53 down to 31 (a 41.5% reduction).
+          </div>
+        </div>
+
+        <!-- Accordion 4 -->
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span class="accordion-title">Can this platform execute completely offline on a local MacBook?</span>
+            <div class="accordion-icon">+</div>
+          </div>
+          <div class="accordion-content">
+            Yes. The entire platform runs locally on macOS with PyTorch Metal Performance Shaders (MPS) hardware
+            acceleration. Pretrained DINOv2 weights and certified checkpoints are cached on local disk, requiring zero
+            internet connectivity and achieving a warm inference latency of ~27.9 ms per scan.
+          </div>
+        </div>
+
+        <!-- Accordion 5 -->
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span class="accordion-title">Is this system approved as a clinical medical device?</span>
+            <div class="accordion-icon">+</div>
+          </div>
+          <div class="accordion-content">
+            No. This platform is an investigational deep learning research tool developed for scientific research,
+            academic review, and algorithmic benchmarking. It is not approved by regulatory bodies (e.g. FDA, CE) for
+            clinical diagnostic use. All outputs represent statistical probability distributions and must be verified by
+            certified radiologists.
+          </div>
+        </div>
+
+        <!-- Accordion 6 -->
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span class="accordion-title">Who developed this platform and what are their academic credentials?</span>
+            <div class="accordion-icon">+</div>
+          </div>
+          <div class="accordion-content">
+            <p style="margin-bottom: 16px;">
+              This biomedical foundation AI platform was developed as an advanced <strong>Machine Learning Course
+                Capstone Project</strong> by our three-member engineering team:
+            </p>
+            <div
+              style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 16px;">
+              <div
+                style="background: var(--bg-card); border: 1px solid var(--border-medium); border-radius: var(--radius-md); padding: 12px 16px;">
+                <strong style="color: var(--text-white); display: block; font-size: 15px;">Shashank Chaurasia</strong>
+                <span style="font-family: var(--font-family-mono); font-size: 12px; color: var(--color-primary);">Reg
+                  No: RA2411003030060</span>
+              </div>
+              <div
+                style="background: var(--bg-card); border: 1px solid var(--border-medium); border-radius: var(--radius-md); padding: 12px 16px;">
+                <strong style="color: var(--text-white); display: block; font-size: 15px;">Himanshu Bali</strong>
+                <span style="font-family: var(--font-family-mono); font-size: 12px; color: var(--card-blue);">Reg No:
+                  RA2411003030029</span>
+              </div>
+              <div
+                style="background: var(--bg-card); border: 1px solid var(--border-medium); border-radius: var(--radius-md); padding: 12px 16px;">
+                <strong style="color: var(--text-white); display: block; font-size: 15px;">Kunal Yadav</strong>
+                <span style="font-family: var(--font-family-mono); font-size: 12px; color: var(--card-orange);">Reg No:
+                  RA2411003030020</span>
+              </div>
+            </div>
+            <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.5;">
+              All three contributors belong to the same department cohort. The project spans self-supervised
+              representation learning, parameter-efficient fine-tuning (QKV-LoRA), radiologist darkroom UI design, and
+              rigorous statistical hypothesis testing.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FOOTER (The Iconic "Let's talk!" from Figma Template)
+         ========================================================================== -->
+    <footer id="contact" class="footer-cta-section">
+      <h2 class="footer-heading">Let's talk!</h2>
+      <a href="mailto:sc2999@smist.edu.co" class="btn-footer-pill" style="margin-bottom: 40px;">
+        hello@HSK.co ↗
+      </a>
+
+      <!-- Medical Disclaimer Banner -->
+      <div class="disclaimer-banner">
+        <span style="font-size: 24px;">⚠️</span>
+        <div>
+          <strong style="color: #FFF; font-size: 14px;">ACADEMIC & INVESTIGATIONAL RESEARCH NOTICE</strong><br>
+          This application demonstrates parameter-efficient representation adaptation for biomedical imaging.
+          It does NOT provide clinical medical diagnoses. Always consult a qualified medical professional for
+          health-related decisions.
+        </div>
+      </div>
+
+      <div class="footer-meta">
+        <div>2026 © — Made by Ahariyastudio / HSK® & Brain Tumor Representation Research Lab</div>
+        <div style="display: flex; gap: 20px;">
+          <a href="#" style="color: var(--text-muted); text-decoration: none;">Dribbble</a>
+          <a href="#" style="color: var(--text-muted); text-decoration: none;">Instagram</a>
+          <a href="#" style="color: var(--text-muted); text-decoration: none;">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="/static/js/app.js"></script>
+</body>
+
+</html>
