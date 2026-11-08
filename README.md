@@ -1,12 +1,4 @@
----
-title: NeuroDINO Brain Tumor MRI Diagnostic Platform
-emoji: 🧠
-colorFrom: purple
-colorTo: indigo
-sdk: docker
-app_port: 7860
-pinned: false
----
+
 
 <div align="center">
 
