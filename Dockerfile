@@ -56,3 +56,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
 
 # Launch the FastAPI app on port 7860
 CMD ["python3", "-m", "uvicorn", "brain_tumor_frontend.app:app", "--host", "0.0.0.0", "--port", "7860"]
+

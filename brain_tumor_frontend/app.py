@@ -389,15 +389,13 @@ if __name__ == "__main__":
     import uvicorn
 
     parser = argparse.ArgumentParser(description="NeuroDINO® Diagnostic Engine Server")
-    parser.add_argument("--host", default=config.DEFAULT_HOST, help="Host to bind to (default: 127.0.0.1)")
-    parser.add_argument("--port", type=int, default=config.DEFAULT_PORT, help="Port to bind to (default: 8000)")
+    parser.add_argument("--host", default=os.environ.get("HOST", "0.0.0.0"), help="Host to bind to (default: 0.0.0.0)")
+    parser.add_argument("--port", type=int, default=int(os.environ.get("PORT", "8000")), help="Port to bind to (default: 8000)")
     parser.add_argument("--reload", action="store_true", help="Enable uvicorn auto-reload")
     args = parser.parse_args()
 
-    uvicorn.run(
-        "app:app",
-        host=args.host,
-        port=args.port,
-        reload=args.reload,
-        log_level="info"
-    )
+    app_target = "brain_tumor_frontend.app:app" if Path("brain_tumor_frontend").exists() else "app:app"
+    if not args.reload:
+        uvicorn.run(app, host=args.host, port=args.port, log_level="info")
+    else:
+        uvicorn.run(app_target, host=args.host, port=args.port, reload=True, log_level="info")

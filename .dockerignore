@@ -13,3 +13,4 @@ htmlcov
 *.log
 .vercel
 node_modules
+
