@@ -18,3 +18,4 @@ HOST="${HOST:-0.0.0.0}"
 
 echo "Launching FastAPI server on http://$HOST:$PORT ..."
 exec python3 brain_tumor_frontend/app.py --host "$HOST" --port "$PORT"
+
