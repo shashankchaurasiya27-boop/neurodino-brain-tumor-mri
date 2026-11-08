@@ -12,3 +12,4 @@ if str(ROOT_DIR) not in sys.path:
 
 # Import the FastAPI application instance
 from app import app
+

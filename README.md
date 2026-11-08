@@ -1,3 +1,13 @@
+---
+title: NeuroDINO Brain Tumor MRI Diagnostic Platform
+emoji: 🧠
+colorFrom: purple
+colorTo: indigo
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # NeuroDINO® | Biomedical Vision Foundation Platform for Brain Tumor MRI Diagnosis
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
@@ -320,3 +330,4 @@ If you use this platform, code, or experimental findings in your research:
 ```
 
 **License**: Distributed for academic research, education, and clinical diagnostic research purposes.
+

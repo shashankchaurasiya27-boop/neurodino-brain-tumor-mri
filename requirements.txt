@@ -28,3 +28,4 @@ python-multipart>=0.0.9
 # Interactive Notebooks
 jupyter>=1.0.0
 ipywidgets>=8.0.0
+

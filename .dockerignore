@@ -1,0 +1,15 @@
+.git
+.gitignore
+.gitattributes
+.DS_Store
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache
+.coverage
+htmlcov
+.ipynb_checkpoints
+*.log
+.vercel
+node_modules

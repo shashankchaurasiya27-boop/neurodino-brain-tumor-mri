@@ -6,11 +6,17 @@ showcase gallery integration, research genesis storytelling, and certified repre
 
 import os
 import io
+import sys
 import time
 import json
 import logging
 from pathlib import Path
 from typing import Optional, List, Dict, Any
+
+# Ensure local frontend directory is on sys.path
+_frontend_dir = Path(__file__).resolve().parent
+if str(_frontend_dir) not in sys.path:
+    sys.path.insert(0, str(_frontend_dir))
 
 from fastapi import FastAPI, File, UploadFile, HTTPException, Query
 from fastapi.responses import HTMLResponse, JSONResponse, FileResponse

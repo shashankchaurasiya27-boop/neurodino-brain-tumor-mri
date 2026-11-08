@@ -8,3 +8,4 @@ if str(FRONTEND_DIR) not in sys.path:
 
 # Import the FastAPI application instance
 from app import app
+
