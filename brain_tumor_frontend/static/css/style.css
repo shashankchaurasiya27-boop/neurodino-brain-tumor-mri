@@ -1415,3 +1415,569 @@ section {
   flex-wrap: wrap;
   gap: 16px;
 }
+
+/* ==========================================================================
+   MOBILE-FIRST HIGH-FIDELITY RESPONSIVE SYSTEM (<= 768px & <= 480px)
+   Architected with Gemini 4 Argon & Gemini 3.5 Flash Thinking
+   Strictly scoped: Desktop (> 900px) remains 100% untouched and pixel-perfect.
+   ========================================================================== */
+
+/* Utility Visibility Classes */
+.mobile-only-text,
+.mobile-only-block {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .desktop-only-text,
+  .desktop-only-block {
+    display: none !important;
+  }
+  .mobile-only-text {
+    display: inline !important;
+  }
+  .mobile-only-block {
+    display: block !important;
+  }
+
+  /* 1. Global Viewport, Touch & Container Reset */
+  html,
+  body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .site-wrapper {
+    padding-left: max(16px, env(safe-area-inset-left)) !important;
+    padding-right: max(16px, env(safe-area-inset-right)) !important;
+    max-width: 100% !important;
+  }
+
+  section {
+    padding: 48px 0 !important;
+  }
+
+  /* 2. Mobile Header & Drawer */
+  .site-header {
+    padding: max(14px, env(safe-area-inset-top)) 0 8px !important;
+  }
+
+  .brand-row {
+    margin-bottom: 12px;
+  }
+
+  .brand-logo {
+    font-size: 22px !important;
+  }
+
+  .brand-sub {
+    font-size: 13px !important;
+  }
+
+  .header-actions {
+    gap: 8px;
+  }
+
+  .theme-toggle-btn {
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+  }
+
+  .mobile-nav-toggle {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  .mobile-drawer {
+    padding-top: max(24px, env(safe-area-inset-top)) !important;
+    padding-bottom: max(32px, env(safe-area-inset-bottom)) !important;
+    padding-left: max(20px, env(safe-area-inset-left)) !important;
+    padding-right: max(20px, env(safe-area-inset-right)) !important;
+  }
+
+  .drawer-link {
+    font-size: 20px !important;
+    padding: 6px 0;
+  }
+
+  /* 3. Hero Section & Dynamic Telemetry Bar */
+  .hero-container {
+    padding-top: 24px !important;
+    padding-bottom: 36px !important;
+  }
+
+  .hero-top-row {
+    margin-bottom: 20px !important;
+    gap: 16px;
+  }
+
+  .hero-display-title {
+    font-size: clamp(34px, 9.5vw, 50px) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.035em !important;
+  }
+
+  .btn-scroll-down {
+    padding: 10px 18px !important;
+    font-size: 11px !important;
+  }
+
+  .hero-split-row {
+    padding-top: 18px !important;
+    gap: 14px !important;
+  }
+
+  .hero-editorial-right p {
+    font-size: 14.5px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Telemetry: Horizontal Smooth Scrollable Chip Bar */
+  .telemetry-row {
+    margin-top: 22px !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 10px !important;
+    padding: 10px 16px !important;
+    border-radius: var(--radius-full) !important;
+    white-space: nowrap !important;
+  }
+
+  .telemetry-row::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .telemetry-row > * {
+    flex: 0 0 auto !important;
+    font-size: 12px !important;
+  }
+
+  /* 4. Diagnostic Categories (Featured 4 Cards) */
+  .projects-header {
+    margin-bottom: 22px !important;
+  }
+
+  .heading-section {
+    font-size: clamp(26px, 7vw, 36px) !important;
+  }
+
+  .projects-intro {
+    font-size: 14px !important;
+    margin-top: 6px !important;
+  }
+
+  .featured-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .featured-card {
+    min-height: auto !important;
+    padding: 24px 18px !important;
+    border-radius: 22px !important;
+  }
+
+  .card-top-badge {
+    padding: 5px 12px !important;
+    font-size: 11px !important;
+  }
+
+  .card-device-mockup {
+    margin: 16px auto !important;
+    max-width: 100% !important;
+    padding: 12px !important;
+    border-radius: 18px !important;
+  }
+
+  .card-device-img {
+    aspect-ratio: 1.15 !important;
+    border-radius: 12px !important;
+  }
+
+  .card-bottom-title {
+    font-size: 20px !important;
+  }
+
+  .card-bottom-subtitle {
+    font-size: 13px !important;
+  }
+
+  /* 5. Full-Width Infinite Marquee */
+  .marquee-ribbon {
+    padding: 16px 0 !important;
+  }
+
+  .marquee-text {
+    font-size: clamp(24px, 6vw, 36px) !important;
+    padding: 0 20px !important;
+  }
+
+  /* 6. Research Genesis Story Timeline (Resolves 80px margin blowout) */
+  .story-timeline {
+    margin-top: 24px !important;
+    padding: 8px 0 !important;
+  }
+
+  .story-timeline::before {
+    left: 14px !important;
+    width: 2px !important;
+  }
+
+  .story-item {
+    margin-left: 36px !important;
+    margin-bottom: 22px !important;
+    padding: 18px 16px !important;
+    border-radius: 18px !important;
+  }
+
+  .story-circle {
+    left: -36px !important;
+    top: 16px !important;
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 12px !important;
+    border-width: 2px !important;
+  }
+
+  .story-meta {
+    margin-bottom: 8px !important;
+  }
+
+  .story-title {
+    font-size: 17px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .story-desc {
+    font-size: 13.5px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 14px !important;
+  }
+
+  .story-image-box {
+    border-radius: 12px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .story-stat-chips {
+    gap: 6px !important;
+  }
+
+  .story-chip {
+    padding: 4px 10px !important;
+    font-size: 11px !important;
+  }
+
+  /* 7. Latent & Representation Geometry */
+  .results-tabs-wrapper {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 8px !important;
+    justify-content: flex-start !important;
+    padding-bottom: 6px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .results-tabs-wrapper::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .results-tab-btn {
+    flex: 0 0 auto !important;
+    padding: 8px 16px !important;
+    font-size: 13px !important;
+    white-space: nowrap !important;
+  }
+
+  .projection-display-card {
+    padding: 16px 14px !important;
+    border-radius: 20px !important;
+    margin-bottom: 22px !important;
+  }
+
+  .projection-img-wrapper {
+    border-radius: 12px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .table-container {
+    -webkit-overflow-scrolling: touch !important;
+    border-radius: 14px !important;
+  }
+
+  .geom-table th,
+  .geom-table td {
+    padding: 10px 12px !important;
+    font-size: 12.5px !important;
+    white-space: nowrap !important;
+  }
+
+  /* 8. Diagnostic Live Studio */
+  .studio-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .studio-panel {
+    padding: 20px 16px !important;
+    border-radius: 22px !important;
+  }
+
+  .dropzone {
+    padding: 24px 14px !important;
+    min-height: 140px !important;
+    margin-bottom: 16px !important;
+    border-radius: 16px !important;
+  }
+
+  .preview-image {
+    max-height: 240px !important;
+  }
+
+  /* Darkroom Touch Controls (44px Apple/Android Minimum Targets) */
+  .darkroom-toolbar {
+    padding: 12px 14px !important;
+    margin-top: 12px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .darkroom-slider-row {
+    min-height: 44px !important;
+    gap: 10px !important;
+    font-size: 12px !important;
+  }
+
+  .darkroom-slider {
+    height: 44px !important;
+    touch-action: pan-x !important;
+  }
+
+  .darkroom-slider::-webkit-slider-thumb {
+    width: 28px !important;
+    height: 28px !important;
+    margin-top: -10px !important;
+    border-radius: 50% !important;
+    background: #FFFFFF !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .darkroom-toggles {
+    gap: 8px !important;
+  }
+
+  .darkroom-btn {
+    padding: 8px 14px !important;
+    font-size: 12px !important;
+    min-height: 38px !important;
+    flex: 1 !important;
+    text-align: center !important;
+  }
+
+  /* Comparison Cards */
+  .comparison-columns {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    margin-top: 16px !important;
+  }
+
+  .model-column {
+    padding: 18px 14px !important;
+    border-radius: 16px !important;
+  }
+
+  .model-header {
+    margin-bottom: 12px !important;
+    padding-bottom: 8px !important;
+  }
+
+  .prediction-hero-box {
+    padding: 12px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .prediction-class-name {
+    font-size: 20px !important;
+  }
+
+  .prob-row {
+    gap: 3px !important;
+  }
+
+  .prob-meta {
+    font-size: 11.5px !important;
+  }
+
+  .rescued-callout {
+    padding: 12px 14px !important;
+    font-size: 13px !important;
+    border-radius: 12px !important;
+  }
+
+  /* 9. Showcase 50 Gallery (2-Column Native Photo Grid + Swipeable Tabs) */
+  .filter-tabs {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 8px !important;
+    padding-bottom: 6px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .filter-tabs::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .filter-pill {
+    flex: 0 0 auto !important;
+    padding: 7px 15px !important;
+    font-size: 13px !important;
+    white-space: nowrap !important;
+  }
+
+  .showcase-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .showcase-card {
+    padding: 10px !important;
+    border-radius: 14px !important;
+  }
+
+  .showcase-card-thumb {
+    border-radius: 10px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .showcase-card-title {
+    font-size: 11.5px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .showcase-badge {
+    font-size: 9.5px !important;
+    padding: 2px 6px !important;
+  }
+
+  /* 10. History & Accordion */
+  .history-card {
+    padding: 16px 12px !important;
+    border-radius: 18px !important;
+  }
+
+  .history-header-actions {
+    margin-bottom: 16px !important;
+    gap: 10px !important;
+  }
+
+  .history-table th,
+  .history-table td {
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+    white-space: nowrap !important;
+  }
+
+  .history-thumb {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .accordion-header {
+    padding: 18px 16px !important;
+  }
+
+  .accordion-title {
+    font-size: 15px !important;
+  }
+
+  .accordion-content {
+    padding: 0 16px !important;
+    font-size: 13.5px !important;
+  }
+
+  .accordion-item.open .accordion-content {
+    padding: 0 16px 18px !important;
+  }
+
+  /* 11. Footer CTA */
+  .footer-cta-section {
+    padding: 60px 0 40px !important;
+    margin-top: 40px !important;
+  }
+
+  .footer-heading {
+    font-size: clamp(36px, 11vw, 56px) !important;
+    margin-bottom: 20px !important;
+  }
+
+  .btn-footer-pill {
+    padding: 12px 28px !important;
+    font-size: 15px !important;
+  }
+
+  .disclaimer-banner {
+    padding: 14px 16px !important;
+    margin-top: 30px !important;
+    font-size: 12px !important;
+  }
+
+  .footer-meta {
+    padding: 24px 0 !important;
+    margin-top: 30px !important;
+    font-size: 11.5px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+
+  /* 12. Native Touch Scaling Feedback */
+  button:active,
+  .btn:active,
+  .filter-pill:active,
+  .results-tab-btn:active,
+  .featured-card:active,
+  .showcase-card:active {
+    transform: scale(0.97) !important;
+    transition: transform 0.1s ease !important;
+  }
+}
+
+/* Extra Tight Mobile Devices (iPhone SE, Galaxy S, < 480px) */
+@media (max-width: 480px) {
+  .brand-sub {
+    display: none !important;
+  }
+
+  .hero-display-title {
+    font-size: clamp(30px, 9.2vw, 40px) !important;
+  }
+
+  .showcase-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .showcase-card {
+    padding: 8px !important;
+  }
+
+  .darkroom-toggles {
+    flex-direction: column !important;
+  }
+
+  .darkroom-btn {
+    width: 100% !important;
+  }
+}

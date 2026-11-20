@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>NeuroDINO® | Biomedical& Foundation AI Platform</title>
 
   <!-- Design System CSS -->
@@ -66,7 +66,7 @@
   <div id="mobile-drawer" class="mobile-drawer">
     <div class="drawer-header">
       <a href="#overview" class="brand-logo" style="font-size: 22px;">
-        <span>Joey</span><sup>®</sup>
+        <span>HSK</span><sup>®</sup>
         <span class="brand-sub">/ NeuroDINO</span>
       </a>
       <button id="drawer-close" class="drawer-close" aria-label="Close menu">✕</button>
@@ -334,12 +334,14 @@
           <div id="dropzone" class="dropzone">
             <div style="font-size: 36px; margin-bottom: 12px;">📁</div>
             <strong style="display: block; font-size: 16px; color: #FFF; margin-bottom: 6px;">
-              Drag & Drop MRI Scan Here
+              <span class="desktop-only-text">Drag & Drop MRI Scan Here</span>
+              <span class="mobile-only-text">Tap to Select or Upload Scan</span>
             </strong>
             <span class="body-small" style="color: var(--text-secondary);">
-              Supports JPEG, PNG, TIFF, WebP (224×224 normalized)
+              <span class="desktop-only-text">Supports JPEG, PNG, TIFF, WebP (224×224 normalized)</span>
+              <span class="mobile-only-text">Camera or Gallery (JPEG, PNG, WebP)</span>
             </span>
-            <input type="file" id="file-input" accept="image/jpeg,image/png,image/tiff,image/webp"
+            <input type="file" id="file-input" accept="image/*,image/jpeg,image/png,image/tiff,image/webp"
               style="display: none;" />
           </div>
 

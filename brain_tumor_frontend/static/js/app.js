@@ -71,6 +71,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Close mobile drawer on Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && mobileDrawer && mobileDrawer.classList.contains("open")) {
+      mobileDrawer.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+  });
+
   // Studio Elements
   const dropzone = document.getElementById("dropzone");
   const fileInput = document.getElementById("file-input");
@@ -342,7 +350,11 @@ document.addEventListener("DOMContentLoaded", () => {
         latency_ms: data.lora_prediction.latency_ms
       });
 
-      resultsContainer.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      if (window.innerWidth <= 768) {
+        document.getElementById("studio").scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        resultsContainer.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
     } catch (err) {
       alert("Inference Error: " + err.message);
     } finally {
@@ -709,7 +721,11 @@ document.addEventListener("DOMContentLoaded", () => {
         latency_ms: data.lora_prediction.latency_ms
       });
 
-      resultsContainer.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      if (window.innerWidth <= 768) {
+        document.getElementById("studio").scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        resultsContainer.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
     } catch (err) {
       alert("Error predicting showcase sample: " + err.message);
     } finally {
