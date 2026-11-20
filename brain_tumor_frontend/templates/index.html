@@ -126,14 +126,29 @@
 
       <!-- Hardware Telemetry Bar -->
       <div class="telemetry-row">
-        <div class="pulse-dot"></div>
-        <span>Model: <strong>DINOv2 ViT-B/14 + QKV-LoRA (r=8, α=16)</strong></span>
-        <span>•</span>
-        <span>Compute: <strong>Apple Silicon MPS Acceleration</strong></span>
-        <span>•</span>
-        <span>Warm Latency: <strong>~27.9 ms / scan</strong></span>
-        <span>•</span>
-        <span>Lock Hash: <strong style="color: var(--color-success);">59dafadda3f9... (SHA256 Certified)</strong></span>
+        <div class="telemetry-hud-header">
+          <div class="pulse-dot"></div>
+          <span class="telemetry-hud-title">LIVE TELEMETRY HUD</span>
+        </div>
+        <div class="telemetry-item telemetry-model">
+          <span class="telemetry-k">Model:</span>
+          <strong class="telemetry-v">DINOv2 ViT-B/14 + QKV-LoRA (r=8, α=16)</strong>
+        </div>
+        <span class="telemetry-sep">•</span>
+        <div class="telemetry-item telemetry-compute">
+          <span class="telemetry-k">Compute:</span>
+          <strong class="telemetry-v">PyTorch Cloud / MPS Acceleration</strong>
+        </div>
+        <span class="telemetry-sep">•</span>
+        <div class="telemetry-item telemetry-latency">
+          <span class="telemetry-k">Warm Latency:</span>
+          <strong class="telemetry-v">~27.9 ms / scan</strong>
+        </div>
+        <span class="telemetry-sep">•</span>
+        <div class="telemetry-item telemetry-hash">
+          <span class="telemetry-k">Lock Hash:</span>
+          <strong class="telemetry-v" style="color: var(--color-success);">59dafadda3f9... (SHA256 Certified)</strong>
+        </div>
       </div>
     </section>
 
@@ -758,6 +773,30 @@
     </footer>
 
   </main>
+
+  <!-- ==========================================================================
+       SCIENTIFIC GRAPH & FIGURE FULLSCREEN LIGHTBOX MODAL
+       Touch-enabled, Pinch-to-zoom, Double-tap zoom, Escape-to-close
+       ========================================================================== -->
+  <div id="graph-lightbox" class="graph-lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="graph-lightbox-backdrop" data-lightbox-close></div>
+
+    <div class="graph-lightbox-header">
+      <div id="lightbox-badge" class="lightbox-badge">🔬 Scientific Evidence Viewer</div>
+      <button type="button" class="graph-lightbox-close" aria-label="Close fullscreen view" data-lightbox-close>
+        <span>✕</span>
+      </button>
+    </div>
+
+    <div class="graph-lightbox-viewport" id="lightbox-viewport">
+      <img id="lightbox-img" class="graph-lightbox-img" src="" alt="Scientific Graph" draggable="false" />
+    </div>
+
+    <div class="graph-lightbox-footer">
+      <div id="lightbox-caption" class="graph-lightbox-caption"></div>
+      <div class="lightbox-hint">Pinch or double-tap to zoom • Drag to pan • Tap ✕ or outside to close</div>
+    </div>
+  </div>
 
   <script src="/static/js/app.js"></script>
 </body>

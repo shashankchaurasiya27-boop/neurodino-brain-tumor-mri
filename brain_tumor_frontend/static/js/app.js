@@ -760,6 +760,142 @@ document.addEventListener("DOMContentLoaded", () => {
     if (firstIcon) firstIcon.textContent = "−";
   }
 
+  // ==========================================================================
+  // FULLSCREEN GRAPH & FIGURE LIGHTBOX MODAL CONTROLLER
+  // ==========================================================================
+  const graphLightbox = document.getElementById("graph-lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const lightboxCaption = document.getElementById("lightbox-caption");
+  const lightboxViewport = document.getElementById("lightbox-viewport");
+
+  let lbScale = 1;
+  let lbTranslateX = 0;
+  let lbTranslateY = 0;
+  let lbIsDragging = false;
+  let lbStartX = 0;
+  let lbStartY = 0;
+  let lbLastTap = 0;
+
+  function updateLightboxTransform() {
+    if (!lightboxImg) return;
+    lightboxImg.style.transform = `translate3d(${lbTranslateX}px, ${lbTranslateY}px, 0px) scale(${lbScale})`;
+  }
+
+  function resetLightboxZoom() {
+    lbScale = 1;
+    lbTranslateX = 0;
+    lbTranslateY = 0;
+    updateLightboxTransform();
+  }
+
+  function openGraphLightbox(src, caption) {
+    if (!graphLightbox || !lightboxImg) return;
+    resetLightboxZoom();
+    lightboxImg.src = src;
+    lightboxCaption.textContent = caption || "Scientific Evidence Figure";
+    graphLightbox.classList.add("is-open");
+    graphLightbox.setAttribute("aria-hidden", "false");
+    document.body.classList.add("lightbox-open");
+  }
+
+  function closeGraphLightbox() {
+    if (!graphLightbox) return;
+    graphLightbox.classList.remove("is-open");
+    graphLightbox.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("lightbox-open");
+    resetLightboxZoom();
+  }
+
+  // Open on clicking any graph or figure in Story Timeline or Latent PCA
+  document.addEventListener("click", (e) => {
+    // 1. Story Timeline Graph
+    const storyBox = e.target.closest(".story-image-box");
+    if (storyBox) {
+      const img = storyBox.querySelector("img");
+      if (img && img.src) {
+        const titleEl = storyBox.closest(".story-item")?.querySelector(".story-title");
+        const title = titleEl ? titleEl.textContent : "Research Milestone Figure";
+        openGraphLightbox(img.src, title);
+        return;
+      }
+    }
+
+    // 2. Latent Projection Graph
+    const projBox = e.target.closest(".projection-img-wrapper");
+    if (projBox) {
+      const img = projBox.querySelector("img");
+      if (img && img.src) {
+        const titleEl = document.getElementById("projection-title");
+        const title = titleEl ? titleEl.textContent : "Latent Manifold Projection";
+        openGraphLightbox(img.src, title);
+        return;
+      }
+    }
+
+    // 3. Direct image click on .story-img or .projection-img
+    if (e.target.classList.contains("story-img") || e.target.classList.contains("projection-img")) {
+      openGraphLightbox(e.target.src, e.target.alt || "Scientific Graph");
+      return;
+    }
+
+    // 4. Close Lightbox on [data-lightbox-close]
+    if (e.target.closest("[data-lightbox-close]")) {
+      closeGraphLightbox();
+      return;
+    }
+  });
+
+  // Close on Escape Key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && graphLightbox && graphLightbox.classList.contains("is-open")) {
+      closeGraphLightbox();
+    }
+  });
+
+  // Double-tap or double-click to toggle Zoom (1x <-> 2.2x)
+  if (lightboxViewport) {
+    lightboxViewport.addEventListener("pointerdown", (e) => {
+      if (!graphLightbox || !graphLightbox.classList.contains("is-open")) return;
+      const now = Date.now();
+      if (now - lbLastTap < 300) {
+        // Double tap detected
+        lbScale = lbScale > 1.2 ? 1 : 2.2;
+        lbTranslateX = 0;
+        lbTranslateY = 0;
+        updateLightboxTransform();
+        lbLastTap = 0;
+        return;
+      }
+      lbLastTap = now;
+
+      if (lbScale > 1) {
+        lbIsDragging = true;
+        lbStartX = e.clientX - lbTranslateX;
+        lbStartY = e.clientY - lbTranslateY;
+        lightboxViewport.setPointerCapture(e.pointerId);
+      }
+    });
+
+    lightboxViewport.addEventListener("pointermove", (e) => {
+      if (!lbIsDragging || lbScale <= 1) return;
+      lbTranslateX = e.clientX - lbStartX;
+      lbTranslateY = e.clientY - lbStartY;
+      updateLightboxTransform();
+    });
+
+    const stopDragging = (e) => {
+      lbIsDragging = false;
+      try {
+        if (e.pointerId && lightboxViewport.hasPointerCapture(e.pointerId)) {
+          lightboxViewport.releasePointerCapture(e.pointerId);
+        }
+      } catch (_) {}
+    };
+
+    lightboxViewport.addEventListener("pointerup", stopDragging);
+    lightboxViewport.addEventListener("pointercancel", stopDragging);
+  }
+
   // Initial Boot
   loadShowcaseManifest();
   loadStoryMilestones();
