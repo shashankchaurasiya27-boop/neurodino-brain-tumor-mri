@@ -8,7 +8,7 @@ FROM python:3.10-slim
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    PORT=7860 \
+    PORT=8080 \
     PROJECT_ROOT=/app \
     TORCH_HOME=/app/.cache/torch
 
@@ -47,13 +47,13 @@ RUN mkdir -p /app/.cache && chown -R user:user /app
 # Switch to non-root user
 USER user
 
-# Hugging Face Spaces default port
-EXPOSE 7860
+# Cloud standard port (Google Cloud Run / AWS / standard containers)
+EXPOSE 8080
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
-    CMD curl -f http://localhost:7860/api/health || exit 1
+    CMD curl -f http://localhost:${PORT:-8080}/api/health || exit 1
 
-# Launch the FastAPI app on port 7860
-CMD ["python3", "-m", "uvicorn", "brain_tumor_frontend.app:app", "--host", "0.0.0.0", "--port", "7860"]
+# Launch the FastAPI app dynamically binding to $PORT
+CMD ["sh", "-c", "exec uvicorn brain_tumor_frontend.app:app --host 0.0.0.0 --port ${PORT:-8080}"]
 
