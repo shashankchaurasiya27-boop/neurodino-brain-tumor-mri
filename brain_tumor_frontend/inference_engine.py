@@ -185,14 +185,23 @@ class ModelManager:
         logger.info(f"LoRA Checkpoint SHA256: {lora_sha256[:12]}... (Verified: {self.lora_hash_verified})")
         logger.info(f"Frozen Checkpoint SHA256: {frozen_sha256[:12]}... (Verified: {self.frozen_hash_verified})")
 
-        # Load Backbones
-        dinov2_lora = torch.hub.load("facebookresearch/dinov2", "dinov2_vitb14", source="github")
+        # Load Backbones (use local torch hub cache if available to prevent network timeouts)
+        local_hub_dir = Path.home() / ".cache" / "torch" / "hub" / "facebookresearch_dinov2_main"
+        if local_hub_dir.exists():
+            dinov2_lora = torch.hub.load(str(local_hub_dir), "dinov2_vitb14", source="local", pretrained=True)
+        else:
+            dinov2_lora = torch.hub.load("facebookresearch/dinov2", "dinov2_vitb14", source="github")
+
         self.model_lora = ControlledLoRADINOv2(dinov2_lora)
         ckpt_lora = torch.load(config.LORA_CHECKPOINT_PATH, map_location=self.device)
         self.model_lora.load_state_dict(ckpt_lora["model_state_dict"])
         self.model_lora.to(self.device).eval()
 
-        dinov2_frozen = torch.hub.load("facebookresearch/dinov2", "dinov2_vitb14", source="github")
+        if local_hub_dir.exists():
+            dinov2_frozen = torch.hub.load(str(local_hub_dir), "dinov2_vitb14", source="local", pretrained=True)
+        else:
+            dinov2_frozen = torch.hub.load("facebookresearch/dinov2", "dinov2_vitb14", source="github")
+
         self.model_frozen = MatchedFrozenDINOv2(dinov2_frozen)
         ckpt_frozen = torch.load(config.FROZEN_CHECKPOINT_PATH, map_location=self.device)
         self.model_frozen.load_state_dict(ckpt_frozen["model_state_dict"])
