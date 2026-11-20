@@ -13,17 +13,18 @@
 ### **Parameter-Efficient Representation Adaptation of Vision Foundation Models for Multi-Center Brain Tumor MRI Diagnosis**
 
 [![GitHub Stars](https://img.shields.io/github/stars/shashankchaurasiya27-boop/neurodino-brain-tumor-mri?style=for-the-badge&color=9B43F3)](https://github.com/shashankchaurasiya27-boop/neurodino-brain-tumor-mri)
+[![Google Cloud Run](https://img.shields.io/badge/Google_Cloud_Run-Production_Live-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white)](https://neurodino-brain-tumor-mri-git-641397768728.europe-west1.run.app)
+[![Mobile Ready](https://img.shields.io/badge/Mobile_Ready-iOS_%26_Android-000000?style=for-the-badge&logo=apple&logoColor=white)](#-mobile-first-responsive-engineering--radiologist-hud)
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![PyTorch 2.0+](https://img.shields.io/badge/PyTorch-2.0%2B-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)](https://pytorch.org/)
 [![PEFT QKV-LoRA](https://img.shields.io/badge/PEFT-QKV--LoRA-8A2BE2?style=for-the-badge&logo=huggingface&logoColor=white)](https://github.com/huggingface/peft)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110%2B-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![Docker Ready](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white)](Dockerfile)
-[![Vercel Compatible](https://img.shields.io/badge/Vercel-Deployable-000000?style=for-the-badge&logo=vercel&logoColor=white)](vercel.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
 <br/>
 
-**[Live Web App](#-interactive-web-platform--inference-studio)** • **[Research Genesis Story](#-the-research-genesis-story-mode)** • **[Scientific Evidence](#-certified-results--statistical-evidence)** • **[Attention Rollouts](#-explainability--self-attention-rollouts)** • **[Showcase Gallery](#-verified-50-image-showcase-gallery)** • **[Reproduction Guide](#-reproducing-the-experiments)**
+**[🚀 Live Demo on Cloud Run](https://neurodino-brain-tumor-mri-git-641397768728.europe-west1.run.app)** • **[Interactive Studio](#-interactive-web-platform--inference-studio)** • **[Mobile HUD & Lightbox](#-mobile-first-responsive-engineering--radiologist-hud)** • **[Research Genesis](#-the-research-genesis-story-mode)** • **[Certified Results](#-certified-results--statistical-evidence)** • **[Cloud Specs](#-cloud-deployment-guide)**
 
 </div>
 
@@ -33,6 +34,8 @@
 
 - [🌟 Executive Summary](#-executive-summary)
 - [🖥️ Interactive Web Platform & Inference Studio](#-interactive-web-platform--inference-studio)
+  - [Studio Capabilities](#studio-capabilities)
+  - [📱 Mobile-First Responsive Engineering & Radiologist HUD](#-mobile-first-responsive-engineering--radiologist-hud)
 - [📖 The Research Genesis (Story Mode)](#-the-research-genesis-story-mode)
   - [Phase 1: Multi-Center Ingestion & Discovery](#phase-1-multi-center-ingestion--discovery)
   - [Phase 2: The Data Leakage Discovery & Deduplication Audit](#phase-2-the-data-leakage-discovery--deduplication-audit)
@@ -124,6 +127,38 @@ Accompanying the research codebase is a high-performance, clinical demonstration
 3. **50-Image Showcase Gallery**: 50 certified test samples filterable across all 4 classes with instant 1-click live execution.
 4. **LoRA Rescue Alerts**: Automatically highlights cases where foundation adaptation rescued a frozen baseline error.
 5. **Research Genesis Storytelling**: Interactive 7-phase animated timeline walking through the empirical discovery.
+
+### 📱 Mobile-First Responsive Engineering & Radiologist HUD
+
+To ensure clinical researchers, radiologists, and peer reviewers can interact with the platform seamlessly on mobile devices without any regression to the desktop workstation experience, the frontend was completely re-architected following **Apple Human Interface Guidelines (HIG)** and **Material Design**:
+
+```
++-----------------------------------------------------------------------------------------+
+|                       NEURODINO® MULTI-TIER RESPONSIVE ARCHITECTURE                     |
++-----------------------------------------------------------------------------------------+
+| Desktop (> 900px) : 100% Intact Glassmorphism, 2x2 Diagnostic Cards, Floating Pill Nav  |
+| Tablet (≤ 768px)  : Single-Column Cards, 2-Column Showcase Grid, Fluid Headline Clamp  |
+| Mobile (≤ 480px)  : Live Telemetry HUD Card, Fullscreen Graph Lightbox, Touch Sliders   |
++-----------------------------------------------------------------------------------------+
+```
+
+1. **Biomedical Live Telemetry HUD Card**:
+   - Replaced the rigid desktop pill bar on mobile with a structured healthcare-grade status card (`border-radius: 18px`).
+   - Integrated an anchored animated live status indicator (`● LIVE TELEMETRY HUD`) beside dedicated hardware metric chips (*Model architecture*, *Compute acceleration*, *Inference latency*, and *Cryptographic lock hash*), completely eliminating text wrapping and container overflow.
+2. **Interactive Fullscreen Graph Lightbox**:
+   - All high-density scientific evidence figures (Phases 1–7 timelines, 2D PCA, 2D UMAP, and confusion matrices) feature an interactive **`⛶ Tap to expand`** badge.
+   - Tapping any chart opens an immersive, backdrop-blurred (`20px blur`) fullscreen darkroom modal with a **46px round tactile close button (`✕`)** honoring iOS notch safe areas (`env(safe-area-inset-top)`).
+   - Features **double-tap toggle zoom (2.2×)** and finger drag-to-pan, enabling granular inspection of decision boundaries without navigating away or reloading the session.
+3. **One-Handed Thumb Ergonomics & Touch Darkroom**:
+   - Window leveling (brightness & contrast) controls feature **44px minimum tap targets** and **28px draggable thumb sliders** designed for fingertip precision.
+   - Upload dropzone automatically adapts from "Drag & drop" to **"Tap to Select or Upload Scan"** with direct native camera and photo library access (`accept="image/*"`).
+4. **Swipeable 50-Scan Photo Gallery**:
+   - Filter pills collapse into a single-line horizontal scroll track with momentum touch and hidden scrollbars.
+   - Showcase scans render in a compact, Instagram/Photos-style **2-column grid (`repeat(2, 1fr)`)** with responsive confidence badges.
+5. **Research Genesis Timeline Optimization**:
+   - Eliminated the 80px left margin blowout on narrow 360–400px viewports, re-anchoring the glowing purple trajectory at 14px with 36px card offsets so narrative text retains full reading breadth.
+6. **Zero Desktop Regression**:
+   - 100% of desktop styles (`> 900px`) remain untouched and pixel-perfect. All mobile improvements are strictly encapsulated inside `@media (max-width: 768px)` and `@media (max-width: 480px)` stylesheets.
 
 ---
 
@@ -515,7 +550,27 @@ with open('outputs/*EXP_LORA_CONTROLLED_20260811_211611/checkpoints/controlled_l
 
 ## 🚀 Cloud Deployment Guide
 
-### Option 1: Lightning AI (100% Free Live PyTorch Compute)
+### Option 1: Google Cloud Run (Continuous Production Deployment) 🏆
+The production NeuroDINO® platform is deployed as a fully managed, auto-scaling serverless container on **Google Cloud Run**, orchestrated via **Google Cloud Build** with automated CI/CD synchronization from the `main` GitHub branch:
+
+```
+[GitHub Push: main] ---> [Google Cloud Build Trigger] ---> [Docker Layer Cache] ---> [Google Cloud Run (HTTPS)]
+                                                                                             |
+                                                                                    2 GiB RAM / 1 vCPU
+                                                                                    Startup CPU Boost
+                                                                                    Auto-scale: 0 to 2
+```
+
+- **Live Public Endpoint**: [`https://neurodino-brain-tumor-mri-git-641397768728.europe-west1.run.app`](https://neurodino-brain-tumor-mri-git-641397768728.europe-west1.run.app)
+- **Container Architecture**: Lightweight Debian-slim image with CPU-optimized PyTorch runtime, non-root user security (`UID 1000`), and dynamic port negotiation (`EXPOSE 8080`).
+- **Hardware Profile**:
+  - **Memory Allocation**: `2 GiB` (providing dedicated RAM headroom for ViT-B/14 86.5M parameter backbone).
+  - **Compute Allocation**: `1 vCPU` with **Startup CPU Boost** enabled for rapid PyTorch model initialization.
+  - **Request Timeout**: `300s` (with 600s cold-start grace period).
+  - **Auto-Scaling Governance**: `min-instances: 0` (guaranteeing 100% free-tier zero cost during idle periods) and `max-instances: 2` (preventing unexpected compute spikes).
+  - **Ingress & Security**: Public unauthenticated access with Google-managed HTTPS SSL encryption.
+
+### Option 2: Lightning AI (Cloud Studio PyTorch Inference)
 1. Create a free account at [lightning.ai](https://lightning.ai).
 2. Click **New Studio** (Select CPU Basic with **16 GB RAM**).
 3. In the terminal:
@@ -527,7 +582,7 @@ with open('outputs/*EXP_LORA_CONTROLLED_20260811_211611/checkpoints/controlled_l
 4. Drag and drop the two `.pth` weights from your Mac into `outputs/*EXP_LORA_CONTROLLED_20260811_211611/checkpoints/`.
 5. Under the **Ports** tab, expose port `8000` as **Public** to get your live URL.
 
-### Option 2: Vercel Serverless
+### Option 3: Vercel Serverless
 1. Import this repository into [vercel.com](https://vercel.com).
 2. Vercel automatically detects [`vercel.json`](vercel.json) and builds [`api/index.py`](api/index.py).
 3. Operates in high-performance cloud mode with certified showcase evaluations and full interactive darkroom tools.
